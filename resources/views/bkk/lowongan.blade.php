@@ -295,27 +295,47 @@
         </div>
     </section>
 
-    <section id="lowongan">
-        @foreach ($lowongan as $job)
-            <div class="lowongan-card">
-                {{-- judul --}}
-                <h3>{{ $job->judul }}</h3>
-                <div class="lowongan-info">
-                    {{-- nama perusahaan --}}
-                    <h5>{{ $job->perusahaan }}</h5>
-                    {{-- tanggal --}}
-                    <span class="tanggal-info"><i class="fa-regular fa-clock" style="color: #555555;"></i> {{ $job->tanggal }}</span>
-                    {{-- posisi --}}
-                    <p>{{ $job->posisi }}</p>
-                </div>
-                <div class="action">
-                    <a href="{{ route('lowongan.show', $job->id) }}"><button class="btn btn-detail"><i class="fa-solid fa-circle-info"
-                                style="color: #ffffff;"></i> Detail Lowongan</button></a>
-                    <a href="#"><button class="btn btn-lamar"><i class="fa-solid fa-check"
-                                style="color: #ffffff;"></i> Lamar</button></a>
-                </div>
+    <section id="search">
+        <form action="/lowongan" method="get">
+            <div class="input-group">
+                <input name="cari" class="form-control" type="text" placeholder="Cari data lowongan"
+                    value="{{ request('cari') }}">
+                <span class="input-group-btn"><button class="btn btn-primary" type="submit">Cari</button></span>
             </div>
-        @endforeach
+        </form>
+    </section>
+
+    <section id="lowongan">
+        @if ($lowongan->count() > 0)
+            @foreach ($lowongan as $job)
+                <div class="lowongan-card">
+                    {{-- judul --}}
+                    <h3>{{ $job->judul }}</h3>
+                    <div class="lowongan-info">
+                        {{-- nama perusahaan --}}
+                        <h5>{{ $job->perusahaan }}</h5>
+                        {{-- tanggal --}}
+                        <span class="tanggal-info"><i class="fa-regular fa-clock" style="color: #555555;"></i>
+                            {{ $job->tanggal }}</span>
+                        {{-- posisi --}}
+                        <p>{{ $job->posisi }}</p>
+                    </div>
+                    <div class="action">
+                        <a href="{{ route('lowongan.show', $job->id) }}"><button class="btn btn-detail"><i
+                                    class="fa-solid fa-circle-info" style="color: #ffffff;"></i> Detail
+                                Lowongan</button></a>
+                        <a href="#"><button class="btn btn-lamar"><i class="fa-solid fa-check"
+                                    style="color: #ffffff;"></i> Lamar</button></a>
+                    </div>
+                </div>
+            @endforeach
+        @else
+            {{-- Tampilkan kalo hasil pencarian tidak ditemukan --}}
+            <div class="alert alert-danger text-center mt-4">
+                <strong>Pencarian tidak ditemukan</strong>
+                <p>Silakan coba dengan kata kunci lain.</p>
+            </div>
+        @endif
     </section>
 
     <section id="about">
