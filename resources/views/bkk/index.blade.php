@@ -261,7 +261,7 @@
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/lowongan">Lowongan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Perusahaan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/perusahaan">Perusahaan</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button"

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LowonganController;
+use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,6 +11,9 @@ Route::get('/', function () {
 
 Route::get('/lowongan', [LowonganController::class, 'index'])->name('lowongan.index');
 Route::get('/lowongan/{lowongan}', [LowonganController::class, 'show'])->name('lowongan.show');
+
+Route::get('/perusahaan', [PerusahaanController::class, 'index'])->name('perusahaan.index');
+Route::get('/perusahaan/{perusahaan}', [PerusahaanController::class, 'show'])->name('perusahaan.show');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

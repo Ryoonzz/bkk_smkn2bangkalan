@@ -164,7 +164,7 @@
             color: var(--warna-5);
         }
 
-        #lowongan {
+        #perusahaan {
             margin-top: 50px;
             margin-bottom: 50px;
             display: flex;
@@ -174,27 +174,27 @@
             text-align: left;
         }
 
-        #lowongan h3 {
+        #perusahaan h3 {
             font-size: 16px;
             padding-left: 10px
         }
 
-        #lowongan h5 {
+        #perusahaan h5 {
             font-size: 20px;
             font-weight: 625;
         }
 
-        #lowongan p {
+        #perusahaan p {
             font-size: 14px;
         }
 
-        .lowongan-info {
+        .perusahaan-info {
             background: white;
             padding: 10px;
             border-radius: 5px;
         }
 
-        .lowongan-card {
+        .perusahaan-card {
             background-color: #dce6f7;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -203,7 +203,7 @@
             border-left: 5px solid #2b7cd9;
         }
 
-        .judul-lowongan {
+        .nama-perusahaan {
             font-weight: bold;
             font-size: 18px;
         }
@@ -286,46 +286,42 @@
 
     <section id="nama-halaman">
         <div class="test d-flex justify-content-between align-items-center">
-            <h2>Info Lowongan</h2>
+            <h2>Perusahaan</h2>
             <ul>
                 <li><a href="/">Beranda</a></li>
                 <li> / </li>
-                <li>Info Lowongan</li>
+                <li>Perusahaan</li>
             </ul>
         </div>
     </section>
 
     <section id="search">
-        <form action="/lowongan" method="get">
+        <form action="/perusahaan" method="get">
             <div class="input-group">
-                <input name="cari" class="form-control" type="text" placeholder="Cari data lowongan"
+                <input name="cari" class="form-control" type="text" placeholder="Cari data perusahaan"
                     value="{{ request('cari') }}">
                 <span class="input-group-btn"><button class="btn btn-primary" type="submit">Cari</button></span>
             </div>
         </form>
     </section>
 
-    <section id="lowongan">
-        @if ($lowongan->count() > 0)
-            @foreach ($lowongan as $job)
-                <div class="lowongan-card">
+    <section id="perusahaan">
+        @if ($perusahaan->count() > 0)
+            @foreach ($perusahaan as $comp)
+                <div class="perusahaan-card">
                     {{-- judul --}}
-                    <h3>{{ $job->judul }}</h3>
-                    <div class="lowongan-info">
-                        {{-- nama perusahaan --}}
-                        <h5>{{ $job->perusahaan }}</h5>
+                    <h3>{{ $comp->nama }}</h3>
+                    <div class="perusahaan-info">
                         {{-- tanggal --}}
                         <span class="tanggal-info"><i class="fa-regular fa-clock" style="color: #555555;"></i>
-                            {{ $job->tanggal }}</span>
-                        {{-- posisi --}}
-                        <p>{{ $job->posisi }}</p>
+                            Tahun gabung: {{ $comp->tahun_gabung }}</span>
+                        {{-- alamat --}}
+                        <p>Alamat: {{ $comp->alamat }}</p>
                     </div>
                     <div class="action">
-                        <a href="{{ route('lowongan.show', $job->id) }}"><button class="btn btn-detail"><i
+                        <a href="{{ route('perusahaan.show', $comp->id) }}"><button class="btn btn-detail"><i
                                     class="fa-solid fa-circle-info" style="color: #ffffff;"></i> Detail
-                                Lowongan</button></a>
-                        <a href="#"><button class="btn btn-lamar"><i class="fa-solid fa-check"
-                                    style="color: #ffffff;"></i> Lamar</button></a>
+                                Perusahaan</button></a>
                     </div>
                 </div>
             @endforeach
