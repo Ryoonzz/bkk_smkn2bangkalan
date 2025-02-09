@@ -44,9 +44,19 @@
                         <p>{{ $perusahaan->tahun_gabung }}</p>
                         <h6>Standar</h6>
                         <p>{{ $perusahaan->standar }}</p>
+                        <h6>MoU</h6>
+                        <p><span class="badge {{ $perusahaan->mou == 'Ya' ? 'bg-primary' : 'bg-danger' }}">
+                                {{ ucfirst($perusahaan->mou) }}
+                            </span>
+                        </p>
+                        <h6>UMKM</h6>
+                        <p> <span class="badge {{ $perusahaan->umkm == 'ya' ? 'bg-primary' : 'bg-danger' }}">
+                                {{ ucfirst($perusahaan->umkm) }}
+                            </span>
+                        </p>
                     </div>
                     <div class="card-footer">
-                        <a href="/perusahaan" class="btn btn-md btn-primary">Kembali</a>
+                        <a href="/dashboard/perusahaan" class="btn btn-md btn-primary">Kembali</a>
                     </div>
                 </div>
             </div>

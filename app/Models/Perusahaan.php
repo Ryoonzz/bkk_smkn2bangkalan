@@ -15,5 +15,7 @@ class Perusahaan extends Model
         'kota',
         'tahun_gabung',
         'standar',
+        'mou',
+        'umkm',
     ];
 }

@@ -29,7 +29,7 @@
         body {
             width: 100%;
             height: 100vh;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url(storage/smk2bangkalan.png);
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(storage/smk2bangkalan.png);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -40,6 +40,10 @@
         .navbar .dropdown:hover .dropdown-menu {
             display: block;
             margin-top: 0;
+        }
+
+        .navbar ul a:hover {
+            color: var(--warna-1);
         }
 
         .dropdown-menu {
@@ -57,8 +61,8 @@
 
         #cover h1 {
             color: var(--warna-1);
-            text-shadow: 3px 3px var(--warna-2);
             font-size: 70px;
+            font-weight: bold;
         }
 
         .cover-button .btn {
@@ -267,8 +271,8 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Login</a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/dashboard">Admin</a></li>
                             <li><a class="dropdown-item" href="#">Siswa / Alumni</a></li>
-                            <li><a class="dropdown-item" href="#">Perusahaan</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -277,8 +281,8 @@
     </nav>
 
     <section id="cover">
-        <h1>BURSA KERJA KHUSUS SMKN 2</h1>
-        <h1>BANGKALAN</h1>
+        <h1>BURSA KERJA KHUSUS (BKK)</h1>
+        <h1>SMKN 2 BANGKALAN</h1>
 
         <div class="cover-button">
             <a href="#" class="btn btn-primary"><i class="fa-solid fa-person"></i> SISWA / ALUMNI</a>
@@ -288,8 +292,8 @@
     </section>
 
     <section id="sambutan">
-        <img src="storage/bu_hazizah.jpg" alt="Kepala Sekolah SMKN 2 Bangkalan">
-        <h2>Sambutan Kepala Sekolah SMK Negeri 2 Bangkalan</h2>
+        <img src="storage/bu_hazizah.jpg" alt="Kepala BKK SMKN 2 Bangkalan">
+        <h2>Sambutan Kepala BKK SMK Negeri 2 Bangkalan</h2>
         <p>Selamat datang di SMK Negeri 2 Bangkalan, Sekolah yang menjadi sekolah Pusat Keunggulan Tahun 2021. Sekolah
             yang menjadikan siswa memiliki kecerdasan kontekstual dan emosional serta menjadikan lulusan siswa yang
             memiliki sikap disiplin, berakhlak mulia dan bertaqwa kepada Tuhan yang maha Esa.</p>

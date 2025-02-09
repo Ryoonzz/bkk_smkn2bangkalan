@@ -136,7 +136,7 @@
             margin-top: 80px;
         }
 
-        #nama-halaman .test {
+        #nama-halaman .halaman {
             padding: 0 200px 0 200px;
         }
 
@@ -165,18 +165,19 @@
         }
 
         #lowongan {
-            margin-top: 50px;
+            margin-top: 30px;
             margin-bottom: 50px;
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 25px;
             justify-content: center;
             text-align: left;
         }
 
         #lowongan h3 {
             font-size: 16px;
-            padding-left: 10px
+            padding-left: 10px;
+            padding-bottom: 10px;
         }
 
         #lowongan h5 {
@@ -245,6 +246,11 @@
             background-color: var(--warna-9);
             color: white;
         }
+
+        #search {
+            margin-top: 30px;
+            padding: 0 200px 0 200px;
+        }
     </style>
 </head>
 
@@ -275,8 +281,8 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Login</a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/dashboard">Admin</a></li>
                             <li><a class="dropdown-item" href="#">Siswa / Alumni</a></li>
-                            <li><a class="dropdown-item" href="#">Perusahaan</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -285,7 +291,7 @@
     </nav>
 
     <section id="nama-halaman">
-        <div class="test d-flex justify-content-between align-items-center">
+        <div class="halaman d-flex justify-content-between align-items-center">
             <h2>Info Lowongan</h2>
             <ul>
                 <li><a href="/">Beranda</a></li>
@@ -321,11 +327,53 @@
                         <p>{{ $job->posisi }}</p>
                     </div>
                     <div class="action">
-                        <a href="{{ route('lowongan.show', $job->id) }}"><button class="btn btn-detail"><i
-                                    class="fa-solid fa-circle-info" style="color: #ffffff;"></i> Detail
-                                Lowongan</button></a>
+                        <button class="btn btn-detail" data-bs-toggle="modal"
+                            data-bs-target="#lowonganModal{{ $job->id }}"><i class="fa-solid fa-circle-info"
+                            style="color: #ffffff;"></i>
+                            Detail Lowongan
+                        </button>
                         <a href="#"><button class="btn btn-lamar"><i class="fa-solid fa-check"
                                     style="color: #ffffff;"></i> Lamar</button></a>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="lowonganModal{{ $job->id }}" tabindex="-1"
+                    aria-labelledby="lowonganModalLabel{{ $job->id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="lowonganModalLabel{{ $job->id }}">Detail Lowongan</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h6>Judul</h6>
+                                <p>{{ $job->judul }}</p>
+
+                                <h6>Perusahaan</h6>
+                                <p>{{ $job->perusahaan }}</p>
+
+                                <h6>Tanggal</h6>
+                                <p>{{ $job->tanggal }}</p>
+
+                                <h6>Deskripsi</h6>
+                                <p>{{ $job->deskripsi }}</p>
+
+                                <h6>Posisi</h6>
+                                <p>{{ $job->posisi }}</p>
+
+                                <h6>Penempatan</h6>
+                                <p>{{ $job->penempatan }}</p>
+
+                                <h6>Gaji</h6>
+                                <p>Rp{{ number_format($job->gaji, 0, ',', '.') }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Tutup</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             @endforeach
@@ -337,6 +385,14 @@
             </div>
         @endif
     </section>
+
+    <p class="mb-0">
+        Menampilkan {{ $lowongan->firstItem() }} - {{ $lowongan->lastItem() }} dari
+        {{ $lowongan->total() }} data
+    </p>
+    <div class="d-flex justify-content-center mt-4">
+        {{ $lowongan->links('vendor.pagination.bootstrap-5') }}
+    </div>
 
     <section id="about">
         <iframe

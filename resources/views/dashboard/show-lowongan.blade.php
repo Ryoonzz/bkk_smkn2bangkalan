@@ -32,6 +32,9 @@
                         Detail Lowongan
                     </div>
                     <div class="card-body">
+                        <?php
+                        $gaji = $lowongan->gaji;
+                        ?>
                         <h6>Judul</h6>
                         <p>{{ $lowongan->judul }}</p>
                         <h6>Perusahaan</h6>
@@ -45,10 +48,10 @@
                         <h6>Penempatan</h6>
                         <p>{{ $lowongan->penempatan }}</p>
                         <h6>Gaji</h6>
-                        <p>{{ $lowongan->gaji }}</p>
+                        <p><?= 'Rp' . number_format($gaji, 0, ',', '.') ?></p>
                     </div>
                     <div class="card-footer">
-                        <a href="/lowongan" class="btn btn-md btn-primary">Kembali</a>
+                        <a href="/dashboard/lowongan" class="btn btn-md btn-primary">Kembali</a>
                     </div>
                 </div>
             </div>

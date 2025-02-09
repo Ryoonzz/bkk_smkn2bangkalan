@@ -17,8 +17,10 @@ return new class extends Migration
             $table->string('kode');
             $table->text('alamat');
             $table->string('kota');
-            $table->string('tahun_gabung');
+            $table->integer('tahun_gabung');
             $table->string('standar');
+            $table->string('mou');
+            $table->string('umkm');
             $table->timestamps();
         });
     }

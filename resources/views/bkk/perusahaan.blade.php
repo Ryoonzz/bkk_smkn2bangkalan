@@ -136,7 +136,7 @@
             margin-top: 80px;
         }
 
-        #nama-halaman .test {
+        #nama-halaman .halaman {
             padding: 0 200px 0 200px;
         }
 
@@ -165,7 +165,7 @@
         }
 
         #perusahaan {
-            margin-top: 50px;
+            margin-top: 30px;
             margin-bottom: 50px;
             display: flex;
             flex-wrap: wrap;
@@ -176,7 +176,8 @@
 
         #perusahaan h3 {
             font-size: 16px;
-            padding-left: 10px
+            padding-left: 10px;
+            padding-bottom: 10px;
         }
 
         #perusahaan h5 {
@@ -245,6 +246,11 @@
             background-color: var(--warna-9);
             color: white;
         }
+
+        #search {
+            margin-top: 30px;
+            padding: 0 200px 0 200px;
+        }
     </style>
 </head>
 
@@ -275,8 +281,8 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Login</a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/dashboard">Admin</a></li>
                             <li><a class="dropdown-item" href="#">Siswa / Alumni</a></li>
-                            <li><a class="dropdown-item" href="#">Perusahaan</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -285,7 +291,7 @@
     </nav>
 
     <section id="nama-halaman">
-        <div class="test d-flex justify-content-between align-items-center">
+        <div class="halaman d-flex justify-content-between align-items-center">
             <h2>Perusahaan</h2>
             <ul>
                 <li><a href="/">Beranda</a></li>
@@ -317,22 +323,78 @@
                             Tahun gabung: {{ $comp->tahun_gabung }}</span>
                         {{-- alamat --}}
                         <p>Alamat: {{ $comp->alamat }}</p>
+
+                        @if ($comp->mou === 'Ya')
+                            <span class="badge text-bg-primary">MoU</span>
+                        @endif
+
+                        @if ($comp->umkm === 'Ya')
+                            <span class="badge text-bg-warning">UMKM</span>
+                        @endif
                     </div>
                     <div class="action">
-                        <a href="{{ route('perusahaan.show', $comp->id) }}"><button class="btn btn-detail"><i
-                                    class="fa-solid fa-circle-info" style="color: #ffffff;"></i> Detail
-                                Perusahaan</button></a>
+                        <button class="btn btn-detail" data-bs-toggle="modal"
+                            data-bs-target="#modalPerusahaan{{ $comp->id }}"><i class="fa-solid fa-circle-info"
+                                style="color: #ffffff;"></i>
+                            Detail Perusahaan
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Modal Bootstrap -->
+                <div class="modal fade" id="modalPerusahaan{{ $comp->id }}" tabindex="-1"
+                    aria-labelledby="modalLabel{{ $comp->id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLabel{{ $comp->id }}">{{ $comp->nama }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h6>Kode</h6>
+                                <p>{{ $comp->kode }}</p>
+                                <h6>Alamat</h6>
+                                <p>{{ $comp->alamat }}</p>
+                                <h6>Kota</h6>
+                                <p>{{ $comp->kota }}</p>
+                                <h6>Tahun Gabung</h6>
+                                <p>{{ $comp->tahun_gabung }}</p>
+                                <h6>Standar</h6>
+                                <p>{{ $comp->standar }}</p>
+                                <h6>MoU</h6>
+                                <p><span
+                                        class="badge {{ $comp->mou == 'Ya' ? 'bg-primary' : 'bg-danger' }}">{{ ucfirst($comp->mou) }}</span>
+                                </p>
+                                <h6>UMKM</h6>
+                                <p><span
+                                        class="badge {{ $comp->umkm == 'Ya' ? 'bg-primary' : 'bg-danger' }}">{{ ucfirst($comp->umkm) }}</span>
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Tutup</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             @endforeach
         @else
-            {{-- Tampilkan kalo hasil pencarian tidak ditemukan --}}
+            {{-- Tampilan kalo hasil pencarian tidak ditemukan --}}
             <div class="alert alert-danger text-center mt-4">
                 <strong>Pencarian tidak ditemukan</strong>
                 <p>Silakan coba dengan kata kunci lain.</p>
             </div>
         @endif
     </section>
+
+    <p class="mb-0">
+        Menampilkan {{ $perusahaan->firstItem() }} - {{ $perusahaan->lastItem() }} dari
+        {{ $perusahaan->total() }} data
+    </p>
+    <div class="d-flex justify-content-center mt-4">
+        {{ $perusahaan->links('vendor.pagination.bootstrap-5') }}
+    </div>
 
     <section id="about">
         <iframe

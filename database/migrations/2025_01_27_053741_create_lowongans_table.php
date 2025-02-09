@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->string('posisi');
             $table->string('penempatan');
-            $table->string('gaji');
+            $table->integer('gaji');
             $table->timestamps();
         });
     }
