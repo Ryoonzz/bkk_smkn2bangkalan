@@ -28,11 +28,7 @@
 
         body {
             width: 100%;
-            height: 100vh;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(storage/smk2bangkalan.png);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            height: 100%;
             text-align: center;
         }
 
@@ -46,22 +42,67 @@
             color: var(--warna-1);
         }
 
+        .navbar ul li {
+            margin-right: 20px;
+        }
+
         .dropdown-menu {
             display: none;
         }
 
-        #cover {
-            top: 40%;
+        .bg-cover {
+            position: relative;
             width: 100%;
-            text-align: center;
-            margin: 250px auto;
-            margin-bottom: 300px;
-            max-width: 1100px;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            animation: slideBackground 20s infinite;
         }
 
-        #cover h1 {
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes slideBackground {
+            0% {
+                background-image: url('storage/smk2bangkalan.png');
+            }
+
+            25% {
+                background-image: url('storage/struktur-bkk1.png');
+            }
+
+            50% {
+                background-image: url('storage/struktur-bkk2.png');
+            }
+
+            75% {
+                background-image: url('storage/struktur-bkk3.png');
+            }
+
+            100% {
+                background-image: url('storage/smk2bangkalan.png');
+            }
+        }
+
+        .content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
             color: var(--warna-1);
-            font-size: 70px;
+            font-size: 60px;
             font-weight: bold;
         }
 
@@ -72,33 +113,53 @@
         }
 
         #sambutan {
-            max-width: 1100px;
-            margin: 120px auto;
-            text-align: center;
+            padding-top: 50px;
+            padding-bottom: 50px;
             margin-bottom: 30px;
             font-family: 'Poppins', sans-serif;
+            background-color: #e7f1fd;
         }
 
-        #sambutan img {
-            width: 700px;
-            border: 8px solid #ffff;
+        #sambutan .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        #sambutan .sambutan-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        #sambutan .sambutan-img img {
+            width: 400px;
+            border: 5px solid #e7f1fd;
+            border-radius: 3px;
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-            margin-bottom: 20px
+        }
+        
+        #sambutan .sambutan-text {
+            flex: 1;
+            margin-top: 20px;
         }
 
         #sambutan h2 {
-            font-size: 40px;
+            font-size: 20px;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin: 0 0 25px 0;
+            color: #007bff;
+            text-transform: uppercase;
         }
 
-        #sambutan p {
-            opacity: 0.7;
+        #sambutan .sambutan-text p {
+            text-align: justify
         }
 
-        #rekapitulasi {
-            margin-top: 60px;
-            background-color: var(--warna-3);
-            padding: 30px 0;
-            text-align: center;
+        #sambutan .sambutan-text a {
+            color: blue;
+            text-decoration: none;
         }
 
         #rekapitulasi h2 {
@@ -240,7 +301,6 @@
         footer a {
             margin-right: 10px;
         }
-
     </style>
 </head>
 
@@ -249,13 +309,15 @@
     <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="storage/logo_smkn2bkl.png" alt="Logo SMKN 2 Bangkalan" height="55" class="me-2">
+                <img src="{{ asset('storage\logo-bkk-smkn2.jpg') }}" alt="Logo SMKN 2 Bangkalan" height="55"
+                    class="me-2">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Beranda</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Profil</a>
@@ -272,7 +334,7 @@
                             data-bs-toggle="dropdown">Login</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/dashboard">Admin</a></li>
-                            <li><a class="dropdown-item" href="#">Siswa / Alumni</a></li>
+                            <li><a class="dropdown-item" href="#">Alumni</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -280,23 +342,94 @@
         </div>
     </nav>
 
-    <section id="cover">
-        <h1>BURSA KERJA KHUSUS (BKK)</h1>
-        <h1>SMKN 2 BANGKALAN</h1>
+    <section class="bg-cover">
+        <div class="bg-overlay"></div>
+        <div class="content">
+            <h1 class="bkk-title">BURSA KERJA KHUSUS (BKK)</h1>
+            <h1>SMKN 2 BANGKALAN</h1>
 
-        <div class="cover-button">
-            <a href="#" class="btn btn-primary"><i class="fa-solid fa-person"></i> SISWA / ALUMNI</a>
-            <a href="#" class="btn btn-warning"><i class="fa-regular fa-building" style="color: #ffffff;"></i>
-                PERUSAHAAN</a>
+            <div class="cover-button">
+                <a href="#" class="btn btn-primary"><i class="fa-solid fa-person"></i> ALUMNI</a>
+                <a href="/perusahaan" class="btn btn-warning"><i class="fa-regular fa-building"
+                        style="color: #ffffff;"></i>
+                    PERUSAHAAN</a>
+            </div>
         </div>
     </section>
 
     <section id="sambutan">
-        <img src="storage/bu_hazizah.jpg" alt="Kepala BKK SMKN 2 Bangkalan">
+        {{-- <h2>Sambutan</h2> </br> --}}
         <h2>Sambutan Kepala BKK SMK Negeri 2 Bangkalan</h2>
-        <p>Selamat datang di SMK Negeri 2 Bangkalan, Sekolah yang menjadi sekolah Pusat Keunggulan Tahun 2021. Sekolah
-            yang menjadikan siswa memiliki kecerdasan kontekstual dan emosional serta menjadikan lulusan siswa yang
-            memiliki sikap disiplin, berakhlak mulia dan bertaqwa kepada Tuhan yang maha Esa.</p>
+        <div class="container">
+            <div class="sambutan-content">
+                <div class="sambutan-img">
+                    <img src="storage/bu-hazizah.jpg" alt="Kepala BKK SMKN 2 Bangkalan">
+                </div>
+                <div class="sambutan-text">
+                    <p style="text-align: center;">Assalamu'alaikum Wr. Wb.</p>
+                    <p>Selamat datang di laman <a href="#sambutan">bkk.smkn2bkl.sch.id</a>, laman ini disediakan sebagai
+                        sumber
+                        informasi yang dibutuhkan khususnya oleh warga sekolah dan juga masyarakat secara umum. Melalui
+                        laman
+                        ini
+                        informasi tentang <strong>Bursa Kerja Khusus (BKK)</strong> di <strong>SMK Negeri 2
+                            Bangkalan</strong>
+                            dapat
+                            dengan mudah diakses oleh
+                            siapapun yang memerlukannya.
+                        </p>
+                        <p>Sebagaimana diketahui bersama, perkembangan teknologi, khususnya teknologi Informasi dan
+                            Komunikasi
+                            saat
+                            ini
+                            sudah sedemikian pesat dan merambah ke semua sektor kehidupan tidak terkecuali di dalamnya
+                            adalah
+                            sektor
+                            pendidikan. Internet sebagai salah satu bagian dari perkembangan teknologi informasi dan
+                            komunikasi
+                            dari
+                            hari ke hari menunjukkan perkembangan yang sangat signifikan. melalui internet kita dapat
+                            menjumpai
+                            aneka
+                            referensi, jurnal, maupun hasil penelitian dalam jumlah yang melimpah. Materi-materi yang
+                            disajikan
+                            di
+                            internet cenderung lebih up to date dibandingkan dengan yang disajikan dalam bentuk
+                            tertulis/buku.
+                            Sehubungan dengan hal tersebut SMK Negeri 2 Bangkalan berupaya mengoptimalkan penggunaan
+                            jaringan
+                            internet
+                            yang sudah ada di sekolah agar peningkatan mutu sumber daya manusia dan mutu pendidikan dapat
+                            segera
+                            tercapai.
+                        </p>
+                        <p>Kelebihan lain dari internet adalah dapat menghadirkan informasi yang dibutuhkan tanpa mengenal
+                            batas
+                            geografis. Para pengguna internet dapat tukar menukar informasi dengan berbagai pihak disegala
+                            penjuru
+                            dunia
+                            dalam waktu singkat dan dengan biaya yang relatif murah. Salah satu fasilitas yang ada di
+                            internet
+                            yang
+                            dapat dipakai untuk tukar-menukar dan berbagi informasi adalah dengan menggunakan website. Untuk
+                            itulah
+                            website ini dibuat, dengan tujuan agar pihak sekolah dapat menyampaikan informasi tentang dunia
+                            pendidikan
+                            dan sekaligus menjalin komunikasi antara pihak sekolah dengan guru, orang tua/ wali murid,
+                            siswa,
+                            alumni,
+                            dan stakeholder. Mudah-mudahan dengan optimalisasi penggunaan internet dan website ini,
+                            peningkatan
+                            mutu
+                            pendidikan dan komunikasi global dapat segera terwujud.
+                        </p>
+                        <p style="text-align: center;">Wassalamu'alaikum Wr. Wb.</p>
+                        <p>Kepala Sekolah</p> </br> </br>
+                        <p>Nur Hazizah, S.Pd, M.Pd</p>
+
+                    </div>
+                </div>
+            </div>
     </section>
 
     <section id="rekapitulasi">
@@ -382,44 +515,7 @@
                     <p>Perusahaan </br> (Aktif) </p>
                 </div>
             </div>
-            <div class="baris-rekapitulasi">
-                <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-                        <path fill="white"
-                            d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 155 0 0 16c0 44.2-35.8 80-80 80z" />
-                    </svg>
-                    <h3>10</h3>
-                    <p>Kompetensi Keahlian </br> (Aktif) </p>
-                </div>
-                <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-                        <path fill="white"
-                            d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 155 0 0 16c0 44.2-35.8 80-80 80z" />
-                    </svg>
-                    <h3>1,923</h3>
-                    <p>Peserta Didik </br> (Aktif) </p>
-                </div>
-                <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-                        <path fill="white"
-                            d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 155 0 0 16c0 44.2-35.8 80-80 80z" />
-                    </svg>
-                    <h3>112</h3>
-                    <p>Lowongan </br> (Aktif) </p>
-                </div>
-                <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-                        <path fill="white"
-                            d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 160 0 0 16c0 44.2-35.8 80-80 80z" />
-                    </svg>
-                    <h3>220</h3>
-                    <p>Perusahaan </br> (Aktif) </p>
-                </div>
-            </div>
+            
         </div>
     </section>
 

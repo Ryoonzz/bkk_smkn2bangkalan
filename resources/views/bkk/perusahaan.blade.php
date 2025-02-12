@@ -40,6 +40,14 @@
             margin-top: 0;
         }
 
+        .navbar ul a:hover {
+            color: var(--warna-1);
+        }
+
+        .navbar ul li {
+            margin-right: 20px;
+        }
+
         .dropdown-menu {
             display: none;
         }
@@ -259,13 +267,14 @@
     <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <img src="storage/logo_smkn2bkl.png" alt="Logo SMKN 2 Bangkalan" height="55" class="me-2">
+                <img src="{{ asset('storage\logo-bkk-smkn2.jpg')}}" alt="Logo SMKN 2 Bangkalan" height="55" class="me-2">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/">Beranda</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Profil</a>
@@ -282,7 +291,7 @@
                             data-bs-toggle="dropdown">Login</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/dashboard">Admin</a></li>
-                            <li><a class="dropdown-item" href="#">Siswa / Alumni</a></li>
+                            <li><a class="dropdown-item" href="#">Alumni</a></li>
                         </ul>
                     </li>
                 </ul>
