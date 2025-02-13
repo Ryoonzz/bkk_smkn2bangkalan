@@ -3,12 +3,14 @@
 use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('bkk.index');
-});
+// Route::get('/', function () {
+//     return view('bkk.index');
+// });
+Route::get('/', [BerandaController::class, 'index'])->name('beranda.index');
 
 Route::get('/lowongan', [LowonganController::class, 'index'])->name('lowongan.index');
 Route::get('/lowongan/{lowongan}', [LowonganController::class, 'show'])->name('lowongan.show');

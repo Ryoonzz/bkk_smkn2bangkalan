@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
         /* font-family: 'Poppins', sans-serif; */
@@ -19,6 +20,10 @@
             --warna-3: rgba(16, 110, 234, 0.1);
             --warna-4: rgba(16, 110, 234, 0.10);
             --warna-5: #007bff;
+            --warna-6: #d1e3fb;
+            --warna-7: #006ada;
+            --warna-8: #00be00;
+            --warna-9: #00af00;
         }
 
         * {
@@ -113,7 +118,6 @@
         }
 
         #sambutan {
-            padding-top: 50px;
             padding-bottom: 50px;
             margin-bottom: 30px;
             font-family: 'Poppins', sans-serif;
@@ -131,24 +135,24 @@
             align-items: center;
             gap: 50px;
         }
-        
+
         #sambutan .sambutan-img img {
             width: 400px;
             border: 5px solid #e7f1fd;
             border-radius: 3px;
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
         }
-        
+
         #sambutan .sambutan-text {
             flex: 1;
-            margin-top: 20px;
         }
 
         #sambutan h2 {
             font-size: 20px;
             letter-spacing: 1px;
             font-weight: 700;
-            margin: 0 0 25px 0;
+            padding-top: 50px;
+            padding-bottom: 40px;
             color: #007bff;
             text-transform: uppercase;
         }
@@ -172,6 +176,7 @@
             display: inline-block;
             text-transform: uppercase;
             border-radius: 50px;
+            margin-bottom: 30px;
         }
 
         #rekapitulasi .rekapitulasi-field {
@@ -214,7 +219,7 @@
             padding: 10px;
             color: #fff;
             border-radius: 10px;
-            border: 5px solid #E7F0FD;
+            border: 5px solid #ffffff;
         }
 
         #about {
@@ -249,7 +254,6 @@
             opacity: 0.7;
             text-align: left;
         }
-
 
         #about span {
             color: var(--warna-1);
@@ -301,6 +305,119 @@
         footer a {
             margin-right: 10px;
         }
+
+        #lowongan {
+            margin-top: 30px;
+            margin-bottom: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .lowongan-title h2 {
+            font-size: 20px;
+            letter-spacing: 1px;
+            font-weight: 700;
+            padding: 8px 20px;
+            margin: 0;
+            color: #007bff;
+            display: inline-block;
+            text-transform: uppercase;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+
+        #lowongan h3 {
+            font-size: 16px;
+            padding-left: 10px;
+            padding-bottom: 10px;
+        }
+
+        #lowongan h5 {
+            font-size: 20px;
+            font-weight: 625;
+        }
+
+        #lowongan p {
+            font-size: 14px;
+        }
+
+        #lowongan .lowongan-info {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #lowongan .lowongan-card {
+            background-color: #dce6f7;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 5px;
+            width: 450px;
+            border-left: 5px solid #2b7cd9;
+        }
+
+        #lowongan .judul-lowongan {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        #lowongan .tanggal-info {
+            font-size: 12px;
+            color: #555;
+        }
+
+        #lowongan .action {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        #lowongan .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        #lowongan .btn-detail {
+            background-color: var(--warna-5);
+            color: white;
+        }
+
+        #lowongan .btn-detail:hover {
+            background-color: var(--warna-7);
+            color: white;
+        }
+
+        #lowongan .btn-lamar {
+            background-color: var(--warna-8);
+            color: white;
+        }
+
+        #lowongan .btn-lamar:hover {
+            background-color: var(--warna-9);
+            color: white;
+        }
+
+        #testimoni h2 {
+            font-size: 20px;
+            letter-spacing: 1px;
+            font-weight: 700;
+            padding: 10px 20px;
+            margin: 0;
+            color: #007bff;
+            display: inline-block;
+            text-transform: uppercase;
+            border-radius: 50px;
+        }
+
+        #testimoni img {
+            height: 250px;
+            object-fit: cover;
+        }
     </style>
 </head>
 
@@ -345,27 +462,27 @@
     <section class="bg-cover">
         <div class="bg-overlay"></div>
         <div class="content">
-            <h1 class="bkk-title">BURSA KERJA KHUSUS (BKK)</h1>
-            <h1>SMKN 2 BANGKALAN</h1>
+            <h1 class="bkk-title" data-aos="fade-zoom-in" data-aos-duration="1500">BURSA KERJA KHUSUS (BKK)</h1>
+            <h1 data-aos="fade-zoom-in" data-aos-duration="1500">SMKN 2 BANGKALAN</h1>
 
             <div class="cover-button">
-                <a href="#" class="btn btn-primary"><i class="fa-solid fa-person"></i> ALUMNI</a>
-                <a href="/perusahaan" class="btn btn-warning"><i class="fa-regular fa-building"
+                <a href="#" class="btn btn-primary" data-aos="fade-right"><i class="fa-solid fa-person"></i>
+                    ALUMNI</a>
+                <a href="/perusahaan" class="btn btn-warning" data-aos="fade-left"><i class="fa-regular fa-building"
                         style="color: #ffffff;"></i>
                     PERUSAHAAN</a>
             </div>
         </div>
     </section>
 
-    <section id="sambutan">
-        {{-- <h2>Sambutan</h2> </br> --}}
-        <h2>Sambutan Kepala BKK SMK Negeri 2 Bangkalan</h2>
+    <section id="sambutan" data-aos="fade-zoom-in">
+        <h2>Sambutan Kepala SMK Negeri 2 Bangkalan</h2>
         <div class="container">
             <div class="sambutan-content">
-                <div class="sambutan-img">
+                <div class="sambutan-img" data-aos="flip-right" data-aos-duration="1500">
                     <img src="storage/bu-hazizah.jpg" alt="Kepala BKK SMKN 2 Bangkalan">
                 </div>
-                <div class="sambutan-text">
+                <div class="sambutan-text" data-aos="fade-left" data-aos-duration="1000">
                     <p style="text-align: center;">Assalamu'alaikum Wr. Wb.</p>
                     <p>Selamat datang di laman <a href="#sambutan">bkk.smkn2bkl.sch.id</a>, laman ini disediakan sebagai
                         sumber
@@ -374,84 +491,82 @@
                         ini
                         informasi tentang <strong>Bursa Kerja Khusus (BKK)</strong> di <strong>SMK Negeri 2
                             Bangkalan</strong>
-                            dapat
-                            dengan mudah diakses oleh
-                            siapapun yang memerlukannya.
-                        </p>
-                        <p>Sebagaimana diketahui bersama, perkembangan teknologi, khususnya teknologi Informasi dan
-                            Komunikasi
-                            saat
-                            ini
-                            sudah sedemikian pesat dan merambah ke semua sektor kehidupan tidak terkecuali di dalamnya
-                            adalah
-                            sektor
-                            pendidikan. Internet sebagai salah satu bagian dari perkembangan teknologi informasi dan
-                            komunikasi
-                            dari
-                            hari ke hari menunjukkan perkembangan yang sangat signifikan. melalui internet kita dapat
-                            menjumpai
-                            aneka
-                            referensi, jurnal, maupun hasil penelitian dalam jumlah yang melimpah. Materi-materi yang
-                            disajikan
-                            di
-                            internet cenderung lebih up to date dibandingkan dengan yang disajikan dalam bentuk
-                            tertulis/buku.
-                            Sehubungan dengan hal tersebut SMK Negeri 2 Bangkalan berupaya mengoptimalkan penggunaan
-                            jaringan
-                            internet
-                            yang sudah ada di sekolah agar peningkatan mutu sumber daya manusia dan mutu pendidikan dapat
-                            segera
-                            tercapai.
-                        </p>
-                        <p>Kelebihan lain dari internet adalah dapat menghadirkan informasi yang dibutuhkan tanpa mengenal
-                            batas
-                            geografis. Para pengguna internet dapat tukar menukar informasi dengan berbagai pihak disegala
-                            penjuru
-                            dunia
-                            dalam waktu singkat dan dengan biaya yang relatif murah. Salah satu fasilitas yang ada di
-                            internet
-                            yang
-                            dapat dipakai untuk tukar-menukar dan berbagi informasi adalah dengan menggunakan website. Untuk
-                            itulah
-                            website ini dibuat, dengan tujuan agar pihak sekolah dapat menyampaikan informasi tentang dunia
-                            pendidikan
-                            dan sekaligus menjalin komunikasi antara pihak sekolah dengan guru, orang tua/ wali murid,
-                            siswa,
-                            alumni,
-                            dan stakeholder. Mudah-mudahan dengan optimalisasi penggunaan internet dan website ini,
-                            peningkatan
-                            mutu
-                            pendidikan dan komunikasi global dapat segera terwujud.
-                        </p>
-                        <p style="text-align: center;">Wassalamu'alaikum Wr. Wb.</p>
-                        <p>Kepala Sekolah</p> </br> </br>
-                        <p>Nur Hazizah, S.Pd, M.Pd</p>
+                        dapat
+                        dengan mudah diakses oleh
+                        siapapun yang memerlukannya.
+                    </p>
+                    <p>Sebagaimana diketahui bersama, perkembangan teknologi, khususnya teknologi Informasi dan
+                        Komunikasi
+                        saat
+                        ini
+                        sudah sedemikian pesat dan merambah ke semua sektor kehidupan tidak terkecuali di dalamnya
+                        adalah
+                        sektor
+                        pendidikan. Internet sebagai salah satu bagian dari perkembangan teknologi informasi dan
+                        komunikasi
+                        dari
+                        hari ke hari menunjukkan perkembangan yang sangat signifikan. melalui internet kita dapat
+                        menjumpai
+                        aneka
+                        referensi, jurnal, maupun hasil penelitian dalam jumlah yang melimpah. Materi-materi yang
+                        disajikan
+                        di
+                        internet cenderung lebih up to date dibandingkan dengan yang disajikan dalam bentuk
+                        tertulis/buku.
+                        Sehubungan dengan hal tersebut SMK Negeri 2 Bangkalan berupaya mengoptimalkan penggunaan
+                        jaringan
+                        internet
+                        yang sudah ada di sekolah agar peningkatan mutu sumber daya manusia dan mutu pendidikan dapat
+                        segera
+                        tercapai.
+                    </p>
+                    <p>Kelebihan lain dari internet adalah dapat menghadirkan informasi yang dibutuhkan tanpa mengenal
+                        batas
+                        geografis. Para pengguna internet dapat tukar menukar informasi dengan berbagai pihak disegala
+                        penjuru
+                        dunia
+                        dalam waktu singkat dan dengan biaya yang relatif murah. Salah satu fasilitas yang ada di
+                        internet
+                        yang
+                        dapat dipakai untuk tukar-menukar dan berbagi informasi adalah dengan menggunakan website. Untuk
+                        itulah
+                        website ini dibuat, dengan tujuan agar pihak sekolah dapat menyampaikan informasi tentang dunia
+                        pendidikan
+                        dan sekaligus menjalin komunikasi antara pihak sekolah dengan guru, orang tua/ wali murid,
+                        siswa,
+                        alumni,
+                        dan stakeholder. Mudah-mudahan dengan optimalisasi penggunaan internet dan website ini,
+                        peningkatan
+                        mutu
+                        pendidikan dan komunikasi global dapat segera terwujud.
+                    </p>
+                    <p style="text-align: center;">Wassalamu'alaikum Wr. Wb.</p>
+                    <p>Kepala Sekolah</p> </br> </br>
+                    <p>Nur Hazizah, S.Pd, M.Pd</p>
 
-                    </div>
                 </div>
             </div>
+        </div>
     </section>
 
-    <section id="rekapitulasi">
-        <div class="rekapitulasi-title">
+    <section id="rekapitulasi" data-aos="fade-up" data-aos-duration="1000">
+        <div class="rekapitulasi-title" data-aos="fade-up" data-aos-duration="1000">
             <h2>Rekapitulasi</h2>
             <p></p>
         </div>
 
         <div class="rekapitulasi-field">
-            <div class="baris-rekapitulasi">
+            <div class="baris-rekapitulasi" data-aos="flip-up" data-aos-duration="1000">
                 <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-                        <path fill="white"
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                        <path
                             d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 155 0 0 16c0 44.2-35.8 80-80 80z" />
                     </svg>
                     <h3>10</h3>
                     <p>Kompetensi Keahlian </br> (Aktif) </p>
                 </div>
                 <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
                         <path
                             d="M192 96a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm-8 384l0-128 16 0 0 128c0 17.7 14.3 32 32 32s32-14.3 32-32l0-288 56 0 64 0 16 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-16 0 0-64 192 0 0 192-192 0 0-32-64 0 0 48c0 26.5 21.5 48 48 48l224 0c26.5 0 48-21.5 48-48l0-224c0-26.5-21.5-48-48-48L368 0c-26.5 0-48 21.5-48 48l0 80-76.9 0-65.9 0c-33.7 0-64.9 17.7-82.3 46.6l-58.3 97c-9.1 15.1-4.2 34.8 10.9 43.9s34.8 4.2 43.9-10.9L120 256.9 120 480c0 17.7 14.3 32 32 32s32-14.3 32-32z" />
                     </svg>
@@ -459,8 +574,7 @@
                     <p>Peserta Didik </br> (Aktif) </p>
                 </div>
                 <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path
                             d="M184 48l144 0c4.4 0 8 3.6 8 8l0 40L176 96l0-40c0-4.4 3.6-8 8-8zm-56 8l0 40L64 96C28.7 96 0 124.7 0 160l0 96 192 0 128 0 192 0 0-96c0-35.3-28.7-64-64-64l-64 0 0-40c0-30.9-25.1-56-56-56L184 0c-30.9 0-56 25.1-56 56zM512 288l-192 0 0 32c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32l0-32L0 288 0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-128z" />
                     </svg>
@@ -468,54 +582,163 @@
                     <p>Lowongan </br> (Aktif) </p>
                 </div>
                 <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                         <path
                             d="M48 0C21.5 0 0 21.5 0 48L0 464c0 26.5 21.5 48 48 48l96 0 0-80c0-26.5 21.5-48 48-48s48 21.5 48 48l0 80 96 0c26.5 0 48-21.5 48-48l0-416c0-26.5-21.5-48-48-48L48 0zM64 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm112-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM80 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM272 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z" />
                     </svg>
-                    <h3>220</h3>
-                    <p>Perusahaan </br> (Aktif) </p>
+                    <h3>221</h3>
+                    <p>Perusahaan </br> (Terdaftar) </p>
                 </div>
             </div>
-            <div class="baris-rekapitulasi">
+            <div class="baris-rekapitulasi" data-aos="flip-down" data-aos-duration="1000">
                 <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-                        <path fill="white"
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                        <path
                             d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 155 0 0 16c0 44.2-35.8 80-80 80z" />
                     </svg>
-                    <h3>10</h3>
-                    <p>Kompetensi Keahlian </br> (Aktif) </p>
+                    <h3>129</h3>
+                    <p>Perusahaan </br> (MoU dengan Sekolah) </p>
                 </div>
                 <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-                        <path fill="white"
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                        <path
                             d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 155 0 0 16c0 44.2-35.8 80-80 80z" />
                     </svg>
-                    <h3>1,923</h3>
-                    <p>Peserta Didik </br> (Aktif) </p>
+                    <h3>147</h3>
+                    <p>Perusahaan </br> (Skala Kota/Provinsi) </p>
                 </div>
                 <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-                        <path fill="white"
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                        <path
                             d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 155 0 0 16c0 44.2-35.8 80-80 80z" />
                     </svg>
-                    <h3>112</h3>
-                    <p>Lowongan </br> (Aktif) </p>
+                    <h3>57</h3>
+                    <p>Perusahaan </br> (Skala Nas./Internasional) </p>
                 </div>
                 <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-                        <path fill="white"
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                        <path
                             d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 160 0 0 16c0 44.2-35.8 80-80 80z" />
                     </svg>
-                    <h3>220</h3>
-                    <p>Perusahaan </br> (Aktif) </p>
+                    <h3>4,852</h3>
+                    <p>Total Alumni </br> (Terdaftar) </p>
                 </div>
             </div>
-            
+
+        </div>
+    </section>
+
+    <div class="lowongan-title" data-aos="fade-up" data-aos-duration="1000">
+        <h2>Lowongan Terbaru</h2>
+        <p></p>
+    </div>
+    <section id="lowongan" data-aos="fade-up" data-aos-duration="1000">
+        @foreach ($lowongan as $job)
+            <div class="lowongan-card" data-aos="zoom-in" data-aos-duration="1000">
+                {{-- judul --}}
+                <h3>{{ $job->judul }}</h3>
+                <div class="lowongan-info">
+                    {{-- nama perusahaan --}}
+                    <h5>{{ $job->perusahaan }}</h5>
+                    {{-- tanggal --}}
+                    <span class="tanggal-info"><i class="fa-regular fa-clock" style="color: #555555;"></i>
+                        {{ $job->tanggal }}</span>
+                    {{-- posisi --}}
+                    <p>{{ $job->posisi }}</p>
+                </div>
+                <div class="action">
+                    <button class="btn btn-detail" data-bs-toggle="modal"
+                        data-bs-target="#lowonganModal{{ $job->id }}"><i class="fa-solid fa-circle-info"
+                            style="color: #ffffff;"></i>
+                        Detail Lowongan
+                    </button>
+                    <a href="#"><button class="btn btn-lamar"><i class="fa-solid fa-check"
+                                style="color: #ffffff;"></i> Lamar</button></a>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="lowonganModal{{ $job->id }}" tabindex="-1"
+                aria-labelledby="lowonganModalLabel{{ $job->id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="lowonganModalLabel{{ $job->id }}">Detail Lowongan</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h6>Judul</h6>
+                            <p>{{ $job->judul }}</p>
+
+                            <h6>Perusahaan</h6>
+                            <p>{{ $job->perusahaan }}</p>
+
+                            <h6>Tanggal</h6>
+                            <p>{{ $job->tanggal }}</p>
+
+                            <h6>Deskripsi</h6>
+                            <p>{{ $job->deskripsi }}</p>
+
+                            <h6>Posisi</h6>
+                            <p>{{ $job->posisi }}</p>
+
+                            <h6>Penempatan</h6>
+                            <p>{{ $job->penempatan }}</p>
+
+                            <h6>Gaji</h6>
+                            <p>Rp{{ number_format($job->gaji, 0, ',', '.') }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </section>
+
+    <section id="testimoni" data-aos="fade-up" data-aos-duration="1000">
+        <div class="testimoni-title" data-aos="fade-up" data-aos-duration="1000">
+            <h2>Testimoni</h2>
+            <p></p>
+        </div>
+        <div class="container my-5">
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-4" data-aos="flip-right" data-aos-duration="2000">
+                    <div class="card">
+                        <img src="{{ asset('storage\contoh-testimoni1.jpg') }}" class="card-img-top" alt="Alumni 1">
+                        <div class="card-body text-center bg-light">
+                            <h5 class="fw-bold">Achmad Dandy C R</h5>
+                            <p>Bekerja di PT Mitra Pedagang Indonesia Tbk sebagai tim Marketing</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-4" data-aos="flip-up" data-aos-duration="2000">
+                    <div class="card">
+                        <img src="{{ asset('storage\contoh-testimoni2.jpg') }}" class="card-img-top" alt="Alumni 2">
+                        <div class="card-body text-center bg-light">
+                            <h5 class="fw-bold">M Ibaneza Fendera A.</h5>
+                            <p>Bekerja di PT Mitra Pedagang Indonesia Tbk sebagai tim Marketing juga</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-4" data-aos="flip-left" data-aos-duration="2000">
+                    <div class="card">
+                        <img src="{{ asset('storage\contoh-testimoni3.jpg') }}" class="card-img-top" alt="Alumni 3">
+                        <div class="card-body text-center bg-light">
+                            <h5 class="fw-bold">M Ibaneza Fendera A.</h5>
+                            <p>Bekerja di PT Mitra Pedagang Indonesia Tbk sebagai tim Marketing juga ky Iben sama Dandy
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -540,24 +763,21 @@
             <h3>Link Terkait</h3>
             <ul>
                 <li>
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path
                             d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                     </svg>
                     <a href="https://smkn2-bangkalan.sch.id/" target="_blank">Laman Utama SMKN 2 Bangkalan</a>
                 </li>
                 <li>
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path
                             d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                     </svg>
                     <a href="#" target="_blank">Laman E-PKL SMKN 2 Bangkalan</a>
                 </li>
                 <li>
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path
                             d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                     </svg>
@@ -569,32 +789,28 @@
             <h3>Layanan</h3>
             <ul>
                 <li>
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path
                             d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                     </svg>
                     <a href="#" target="_blank">Ketentuan Penggunaan</a>
                 </li>
                 <li>
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path
                             d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                     </svg>
                     <a href="#" target="_blank">Kebijakan Privasi</a>
                 </li>
                 <li>
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path
                             d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                     </svg>
                     <a href="#" target="_blank">Tentang Kami</a>
                 </li>
                 <li>
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path
                             d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                     </svg>
@@ -650,6 +866,10 @@
         &copy; Copyright 2025 | SMKN 2 Bangkalan All Rights Reserved.
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
