@@ -179,92 +179,74 @@
             color: var(--warna-5);
         }
 
-        #lowongan {
-            margin-top: 30px;
-            margin-bottom: 50px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            justify-content: center;
-            text-align: left;
-        }
-
-        #lowongan h3 {
-            font-size: 16px;
-            padding-left: 10px;
-            padding-bottom: 10px;
-        }
-
-        #lowongan h5 {
-            font-size: 20px;
-            font-weight: 625;
-        }
-
-        #lowongan p {
-            font-size: 14px;
-        }
-
-        .lowongan-info {
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .lowongan-card {
-            background-color: #dce6f7;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px 5px;
-            width: 450px;
-            border-left: 5px solid #2b7cd9;
-        }
-
-        .judul-lowongan {
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .tanggal-info {
-            font-size: 12px;
-            color: #555;
-        }
-
-        .action {
-            margin-top: 10px;
+        .dashboard-container {
+            max-width: 800px;
+            margin: 30px auto;
             text-align: center;
         }
 
-        .btn {
-            padding: 10px 15px;
-            border: none;
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 20px auto;
+        }
+
+        .profile-card {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-img {
+            width: 250px;
             border-radius: 5px;
-            cursor: pointer;
-            margin-right: 5px;
+            object-fit: cover;
+            background-color: #ccc;
         }
 
-        .btn-detail {
-            background-color: var(--warna-5);
-            color: white;
+        .profile-details {
+            flex-grow: 1;
+            padding-left: 20px;
+            text-align: left;
         }
 
-        .btn-detail:hover {
-            background-color: var(--warna-7);
-            color: white;
+        .profile-details p {
+            margin: 5px 0;
         }
 
-        .btn-lamar {
-            background-color: var(--warna-8);
-            color: white;
+        .profile-details strong {
+            display: inline-block;
+            width: 150px;
         }
 
-        .btn-lamar:hover {
-            background-color: var(--warna-9);
-            color: white;
-        }
+        /* Responsif */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem
+            }
 
-        #search {
-            margin-top: 30px;
-            padding: 0 200px 0 200px;
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-img {
+                margin-bottom: 10px;
+            }
+
+            .profile-details {
+                text-align: center;
+                padding-left: 0;
+            }
+
+            .profile-details strong {
+                display: block;
+                width: auto;
+            }
         }
     </style>
 </head>
@@ -274,33 +256,17 @@
     <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <img src="{{ asset('storage\logo-bkk-smkn2.jpg')}}" alt="Logo SMKN 2 Bangkalan" height="55" class="me-2">
+                <img src="{{ asset('storage\logo-bkk-smkn2.jpg') }}" alt="Logo SMKN 2 Bangkalan" height="55"
+                    class="me-2">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="/">Beranda</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Profil</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Visi & Misi BKK</a></li>
-                            <li><a class="dropdown-item" href="#">Program Kerja BKK</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="/lowongan">Lowongan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/perusahaan">Perusahaan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Login</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/dashboard">Admin</a></li>
-                            <li><a class="dropdown-item" href="/dashboard-alumni">Alumni</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/dashboard-alumni">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/dashboard-alumni/lowongan">Lowongan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -308,106 +274,24 @@
 
     <section id="nama-halaman">
         <div class="halaman d-flex justify-content-between align-items-center">
-            <h2>Info Lowongan</h2>
-            <ul>
-                <li><a href="/">Beranda</a></li>
-                <li> / </li>
-                <li>Info Lowongan</li>
-            </ul>
+            <h2>Dashboard Alumni</h2>
         </div>
     </section>
 
-    <section id="search">
-        <form action="/lowongan" method="get">
-            <div class="input-group">
-                <input name="cari" class="form-control" type="text" placeholder="Cari data lowongan"
-                    value="{{ request('cari') }}">
-                <span class="input-group-btn"><button class="btn btn-primary" type="submit">Cari</button></span>
+    <h1>Hallo Achmad Dandy, Selamat Datang di Halaman Dashboard!</h1>
+
+    <div class="dashboard-container">
+        <div class="profile-card">
+            <img src="{{ asset('storage/profile.jpg') }}" alt="Foto Profil" class="profile-img">
+            <div class="profile-details">
+                <p><strong>Nama Lengkap</strong> : Achmad Dandy Chairur Rizqi</p>
+                <p><strong>Tanggal Lahir</strong> : 30 Agustus 2006</p>
+                <p><strong>No HP</strong> : 0878 9804 0539</p>
+                <p><strong>Alamat</strong> : JL KH Abd Muin, No.39, Bangkalan</p>
+                <p><strong>Jurusan</strong> : Rekayasa Perangkat Lunak</p>
+                <p><strong>Tahun Lulus</strong> : 2025</p>
             </div>
-        </form>
-    </section>
-
-    <section id="lowongan">
-        @if ($lowongan->count() > 0)
-            @foreach ($lowongan as $job)
-                <div class="lowongan-card">
-                    {{-- judul --}}
-                    <h3>{{ $job->judul }}</h3>
-                    <div class="lowongan-info">
-                        {{-- nama perusahaan --}}
-                        <h5>{{ $job->perusahaan }}</h5>
-                        {{-- tanggal --}}
-                        <span class="tanggal-info"><i class="fa-regular fa-clock" style="color: #555555;"></i>
-                            {{ $job->tanggal }}</span>
-                        {{-- posisi --}}
-                        <p>{{ $job->posisi }}</p>
-                    </div>
-                    <div class="action">
-                        <button class="btn btn-detail" data-bs-toggle="modal"
-                            data-bs-target="#lowonganModal{{ $job->id }}"><i class="fa-solid fa-circle-info"
-                            style="color: #ffffff;"></i>
-                            Detail Lowongan
-                        </button>
-                        <a href="#"><button class="btn btn-lamar"><i class="fa-solid fa-check"
-                                    style="color: #ffffff;"></i> Lamar</button></a>
-                    </div>
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="lowonganModal{{ $job->id }}" tabindex="-1"
-                    aria-labelledby="lowonganModalLabel{{ $job->id }}" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="lowonganModalLabel{{ $job->id }}">Detail Lowongan</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <h6>Judul</h6>
-                                <p>{{ $job->judul }}</p>
-
-                                <h6>Perusahaan</h6>
-                                <p>{{ $job->perusahaan }}</p>
-
-                                <h6>Tanggal</h6>
-                                <p>{{ $job->tanggal }}</p>
-
-                                <h6>Deskripsi</h6>
-                                <p>{{ $job->deskripsi }}</p>
-
-                                <h6>Posisi</h6>
-                                <p>{{ $job->posisi }}</p>
-
-                                <h6>Penempatan</h6>
-                                <p>{{ $job->penempatan }}</p>
-
-                                <h6>Gaji</h6>
-                                <p>Rp{{ number_format($job->gaji, 0, ',', '.') }}</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Tutup</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        @else
-            {{-- Tampilkan kalo hasil pencarian tidak ditemukan --}}
-            <div class="alert alert-danger text-center mt-4">
-                <strong>Pencarian tidak ditemukan</strong>
-                <p>Silakan coba dengan kata kunci lain.</p>
-            </div>
-        @endif
-    </section>
-
-    <p class="mb-0">
-        Menampilkan {{ $lowongan->firstItem() }} - {{ $lowongan->lastItem() }} dari
-        {{ $lowongan->total() }} data
-    </p>
-    <div class="d-flex justify-content-center mt-4">
-        {{ $lowongan->links('vendor.pagination.bootstrap-5') }}
+        </div>
     </div>
 
     <section id="about">
@@ -507,8 +391,8 @@
                     <path
                         d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" />
                 </svg></a>
-            <a href="https://www.instagram.com/smkn2_bangkalan/"><svg xmlns="http://www.w3.org/2000/svg"
-                    height="25px" viewBox="0 0 448 512">
+            <a href="https://www.instagram.com/smkn2_bangkalan/"><svg xmlns="http://www.w3.org/2000/svg" height="25px"
+                    viewBox="0 0 448 512">
                     <style>
                         svg {
                             fill: #ffffff

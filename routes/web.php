@@ -4,6 +4,7 @@ use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\DashboardAlumniController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,7 @@ Route::get('/lowongan', [LowonganController::class, 'index'])->name('lowongan.in
 Route::get('/perusahaan', [PerusahaanController::class, 'index'])->name('perusahaan.index');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/dashboard-alumni', [DashboardAlumniController::class, 'index'])->name('dashboardAlumni.index');
 
 Route::get('/dashboard/lowongan', [LowonganController::class, 'dashboard'])->name('lowongan.dashboard');
 Route::get('/dashboard/lowongan/tambah', [LowonganController::class, 'create'])->name('lowongan.tambah');
@@ -31,6 +33,8 @@ Route::post('/dashboard/perusahaan/store', [PerusahaanController::class, 'store'
 Route::get('/dashboard/perusahaan/edit/{id}', [PerusahaanController::class, 'edit'])->name('perusahaan.edit');
 Route::put('/dashboard/perusahaan/update/{id}', [PerusahaanController::class, 'update'])->name('perusahaan.update');
 Route::delete('/dashboard/perusahaan/{id}', [PerusahaanController::class, 'destroy'])->name('perusahaan.destroy');
+
+Route::get('/dashboard-alumni/lowongan', [LowonganController::class, 'dashboardAlumni'])->name('lowongan.dashboardAlumni');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

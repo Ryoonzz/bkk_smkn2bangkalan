@@ -44,6 +44,20 @@ class LowonganController extends Controller
         return view('dashboard.lowongan', compact('lowongan'));
     }
 
+    public function dashboardAlumni(Request $request): View
+    {
+        if ($request->has('cari')) {
+            $lowongan = Lowongan::where('judul', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('perusahaan', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('posisi', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('penempatan', 'LIKE', '%' . $request->cari . '%')
+                ->get();
+        } else {
+            $lowongan = Lowongan::all();
+        }
+        return view('dashboardAlumni.lowongan', compact('lowongan'));
+    }
+
     public function create(): View
     {
         return view('dashboard.tambah-lowongan');

@@ -43,8 +43,15 @@
             margin-top: 0;
         }
 
+        .navbar ul a {
+            display: inline-block;
+            transition: transform 0.3s ease-in-out;
+
+        }
+
         .navbar ul a:hover {
             color: var(--warna-1);
+            transform: translateY(-3px);
         }
 
         .navbar ul li {
@@ -451,7 +458,7 @@
                             data-bs-toggle="dropdown">Login</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/dashboard">Admin</a></li>
-                            <li><a class="dropdown-item" href="#">Alumni</a></li>
+                            <li><a class="dropdown-item" href="/dashboard-alumni">Alumni</a></li>
                         </ul>
                     </li>
                 </ul>

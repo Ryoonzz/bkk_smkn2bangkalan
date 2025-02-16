@@ -32,6 +32,7 @@
 
         body {
             text-align: center;
+            background-color: #f5f5fa;
         }
 
         /* dropdown onhover */
@@ -179,92 +180,76 @@
             color: var(--warna-5);
         }
 
-        #lowongan {
-            margin-top: 30px;
-            margin-bottom: 50px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            justify-content: center;
-            text-align: left;
+        .main {
+            margin-bottom: 30px;
         }
 
-        #lowongan h3 {
-            font-size: 16px;
-            padding-left: 10px;
-            padding-bottom: 10px;
+        .container {
+            max-width: 1400px;
         }
 
-        #lowongan h5 {
-            font-size: 20px;
-            font-weight: 625;
-        }
-
-        #lowongan p {
-            font-size: 14px;
-        }
-
-        .lowongan-info {
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .lowongan-card {
-            background-color: #dce6f7;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px 5px;
-            width: 450px;
-            border-left: 5px solid #2b7cd9;
-        }
-
-        .judul-lowongan {
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .tanggal-info {
-            font-size: 12px;
-            color: #555;
-        }
-
-        .action {
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .btn {
-            padding: 10px 15px;
+        .card {
+            border-radius: 8px;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-right: 5px;
-        }
-
-        .btn-detail {
-            background-color: var(--warna-5);
-            color: white;
-        }
-
-        .btn-detail:hover {
-            background-color: var(--warna-7);
-            color: white;
-        }
-
-        .btn-lamar {
-            background-color: var(--warna-8);
-            color: white;
-        }
-
-        .btn-lamar:hover {
-            background-color: var(--warna-9);
-            color: white;
+            text-align: left;
         }
 
         #search {
             margin-top: 30px;
             padding: 0 200px 0 200px;
+        }
+
+        #search button {
+            border-radius: 0px 4px 4px 0px
+        }
+
+        .modal-trigger {
+            color: var(--warna-7)
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 10px;
+        }
+
+        /* Tombol Lamar */
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+            padding: 5px 12px;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .btn-danger {
+            transition: 0.3s;
+        }
+        
+        .btn-danger:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            .table-responsive {
+                overflow-x: auto;
+            }
+
+            .btn-success {
+                font-size: 12px;
+                padding: 4px 10px;
+            }
         }
     </style>
 </head>
@@ -274,33 +259,17 @@
     <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <img src="{{ asset('storage\logo-bkk-smkn2.jpg')}}" alt="Logo SMKN 2 Bangkalan" height="55" class="me-2">
+                <img src="{{ asset('storage\logo-bkk-smkn2.jpg') }}" alt="Logo SMKN 2 Bangkalan" height="55"
+                    class="me-2">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="/">Beranda</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Profil</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Visi & Misi BKK</a></li>
-                            <li><a class="dropdown-item" href="#">Program Kerja BKK</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="/lowongan">Lowongan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/perusahaan">Perusahaan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Login</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/dashboard">Admin</a></li>
-                            <li><a class="dropdown-item" href="/dashboard-alumni">Alumni</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/dashboard-alumni">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/dashboard-alumni/lowongan">Lowongan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -308,107 +277,113 @@
 
     <section id="nama-halaman">
         <div class="halaman d-flex justify-content-between align-items-center">
-            <h2>Info Lowongan</h2>
-            <ul>
-                <li><a href="/">Beranda</a></li>
-                <li> / </li>
-                <li>Info Lowongan</li>
-            </ul>
+            <h2>Dashboard Alumni</h2>
         </div>
     </section>
 
-    <section id="search">
-        <form action="/lowongan" method="get">
-            <div class="input-group">
-                <input name="cari" class="form-control" type="text" placeholder="Cari data lowongan"
-                    value="{{ request('cari') }}">
-                <span class="input-group-btn"><button class="btn btn-primary" type="submit">Cari</button></span>
+    <div class="container mt-4 main">
+        <div class="card p-3 shadow-sm">
+            <h4>Data Lowongan</h4>
+            <div class="mb-3" id="search">
+                <form action="/dashboard-alumni/lowongan" method="get">
+                    <div class="input-group">
+                        <input name="cari" class="form-control" type="text" placeholder="Cari data lowongan"
+                            value="{{ request('cari') }}">
+                        <span class="input-group-btn"><button class="btn btn-primary"
+                                type="submit">Cari</button></span>
+                    </div>
+                </form>
             </div>
-        </form>
-    </section>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>Judul</th>
+                            <th>Perusahaan</th>
+                            <th>Deskripsi</th>
+                            <th>Posisi</th>
+                            <th>Penempatan</th>
+                            <th>Gaji</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($lowongan as $job)
+                            <?php
+                            $gaji = $job->gaji;
+                            ?>
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td><a href="" class="text-decoration-none modal-trigger" data-bs-toggle="modal"
+                                        data-bs-target="#lowonganModal{{ $job->id }}">{{ $job->judul }}</a>
+                                </td>
+                                <td>{{ $job->perusahaan }}</td>
+                                <td>{{ $job->deskripsi }}</td>
+                                <td>{{ $job->posisi }}</td>
+                                <td>{{ $job->penempatan }}</td>
+                                <td>Rp{{ number_format($job->gaji, 0, ',', '.') }}</td>
+                                <td class="text-center">
+                                    <button class="btn btn-success btn-sm" id="lamarBtn{{ $job->id }}"
+                                        onclick="handleLamar(this, {{ $job->id }})">Lamar</button>
+                                </td>
+                            </tr>
 
-    <section id="lowongan">
-        @if ($lowongan->count() > 0)
-            @foreach ($lowongan as $job)
-                <div class="lowongan-card">
-                    {{-- judul --}}
-                    <h3>{{ $job->judul }}</h3>
-                    <div class="lowongan-info">
-                        {{-- nama perusahaan --}}
-                        <h5>{{ $job->perusahaan }}</h5>
-                        {{-- tanggal --}}
-                        <span class="tanggal-info"><i class="fa-regular fa-clock" style="color: #555555;"></i>
-                            {{ $job->tanggal }}</span>
-                        {{-- posisi --}}
-                        <p>{{ $job->posisi }}</p>
-                    </div>
-                    <div class="action">
-                        <button class="btn btn-detail" data-bs-toggle="modal"
-                            data-bs-target="#lowonganModal{{ $job->id }}"><i class="fa-solid fa-circle-info"
-                            style="color: #ffffff;"></i>
-                            Detail Lowongan
-                        </button>
-                        <a href="#"><button class="btn btn-lamar"><i class="fa-solid fa-check"
-                                    style="color: #ffffff;"></i> Lamar</button></a>
-                    </div>
-                </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="lowonganModal{{ $job->id }}" tabindex="-1"
+                                aria-labelledby="lowonganModalLabel{{ $job->id }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="lowonganModalLabel{{ $job->id }}">Detail
+                                                Lowongan</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6>Judul</h6>
+                                            <p>{{ $job->judul }}</p>
 
-                <!-- Modal -->
-                <div class="modal fade" id="lowonganModal{{ $job->id }}" tabindex="-1"
-                    aria-labelledby="lowonganModalLabel{{ $job->id }}" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="lowonganModalLabel{{ $job->id }}">Detail Lowongan</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                            <h6>Perusahaan</h6>
+                                            <p>{{ $job->perusahaan }}</p>
+
+                                            <h6>Tanggal</h6>
+                                            <p>{{ $job->tanggal }}</p>
+
+                                            <h6>Deskripsi</h6>
+                                            <p>{{ $job->deskripsi }}</p>
+
+                                            <h6>Posisi</h6>
+                                            <p>{{ $job->posisi }}</p>
+
+                                            <h6>Penempatan</h6>
+                                            <p>{{ $job->penempatan }}</p>
+
+                                            <h6>Gaji</h6>
+                                            <p>Rp{{ number_format($job->gaji, 0, ',', '.') }}</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                                <h6>Judul</h6>
-                                <p>{{ $job->judul }}</p>
-
-                                <h6>Perusahaan</h6>
-                                <p>{{ $job->perusahaan }}</p>
-
-                                <h6>Tanggal</h6>
-                                <p>{{ $job->tanggal }}</p>
-
-                                <h6>Deskripsi</h6>
-                                <p>{{ $job->deskripsi }}</p>
-
-                                <h6>Posisi</h6>
-                                <p>{{ $job->posisi }}</p>
-
-                                <h6>Penempatan</h6>
-                                <p>{{ $job->penempatan }}</p>
-
-                                <h6>Gaji</h6>
-                                <p>Rp{{ number_format($job->gaji, 0, ',', '.') }}</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Tutup</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        @else
-            {{-- Tampilkan kalo hasil pencarian tidak ditemukan --}}
-            <div class="alert alert-danger text-center mt-4">
-                <strong>Pencarian tidak ditemukan</strong>
-                <p>Silakan coba dengan kata kunci lain.</p>
+                        @empty
+                            <tr>
+                                <td colspan="8" class="text-center">
+                                    <div class="alert alert-danger m-2">
+                                        Data Tidak Tersedia.
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
-        @endif
-    </section>
-
-    <p class="mb-0">
-        Menampilkan {{ $lowongan->firstItem() }} - {{ $lowongan->lastItem() }} dari
-        {{ $lowongan->total() }} data
-    </p>
-    <div class="d-flex justify-content-center mt-4">
-        {{ $lowongan->links('vendor.pagination.bootstrap-5') }}
+        </div>
     </div>
+
 
     <section id="about">
         <iframe
@@ -541,6 +516,30 @@
         &copy; Copyright 2025 | SMKN 2 Bangkalan All Rights Reserved.
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function handleLamar(button, jobId) {
+            let konfirmasi = confirm("Apakah Anda yakin ingin melamar pekerjaan ini?");
+
+            if (konfirmasi) {
+                button.classList.remove('btn-success');
+                button.classList.add('btn-danger');
+                button.innerText = "Batal";
+                button.setAttribute("onclick", `handleBatal(this, ${jobId})`);
+            }
+        }
+
+        function handleBatal(button, jobId) {
+            let konfirmasi = confirm("Apakah Anda yakin ingin membatalkan lamaran?");
+
+            if (konfirmasi) {
+                button.classList.remove('btn-danger');
+                button.classList.add('btn-success');
+                button.innerText = "Lamar";
+                button.setAttribute("onclick", `handleLamar(this, ${jobId})`);
+            }
+        }
+    </script>
+
 </body>
 
 </html>
