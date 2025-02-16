@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [BerandaController::class, 'index'])->name('beranda.index');
 
 Route::get('/lowongan', [LowonganController::class, 'index'])->name('lowongan.index');
-Route::get('/lowongan/{lowongan}', [LowonganController::class, 'show'])->name('lowongan.show');
 
 Route::get('/perusahaan', [PerusahaanController::class, 'index'])->name('perusahaan.index');
-Route::get('/perusahaan/{perusahaan}', [PerusahaanController::class, 'show'])->name('perusahaan.show');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 

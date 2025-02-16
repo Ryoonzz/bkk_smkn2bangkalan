@@ -155,7 +155,7 @@
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-            <a href="#"><img src="{{ asset('storage\logo-dashboard-bkk-smkn2.jpg')}}" alt="SMKN 2 Logo"
+            <a href="#"><img src="{{ asset('storage\logo-dashboard-bkk-smkn2.jpg') }}" alt="SMKN 2 Logo"
                     class="img-responsive logo"></a>
         </div>
         <div class="container-fluid">
@@ -268,6 +268,26 @@
                                                 {{ old('umkm', $perusahaan->umkm) == 'Tidak' ? 'selected' : '' }}>Tidak
                                             </option>
                                         </select>
+                                    </div> </br>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Jenis Kerjasama</label><br>
+
+                                        @php
+                                            $selectedKerjasama = is_array($perusahaan->kerjasama) ? $perusahaan->kerjasama : explode(', ', $perusahaan->kerjasama);
+                                        @endphp
+
+                                        <input type="checkbox" name="kerjasama[]" value="Guru tamu"
+                                            {{ in_array('Guru tamu', $selectedKerjasama) ? 'checked' : '' }}>
+                                        Guru tamu <br>
+
+                                        <input type="checkbox" name="kerjasama[]" value="Prakerin"
+                                            {{ in_array('Prakerin', $selectedKerjasama) ? 'checked' : '' }}>
+                                        Prakerin <br>
+
+                                        <input type="checkbox" name="kerjasama[]" value="Sinkronisasi kurikulum"
+                                            {{ in_array('Sinkronisasi kurikulum', $selectedKerjasama) ? 'checked' : '' }}>
+                                        Sinkronisasi kurikulum <br>
                                     </div> </br>
 
                                     <button type="submit" class="btn btn-primary">Update Data</button>

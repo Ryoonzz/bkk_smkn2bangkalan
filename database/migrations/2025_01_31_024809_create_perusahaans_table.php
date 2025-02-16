@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('standar');
             $table->string('mou');
             $table->string('umkm');
+            $table->text('kerjasama')->nullable();
             $table->timestamps();
         });
     }

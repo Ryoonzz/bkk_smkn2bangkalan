@@ -54,6 +54,18 @@
                                 {{ ucfirst($perusahaan->umkm) }}
                             </span>
                         </p>
+                        <h6>Kerjasama</h6>
+                        <ol>
+                            @php
+                                $kerjasama = is_array($perusahaan->kerjasama)
+                                    ? $perusahaan->kerjasama
+                                    : explode(', ', $perusahaan->kerjasama);
+                            @endphp
+
+                            @foreach ($kerjasama as $item)
+                                <li>{{ $item }}</li>
+                            @endforeach
+                        </ol>
                     </div>
                     <div class="card-footer">
                         <a href="/dashboard/perusahaan" class="btn btn-md btn-primary">Kembali</a>

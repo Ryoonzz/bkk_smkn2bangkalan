@@ -155,7 +155,7 @@
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-            <a href="#"><img src="{{ asset('storage\logo-dashboard-bkk-smkn2.jpg')}}" alt="SMKN 2 Logo"
+            <a href="#"><img src="{{ asset('storage\logo-dashboard-bkk-smkn2.jpg') }}" alt="SMKN 2 Logo"
                     class="img-responsive logo"></a>
         </div>
         <div class="container-fluid">
@@ -219,24 +219,30 @@
                                         @forelse ($perusahaan as $comp)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td><a href="{{ route('perusahaan.show', $comp->id) }}">{{ $comp->nama }}</a></td>
+                                                <td>{{ $comp->nama }}</td>
                                                 <td>{{ $comp->kode }}</td>
                                                 <td>{{ $comp->alamat }}</td>
                                                 <td>{{ $comp->kota }}</td>
                                                 <td>{{ $comp->tahun_gabung }}</td>
                                                 <td>{{ $comp->standar }}</td>
                                                 <td>
-                                                    <span class="badge {{ $comp->mou == 'Ya' ? 'bg-success' : 'bg-danger' }}">
+                                                    <span
+                                                        class="badge {{ $comp->mou == 'Ya' ? 'bg-success' : 'bg-danger' }}">
                                                         {{ ucfirst($comp->mou) }}
                                                     </span>
                                                 </td>
                                                 <td>
-                                                    <span class="badge {{ $comp->umkm == 'Ya' ? 'bg-success' : 'bg-danger' }}">
+                                                    <span
+                                                        class="badge {{ $comp->umkm == 'Ya' ? 'bg-success' : 'bg-danger' }}">
                                                         {{ ucfirst($comp->umkm) }}
                                                     </span>
                                                 </td>
 
                                                 <td>
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#modalPerusahaan{{ $comp->id }}">
+                                                        <i class="fa fa-info-circle" title="Detail"></i>
+                                                    </button>
                                                     <a href="/dashboard/perusahaan/edit/{{ $comp->id }}"
                                                         class="btn btn-warning"><i class="fa fa-pencil"
                                                             title="Edit Data"></i></a>
@@ -250,6 +256,61 @@
                                                     </form>
                                                 </td>
                                             </tr>
+
+                                            <div id="modalPerusahaan{{ $comp->id }}" class="modal fade"
+                                                role="dialog" aria-labelledby="modalLabel{{ $comp->id }}">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title" id="modalLabel{{ $comp->id }}">
+                                                                <strong>{{ $comp->nama }}</strong>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h5><strong>Kode</strong></h5>
+                                                            <p>{{ $comp->kode }}</p>
+                                                            <h5><strong>Alamat</strong></h5>
+                                                            <p>{{ $comp->alamat }}</p>
+                                                            <h5><strong></strong></h5>
+                                                            <p>{{ $comp->kota }}</p>
+                                                            <h5><strong>Tahun Gabung</strong></h5>
+                                                            <p>{{ $comp->tahun_gabung }}</p>
+                                                            <h5><strong>Standar</strong></h5>
+                                                            <p>{{ $comp->standar }}</p>
+                                                            <h5><strong>MoU</strong></h5>
+                                                            <p><span
+                                                                    class="badge {{ $comp->mou == 'Ya' ? 'bg-success' : 'bg-danger' }}">
+                                                                    {{ ucfirst($comp->mou) }}
+                                                                </span>
+                                                            </p>
+                                                            <h5><strong>UMKM</strong></h5>
+                                                            <p><span
+                                                                    class="badge {{ $comp->umkm == 'Ya' ? 'bg-success' : 'bg-danger' }}">
+                                                                    {{ ucfirst($comp->umkm) }}
+                                                                </span>
+                                                            </p>
+                                                            <h5><strong>Kerjasama</strong></h5>
+                                                            <ol>
+                                                                @php
+                                                                    $kerjasama = is_array($comp->kerjasama)
+                                                                        ? $comp->kerjasama
+                                                                        : explode(', ', $comp->kerjasama);
+                                                                @endphp
+
+                                                                @foreach ($kerjasama as $item)
+                                                                    <li>{{ $item }}</li>
+                                                                @endforeach
+                                                            </ol>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">Tutup</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @empty
                                             <div class="alert alert-danger">
                                                 Data Tidak Tersedia.

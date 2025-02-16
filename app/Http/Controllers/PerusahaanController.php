@@ -26,7 +26,8 @@ class PerusahaanController extends Controller
     public function show($id)
     {
         $perusahaan = Perusahaan::findOrFail($id);
-        return view('dashboard.show-perusahaan', compact('perusahaan'));
+        $kerjasamaList = explode(', ', $perusahaan->kerjasama);
+        return view('dashboard.show-perusahaan', compact('perusahaan', 'kerjasamaList'));
     }
 
     public function dashboard(Request $request): View
@@ -59,6 +60,7 @@ class PerusahaanController extends Controller
             'standar' => 'required|string',
             'mou' => 'required|string',
             'umkm' => 'required|string',
+            'kerjasama' => 'required|array', //dikirim jadi array
         ]);
 
         Perusahaan::create([
@@ -70,6 +72,7 @@ class PerusahaanController extends Controller
             'standar' => $request->standar,
             'mou' => $request->mou,
             'umkm' => $request->umkm,
+            'kerjasama' => implode(', ', $request->kerjasama), //disimpan jadi string
         ]);
 
         return redirect()->route('perusahaan.dashboard')->with('sukses', 'Data berhasil disimpan!');
@@ -78,6 +81,7 @@ class PerusahaanController extends Controller
     public function edit($id): View
     {
         $perusahaan = Perusahaan::findOrFail($id);
+        $perusahaan->kerjasama = explode(', ', $perusahaan->kerjasama);
         return view('dashboard.edit-perusahaan', compact('perusahaan'));
     }
 
@@ -92,6 +96,7 @@ class PerusahaanController extends Controller
             'standar' => 'required|string',
             'mou' => 'required|string',
             'umkm' => 'required|string',
+            'kerjasama' => 'required|array',
         ]);
 
         $perusahaan = Perusahaan::findOrFail($id);
@@ -104,6 +109,7 @@ class PerusahaanController extends Controller
             'standar' => $request->standar,
             'mou' => $request->mou,
             'umkm' => $request->umkm,
+            'kerjasama' => implode(', ', $request->kerjasama),
         ]);
 
         return redirect()->route('perusahaan.dashboard')->with('sukses', 'Data berhasil diperbarui!');

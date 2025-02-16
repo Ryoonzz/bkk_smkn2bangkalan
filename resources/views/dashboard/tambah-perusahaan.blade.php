@@ -155,7 +155,7 @@
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-            <a href="#"><img src="{{ asset('storage\logo-dashboard-bkk-smkn2.jpg')}}" alt="SMKN 2 Logo"
+            <a href="#"><img src="{{ asset('storage\logo-dashboard-bkk-smkn2.jpg') }}" alt="SMKN 2 Logo"
                     class="img-responsive logo"></a>
         </div>
         <div class="container-fluid">
@@ -268,6 +268,22 @@
                                         @if ($errors->has('umkm'))
                                             <span class="text-danger">{{ $errors->first('umkm') }}</span>
                                         @endif
+                                    </div> </br>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Jenis Kerjasama</label><br>
+
+                                        <input type="checkbox" name="kerjasama[]" value="Guru tamu"
+                                            {{ is_array(old('kerjasama')) && in_array('Guru tamu', old('kerjasama')) ? 'checked' : '' }}>
+                                        Guru tamu <br>
+
+                                        <input type="checkbox" name="kerjasama[]" value="Prakerin"
+                                            {{ is_array(old('kerjasama')) && in_array('Prakerin', old('kerjasama')) ? 'checked' : '' }}>
+                                        Prakerin <br>
+
+                                        <input type="checkbox" name="kerjasama[]" value="Sinkronisasi kurikulum"
+                                            {{ is_array(old('kerjasama')) && in_array('Sinkronisasi kurikulum', old('kerjasama')) ? 'checked' : '' }}>
+                                        Sinkronisasi kurikulum <br>
                                     </div> </br>
 
                                     <button type="submit" class="btn btn-primary">Tambah data</button>

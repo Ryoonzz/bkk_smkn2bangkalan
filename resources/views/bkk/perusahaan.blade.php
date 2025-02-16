@@ -267,7 +267,8 @@
     <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <img src="{{ asset('storage\logo-bkk-smkn2.jpg')}}" alt="Logo SMKN 2 Bangkalan" height="55" class="me-2">
+                <img src="{{ asset('storage\logo-bkk-smkn2.jpg') }}" alt="Logo SMKN 2 Bangkalan" height="55"
+                    class="me-2">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -379,6 +380,18 @@
                                 <p><span
                                         class="badge {{ $comp->umkm == 'Ya' ? 'bg-primary' : 'bg-danger' }}">{{ ucfirst($comp->umkm) }}</span>
                                 </p>
+                                <h6>Kerjasama</h6>
+                                <ol>
+                                    @php
+                                        $kerjasama = is_array($comp->kerjasama)
+                                            ? $comp->kerjasama
+                                            : explode(', ', $comp->kerjasama);
+                                    @endphp
+
+                                    @foreach ($kerjasama as $item)
+                                        <li>{{ $item }}</li>
+                                    @endforeach
+                                </ol>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary"

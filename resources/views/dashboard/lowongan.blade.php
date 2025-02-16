@@ -155,7 +155,7 @@
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-            <a href="#"><img src="{{ asset('storage\logo-dashboard-bkk-smkn2.jpg')}}" alt="SMKN 2 Logo"
+            <a href="#"><img src="{{ asset('storage\logo-dashboard-bkk-smkn2.jpg') }}" alt="SMKN 2 Logo"
                     class="img-responsive logo"></a>
         </div>
         <div class="container-fluid">
@@ -228,16 +228,64 @@
                                                 <td><?= 'Rp' . number_format($gaji, 0, ',', '.') ?></td>
 
                                                 <td>
-                                                    <a href="/dashboard/lowongan/edit/{{ $job->id }}" class="btn btn-warning"><i class="fa fa-pencil"
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#modalLowongan{{ $job->id }}">
+                                                        <i class="fa fa-info-circle" title="Detail"></i>
+                                                    </button>
+                                                    <a href="/dashboard/lowongan/edit/{{ $job->id }}"
+                                                        class="btn btn-warning"><i class="fa fa-pencil"
                                                             title="Edit Data"></i></a>
-                                                            <form action="{{ route('lowongan.destroy', $job->id) }}" method="POST" style="display:inline;">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data?')"><i
-                                                                    class="fa fa-trash" title="Hapus Data"></i></button>
-                                                            </form>
+                                                    <form action="{{ route('lowongan.destroy', $job->id) }}"
+                                                        method="POST" style="display:inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger"
+                                                            onclick="return confirm('Yakin ingin menghapus data?')"><i
+                                                                class="fa fa-trash" title="Hapus Data"></i></button>
+                                                    </form>
                                                 </td>
                                             </tr>
+
+                                            <div id="modalLowongan{{ $job->id }}" class="modal fade"
+                                                role="dialog" aria-labelledby="modalLabel{{ $job->id }}">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title" id="modalLabel{{ $job->id }}">
+                                                                <strong>{{ $job->judul }}</strong>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h5><strong>Judul</strong></h5>
+                                                            <p>{{ $job->judul }}</p>
+
+                                                            <h5><strong>Perusahaan</strong></h5>
+                                                            <p>{{ $job->perusahaan }}</p>
+
+                                                            <h5><strong>Tanggal</strong></h5>
+                                                            <p>{{ $job->tanggal }}</p>
+
+                                                            <h5><strong>Deskripsi</strong></h5>
+                                                            <p>{{ $job->deskripsi }}</p>
+
+                                                            <h5><strong>Posisi</strong></h5>
+                                                            <p>{{ $job->posisi }}</p>
+
+                                                            <h5><strong>Penempatan</strong></h5>
+                                                            <p>{{ $job->penempatan }}</p>
+
+                                                            <h5><strong>Gaji</strong></h5>
+                                                            <p>Rp{{ number_format($job->gaji, 0, ',', '.') }}</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">Tutup</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @empty
                                             <div class="alert alert-danger">
                                                 Data Tidak Tersedia.

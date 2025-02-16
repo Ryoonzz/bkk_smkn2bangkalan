@@ -17,5 +17,6 @@ class Perusahaan extends Model
         'standar',
         'mou',
         'umkm',
+        'kerjasama',
     ];
 }
