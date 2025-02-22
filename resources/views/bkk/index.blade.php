@@ -715,7 +715,7 @@
         <div class="container my-5">
             <div class="row g-4">
                 <!-- Card 1 -->
-                <div class="col-md-4" data-aos="flip-right" data-aos-duration="2000">
+                <div class="col-md-4" data-aos="zoom-in-right" data-aos-duration="2000">
                     <div class="card">
                         <img src="{{ asset('storage\contoh-testimoni1.jpg') }}" class="card-img-top" alt="Alumni 1">
                         <div class="card-body text-center bg-light">
@@ -726,7 +726,7 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div class="col-md-4" data-aos="flip-up" data-aos-duration="2000">
+                <div class="col-md-4" data-aos="zoom-in-up" data-aos-duration="2000">
                     <div class="card">
                         <img src="{{ asset('storage\contoh-testimoni2.jpg') }}" class="card-img-top" alt="Alumni 2">
                         <div class="card-body text-center bg-light">
@@ -737,7 +737,7 @@
                 </div>
 
                 <!-- Card 3 -->
-                <div class="col-md-4" data-aos="flip-left" data-aos-duration="2000">
+                <div class="col-md-4" data-aos="zoom-in-left" data-aos-duration="2000">
                     <div class="card">
                         <img src="{{ asset('storage\contoh-testimoni3.jpg') }}" class="card-img-top" alt="Alumni 3">
                         <div class="card-body text-center bg-light">

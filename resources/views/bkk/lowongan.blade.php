@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
         /* font-family: 'Poppins', sans-serif; */
@@ -161,7 +162,7 @@
             margin: 0;
         }
 
-        #nama-halaman ul {
+        #nama-halaman ol {
             display: flex;
             flex-wrap: wrap;
             list-style: none;
@@ -170,7 +171,7 @@
             font-size: 15px;
         }
 
-        #nama-halaman ul li {
+        #nama-halaman ol li {
             margin-right: 5px;
         }
 
@@ -274,7 +275,8 @@
     <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <img src="{{ asset('storage\logo-bkk-smkn2.jpg')}}" alt="Logo SMKN 2 Bangkalan" height="55" class="me-2">
+                <img src="{{ asset('storage\logo-bkk-smkn2.jpg') }}" alt="Logo SMKN 2 Bangkalan" height="55"
+                    class="me-2">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -309,15 +311,16 @@
     <section id="nama-halaman">
         <div class="halaman d-flex justify-content-between align-items-center">
             <h2>Info Lowongan</h2>
-            <ul>
-                <li><a href="/">Beranda</a></li>
-                <li> / </li>
-                <li>Info Lowongan</li>
-            </ul>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Beranda</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Info Lowongan</li>
+                </ol>
+            </nav>
         </div>
     </section>
 
-    <section id="search">
+    <section id="search" data-aos="flip-up" data-aos-duration="1000">
         <form action="/lowongan" method="get">
             <div class="input-group">
                 <input name="cari" class="form-control" type="text" placeholder="Cari data lowongan"
@@ -327,10 +330,10 @@
         </form>
     </section>
 
-    <section id="lowongan">
+    <section id="lowongan" data-aos="fade-up" data-aos-duration="1000">
         @if ($lowongan->count() > 0)
             @foreach ($lowongan as $job)
-                <div class="lowongan-card">
+                <div class="lowongan-card" data-aos="zoom-in" data-aos-duration="1000">
                     {{-- judul --}}
                     <h3>{{ $job->judul }}</h3>
                     <div class="lowongan-info">
@@ -345,51 +348,11 @@
                     <div class="action">
                         <button class="btn btn-detail" data-bs-toggle="modal"
                             data-bs-target="#lowonganModal{{ $job->id }}"><i class="fa-solid fa-circle-info"
-                            style="color: #ffffff;"></i>
+                                style="color: #ffffff;"></i>
                             Detail Lowongan
                         </button>
                         <a href="#"><button class="btn btn-lamar"><i class="fa-solid fa-check"
                                     style="color: #ffffff;"></i> Lamar</button></a>
-                    </div>
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="lowonganModal{{ $job->id }}" tabindex="-1"
-                    aria-labelledby="lowonganModalLabel{{ $job->id }}" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="lowonganModalLabel{{ $job->id }}">Detail Lowongan</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <h6>Judul</h6>
-                                <p>{{ $job->judul }}</p>
-
-                                <h6>Perusahaan</h6>
-                                <p>{{ $job->perusahaan }}</p>
-
-                                <h6>Tanggal</h6>
-                                <p>{{ $job->tanggal }}</p>
-
-                                <h6>Deskripsi</h6>
-                                <p>{{ $job->deskripsi }}</p>
-
-                                <h6>Posisi</h6>
-                                <p>{{ $job->posisi }}</p>
-
-                                <h6>Penempatan</h6>
-                                <p>{{ $job->penempatan }}</p>
-
-                                <h6>Gaji</h6>
-                                <p>Rp{{ number_format($job->gaji, 0, ',', '.') }}</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Tutup</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             @endforeach
@@ -401,6 +364,47 @@
             </div>
         @endif
     </section>
+
+    @foreach ($lowongan as $job)
+        <!-- Modal -->
+        <div class="modal fade" style="text-align: left" id="lowonganModal{{ $job->id }}" tabindex="-1"
+            aria-labelledby="lowonganModalLabel{{ $job->id }}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="lowonganModalLabel{{ $job->id }}">Detail Lowongan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Judul</h6>
+                        <p>{{ $job->judul }}</p>
+
+                        <h6>Perusahaan</h6>
+                        <p>{{ $job->perusahaan }}</p>
+
+                        <h6>Tanggal</h6>
+                        <p>{{ $job->tanggal }}</p>
+
+                        <h6>Deskripsi</h6>
+                        <p>{{ $job->deskripsi }}</p>
+
+                        <h6>Posisi</h6>
+                        <p>{{ $job->posisi }}</p>
+
+                        <h6>Penempatan</h6>
+                        <p>{{ $job->penempatan }}</p>
+
+                        <h6>Gaji</h6>
+                        <p>Rp{{ number_format($job->gaji, 0, ',', '.') }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 
     <p class="mb-0">
         Menampilkan {{ $lowongan->firstItem() }} - {{ $lowongan->lastItem() }} dari
@@ -541,6 +545,10 @@
         &copy; Copyright 2025 | SMKN 2 Bangkalan All Rights Reserved.
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
