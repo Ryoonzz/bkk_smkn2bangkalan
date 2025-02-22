@@ -164,7 +164,7 @@
                     <li><a href="#">Dashboard</a></li>
                     <li><a href="/dashboard/lowongan">Lowongan</a></li>
                     <li><a href="/dashboard/perusahaan">Perusahaan</a></li>
-                    <li><a href="/">Logout</a></li>
+                    <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -180,7 +180,7 @@
     <div class="main">
         <div class="main-content">
             <div class="container-fluid">
-                <h1 class="halo">Halo Admin, Selamat Datang di Halaman Dashboard!</h1>
+                <h1 class="halo">Halo {{auth()->user()->name}}, Selamat Datang di Halaman Dashboard!</h1>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel">

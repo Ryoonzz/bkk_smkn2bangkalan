@@ -297,7 +297,7 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Login</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/dashboard">Admin</a></li>
+                            <li><a class="dropdown-item" href="/login">Admin</a></li>
                             <li><a class="dropdown-item" href="/dashboard-alumni">Alumni</a></li>
                         </ul>
                     </li>

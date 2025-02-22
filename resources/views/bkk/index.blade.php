@@ -457,7 +457,7 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Login</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/dashboard">Admin</a></li>
+                            <li><a class="dropdown-item" href="/login">Admin</a></li>
                             <li><a class="dropdown-item" href="/dashboard-alumni">Alumni</a></li>
                         </ul>
                     </li>
@@ -663,47 +663,49 @@
                                 style="color: #ffffff;"></i> Lamar</button></a>
                 </div>
             </div>
+        @endforeach
+    </section>
 
-            <!-- Modal -->
-            <div class="modal fade" id="lowonganModal{{ $job->id }}" tabindex="-1"
-                aria-labelledby="lowonganModalLabel{{ $job->id }}" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="lowonganModalLabel{{ $job->id }}">Detail Lowongan</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <h6>Judul</h6>
-                            <p>{{ $job->judul }}</p>
+    @foreach ($lowongan as $job)
+        <!-- Modal -->
+        <div class="modal fade" style="text-align: left;" id="lowonganModal{{ $job->id }}" tabindex="-1"
+            aria-labelledby="lowonganModalLabel{{ $job->id }}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="lowonganModalLabel{{ $job->id }}">Detail Lowongan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Judul</h6>
+                        <p>{{ $job->judul }}</p>
 
-                            <h6>Perusahaan</h6>
-                            <p>{{ $job->perusahaan }}</p>
+                        <h6>Perusahaan</h6>
+                        <p>{{ $job->perusahaan }}</p>
 
-                            <h6>Tanggal</h6>
-                            <p>{{ $job->tanggal }}</p>
+                        <h6>Tanggal</h6>
+                        <p>{{ $job->tanggal }}</p>
 
-                            <h6>Deskripsi</h6>
-                            <p>{{ $job->deskripsi }}</p>
+                        <h6>Deskripsi</h6>
+                        <p>{{ $job->deskripsi }}</p>
 
-                            <h6>Posisi</h6>
-                            <p>{{ $job->posisi }}</p>
+                        <h6>Posisi</h6>
+                        <p>{{ $job->posisi }}</p>
 
-                            <h6>Penempatan</h6>
-                            <p>{{ $job->penempatan }}</p>
+                        <h6>Penempatan</h6>
+                        <p>{{ $job->penempatan }}</p>
 
-                            <h6>Gaji</h6>
-                            <p>Rp{{ number_format($job->gaji, 0, ',', '.') }}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        </div>
+                        <h6>Gaji</h6>
+                        <p>Rp{{ number_format($job->gaji, 0, ',', '.') }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                     </div>
                 </div>
             </div>
-        @endforeach
-    </section>
+        </div>
+    @endforeach
 
     <section id="testimoni" data-aos="fade-up" data-aos-duration="1000">
         <div class="testimoni-title" data-aos="fade-up" data-aos-duration="1000">

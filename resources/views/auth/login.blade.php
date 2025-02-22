@@ -1,47 +1,70 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!doctype html>
+<html lang="en" class="fullscreen-bg">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+<head>
+	<title>Login | BKK SMKN 2 Bangkalan</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/vendor/linearicons/style.css') }}">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<!-- ICONS -->
+	<link rel="icon" type="image/png" sizes="96x96" href="{{ asset('storage/tab-logo_smkn2bkl.png') }}">
+</head>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+<body>
+	<!-- WRAPPER -->
+	<div id="wrapper">
+		<div class="vertical-align-wrap">
+			<div class="vertical-align-middle">
+				<div class="auth-box ">
+					<div class="left">
+						<div class="content">
+							<div class="header">
+								<div class="logo text-center"><img src="{{ asset('storage/logo-bkk-smkn2.jpg')}}" alt="Logo BKK SMKN 2 Bangkalan" style="height: 80px"></div>
+								<p class="lead">Login ke akun mu</p>
+							</div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+							<form class="form-auth-small" action="/postlogin" method="POST">
+                                {{ csrf_field() }}
+								<div class="form-group">
+									<label for="signin-username" class="control-label sr-only">Email</label>
+									<input name="username" type="text" class="form-control" id="signin-username" placeholder="Username">
+								</div>
+								<div class="form-group">
+									<label for="signin-password" class="control-label sr-only">Password</label>
+									<input name="password" type="password" class="form-control" id="signin-password" placeholder="Password">
+								</div>
+								<div class="form-group clearfix">
+									
+								</div>
+								<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+                                <div class="bottom">
+									<span class="helper-text"><a href="/"><i class="fa fa-home"></i> Kembali ke halaman utama</a></span>
+								</div>
+                                {{-- <a href="/" class="btn btn-warning btn-lg btn-block">KEMBALI</a> --}}
+							</form>
+						</div>
+					</div>
+					<div class="right">
+						<div class="overlay"></div>
+						<div class="content text">
+							<h1 class="heading">Bursa Kerja Khusus</h1>
+							<p>SMK Negeri 2 Bangkalan</p>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END WRAPPER -->
+</body>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>
