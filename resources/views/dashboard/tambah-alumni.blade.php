@@ -185,106 +185,101 @@
                     <div class="col-md-12">
                         <div class="panel">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Tambah Data Perusahaan</h3>
+                                <h3 class="panel-title">Tambah Data Alumni</h3>
                             </div>
                             <div class="panel-body">
-                                <form action="{{ route('perusahaan.store') }}" method="post"
-                                    enctype="multipart/form-data">
+                                <form action="{{ route('alumni.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-3 {{ $errors->has('nama') ? 'has-error' : '' }}">
-                                        <label for="InputNama" class="form-label">Nama Perusahaan</label>
+                                        <label for="InputNama" class="form-label">Nama Lengkap</label>
                                         <input name="nama" type="text" class="form-control" id="InputNama"
-                                            placeholder="Contoh: PT ABCD" value="{{ old('nama') }}">
+                                            placeholder="Nama lengkap alumni" value="{{ old('nama') }}">
                                         @if ($errors->has('nama'))
                                             <span class="text-danger">{{ $errors->first('nama') }}</span>
                                         @endif
                                     </div> </br>
 
-                                    <div class="mb-3" {{ $errors->has('kode') ? 'has-error' : '' }}>
-                                        <label for="InputKode" class="form-label">Kode</label>
-                                        <input name="kode" type="text" class="form-control" id="InputKode"
-                                            placeholder="Contoh: P0001" value="{{ old('kode') }}">
-                                        @if ($errors->has('kode'))
-                                            <span class="text-danger">{{ $errors->first('kode') }}</span>
+                                    <div class="mb-3" {{ $errors->has('nisn') ? 'has-error' : '' }}>
+                                        <label for="InputNISN" class="form-label">NISN</label>
+                                        <input name="nisn" type="number" class="form-control" id="InputNISN"
+                                            placeholder="Masukkan NISN" value="{{ old('nisn') }}"
+                                            min="0">
+                                        @if ($errors->has('nisn'))
+                                            <span class="text-danger">{{ $errors->first('nisn') }}</span>
+                                        @endif
+                                    </div> </br>
+
+
+                                    <div class="mb-3" {{ $errors->has('tanggal_lahir') ? 'has-error' : '' }}>
+                                        <label for="InputTanggalLahir" class="form-label">Tanggal Lahir</label>
+                                        <input name="tanggal_lahir" type="date" class="form-control"
+                                            id="InputTanggalLahir" value="{{ old('tanggal_lahir') }}">
+                                        @if ($errors->has('tanggal_lahir'))
+                                            <span class="text-danger">{{ $errors->first('tanggal_lahir') }}</span>
+                                        @endif
+                                    </div> </br>
+
+                                    <div class="mb-3" {{ $errors->has('no_hp') ? 'has-error' : '' }}>
+                                        <label for="InputNoHP" class="form-label">Nomor HP</label>
+                                        <input name="no_hp" type="tel" class="form-control" id="InputNoHP"
+                                            placeholder="Nomer HP alumni" value="{{ old('no_hp') }}">
+                                        @if ($errors->has('no_hp'))
+                                            <span class="text-danger">{{ $errors->first('no_hp') }}</span>
                                         @endif
                                     </div> </br>
 
                                     <div class="form-group">
                                         <label for="InputAlamat" class="form-label">Alamat</label>
-                                        <textarea name="alamat" class="form-control" placeholder="Alamat Lengkap Perusahaan" id="InputAlamat"
+                                        <textarea name="alamat" class="form-control" placeholder="Alamat Lengkap Alumni" id="InputAlamat"
                                             style="height: 100px">{{ old('alamat') }}</textarea>
                                     </div>
 
-                                    <div class="mb-3" {{ $errors->has('kota') ? 'has-error' : '' }}>
-                                        <label for="InputKota" class="form-label">Kota</label>
-                                        <input name="kota" type="text" class="form-control" id="InputKota"
-                                            placeholder="Contoh: Bangkalan/Surabaya/Jakarta"
-                                            value="{{ old('kota') }}">
-                                        @if ($errors->has('kota'))
-                                            <span class="text-danger">{{ $errors->first('kota') }}</span>
-                                        @endif
-                                    </div> </br>
-
-                                    <div class="mb-3" {{ $errors->has('tahun_gabung') ? 'has-error' : '' }}>
-                                        <label for="InputTahunGabung" class="form-label">Tahun Gabung</label>
-                                        <input name="tahun_gabung" type="text" class="form-control"
-                                            id="InputTahunGabung" placeholder="Contoh: 2020"
-                                            value="{{ old('tahun_gabung') }}">
-                                        @if ($errors->has('tahun_gabung'))
-                                            <span class="text-danger">{{ $errors->first('tahun_gabung') }}</span>
-                                        @endif
-                                    </div> </br>
-
-                                    <div class="mb-3" {{ $errors->has('standar') ? 'has-error' : '' }}>
-                                        <label for="InputStandar" class="form-label">Standar</label>
-                                        <input name="standar" type="text" class="form-control" id="InputStandar"
-                                            placeholder="Contoh: Kabupaten/Nasinal/Internasional"
-                                            value="{{ old('standar') }}">
-                                        @if ($errors->has('standar'))
-                                            <span class="text-danger">{{ $errors->first('standar') }}</span>
-                                        @endif
-                                    </div> </br>
-
-                                    <div class="mb-3 {{ $errors->has('mou') ? 'has-error' : '' }}">
-                                        <label for="InputMoU" class="form-label">MoU</label>
-                                        <select name="mou" class="form-control" id="InputMoU">
-                                            <option value="Ya" {{ old('mou') == 'Ya' ? 'selected' : '' }}>Ya
-                                            </option>
-                                            <option value="Tidak" {{ old('mou') == 'Tidak' ? 'selected' : '' }}>Tidak
-                                            </option>
+                                    <div class="mb-3" {{ $errors->has('jurusan') ? 'has-error' : '' }}>
+                                        <label for="InputJurusan" class="form-label">Jurusan</label>
+                                        <select name="jurusan" class="form-control" id="InputJurusan">
+                                            <option value="" disabled selected>Pilih Jurusan</option>
+                                            <option value="Desain Pemodelan dan Informasi Bangunan"
+                                                {{ old('jurusan') == 'Desain Pemodelan dan Informasi Bangunan' ? 'selected' : '' }}>
+                                                Desain Pemodelan dan Informasi Bangunan</option>
+                                            <option value="Teknik Instalasi Tenaga Listrik"
+                                                {{ old('jurusan') == 'Teknik Instalasi Tenaga Listrik' ? 'selected' : '' }}>
+                                                Teknik Instalasi Tenaga Listrik</option>
+                                            <option value="Teknik Pemesinan"
+                                                {{ old('jurusan') == 'Teknik Pemesinan' ? 'selected' : '' }}>Teknik
+                                                Pemesinan</option>
+                                            <option value="Teknik Kendaraan Ringan Otomotif"
+                                                {{ old('jurusan') == 'Teknik Kendaraan Ringan Otomotif' ? 'selected' : '' }}>
+                                                Teknik Kendaraan Ringan Otomotif</option>
+                                            <option value="Teknik Jaringan Komputer"
+                                                {{ old('jurusan') == 'Teknik Jaringan Komputer' ? 'selected' : '' }}>
+                                                Teknik Jaringan Komputer</option>
+                                            <option value="Rekayasa Perangkat Lunak"
+                                                {{ old('jurusan') == 'Rekayasa Perangkat Lunak' ? 'selected' : '' }}>
+                                                Rekayasa Perangkat Lunak</option>
+                                            <option value="Teknik Sepeda Motor"
+                                                {{ old('jurusan') == 'Teknik Sepeda Motor' ? 'selected' : '' }}>Teknik
+                                                Sepeda Motor</option>
+                                            <option value="Teknik Kimia Industri"
+                                                {{ old('jurusan') == 'Teknik Kimia Industri' ? 'selected' : '' }}>
+                                                Teknik Kimia Industri</option>
+                                            <option value="Teknik Elektronika Industri"
+                                                {{ old('jurusan') == 'Teknik Elektronika Industri' ? 'selected' : '' }}>
+                                                Teknik Elektronika Industri</option>
                                         </select>
-                                        @if ($errors->has('mou'))
-                                            <span class="text-danger">{{ $errors->first('mou') }}</span>
+                                        @if ($errors->has('jurusan'))
+                                            <span class="text-danger">{{ $errors->first('jurusan') }}</span>
                                         @endif
                                     </div> </br>
 
-                                    <div class="mb-3 {{ $errors->has('umkm') ? 'has-error' : '' }}">
-                                        <label for="InputUMKM" class="form-label">UMKM</label>
-                                        <select name="umkm" class="form-control" id="InputUMKM">
-                                            <option value="Ya" {{ old('umkm') == 'Ya' ? 'selected' : '' }}>Ya
-                                            </option>
-                                            <option value="Tidak" {{ old('umkm') == 'Tidak' ? 'selected' : '' }}>
-                                                Tidak</option>
-                                        </select>
-                                        @if ($errors->has('umkm'))
-                                            <span class="text-danger">{{ $errors->first('umkm') }}</span>
+
+                                    <div class="mb-3" {{ $errors->has('tahun_lulus') ? 'has-error' : '' }}>
+                                        <label for="InputTahunLulus" class="form-label">Tahun Lulus</label>
+                                        <input name="tahun_lulus" type="number" class="form-control"
+                                            id="InputTahunLulus" placeholder="Contoh: 2025"
+                                            value="{{ old('tahun_lulus') }}" min="1900" max="2100">
+                                        @if ($errors->has('tahun_lulus'))
+                                            <span class="text-danger">{{ $errors->first('tahun_lulus') }}</span>
                                         @endif
-                                    </div> </br>
-
-                                    <div class="mb-3">
-                                        <label class="form-label">Jenis Kerjasama</label><br>
-
-                                        <input type="checkbox" name="kerjasama[]" value="Guru tamu"
-                                            {{ is_array(old('kerjasama')) && in_array('Guru tamu', old('kerjasama')) ? 'checked' : '' }}>
-                                        Guru tamu <br>
-
-                                        <input type="checkbox" name="kerjasama[]" value="Prakerin"
-                                            {{ is_array(old('kerjasama')) && in_array('Prakerin', old('kerjasama')) ? 'checked' : '' }}>
-                                        Prakerin <br>
-
-                                        <input type="checkbox" name="kerjasama[]" value="Sinkronisasi kurikulum"
-                                            {{ is_array(old('kerjasama')) && in_array('Sinkronisasi kurikulum', old('kerjasama')) ? 'checked' : '' }}>
-                                        Sinkronisasi kurikulum <br>
                                     </div> </br>
 
                                     <button type="submit" class="btn btn-primary">Tambah data</button>

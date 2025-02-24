@@ -14,12 +14,28 @@ class AuthController extends Controller
 
     public function postlogin(Request $request)
     {
-        if(Auth::attempt($request->only('username', 'password')))
-        {
-            return redirect('/dashboard');
+        $credentials = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+            'role' => 'required'
+        ]);
+
+        if (Auth::attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
+            if ($credentials['role'] == 'admin') {
+                return redirect('/dashboard');
+            } elseif ($credentials['role'] == 'alumni') {
+                return redirect('/dashboard-alumni');
+            }
         }
 
-        return redirect('/login');
+        return back()->withErrors(['login' => 'Email atau password salah']);
+
+        // if(Auth::attempt($request->only('username', 'password')))
+        // {
+        //     return redirect('/dashboard');
+        // }
+
+        // return redirect('/login');
     }
 
     public function logout()

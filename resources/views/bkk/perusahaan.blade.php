@@ -300,7 +300,7 @@
                             data-bs-toggle="dropdown">Login</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/login">Admin</a></li>
-                            <li><a class="dropdown-item" href="/dashboard-alumni">Alumni</a></li>
+                            <li><a class="dropdown-item" href="/login">Alumni</a></li>
                         </ul>
                     </li>
                 </ul>

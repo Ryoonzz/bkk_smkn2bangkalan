@@ -266,7 +266,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="/dashboard-alumni">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="/dashboard-alumni/lowongan">Lowongan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -278,21 +278,25 @@
         </div>
     </section>
 
-    <h1>Hallo Achmad Dandy, Selamat Datang di Halaman Dashboard!</h1>
+    <h1>Hallo {{ $user->name }}, Selamat Datang di Halaman Dashboard!</h1>
 
-    <div class="dashboard-container">
-        <div class="profile-card">
-            <img src="{{ asset('storage/profile.jpg') }}" alt="Foto Profil" class="profile-img">
-            <div class="profile-details">
-                <p><strong>Nama Lengkap</strong> : Achmad Dandy Chairur Rizqi</p>
-                <p><strong>Tanggal Lahir</strong> : 30 Agustus 2006</p>
-                <p><strong>No HP</strong> : 0878 9804 0539</p>
-                <p><strong>Alamat</strong> : JL KH Abd Muin, No.39, Bangkalan</p>
-                <p><strong>Jurusan</strong> : Rekayasa Perangkat Lunak</p>
-                <p><strong>Tahun Lulus</strong> : 2025</p>
+    @if ($alumni)
+        <div class="dashboard-container">
+            <div class="profile-card">
+                <img src="{{ asset('storage/profile.jpg') }}" alt="Foto Profil" class="profile-img">
+                <div class="profile-details">
+                    <p><strong>Nama Lengkap</strong> : {{ $alumni->nama }}</p>
+                    <p><strong>Tanggal Lahir</strong> : {{ $alumni->tanggal_lahir }}</p>
+                    <p><strong>No HP</strong> : {{ $alumni->no_hp }}</p>
+                    <p><strong>Alamat</strong> : {{ $alumni->alamat }}</p>
+                    <p><strong>Jurusan</strong> : {{ $alumni->jurusan }}</p>
+                    <p><strong>Tahun Lulus</strong> : {{ $alumni->tahun_lulus }}</p>
+                </div>
             </div>
         </div>
-    </div>
+    @else
+        <p>Data alumni tidak ditemukan.</p>
+    @endif
 
     <section id="about">
         <iframe

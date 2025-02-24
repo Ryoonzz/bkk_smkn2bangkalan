@@ -453,14 +453,7 @@
                     <li class="nav-item"><a class="nav-link" href="/lowongan">Lowongan</a></li>
                     <li class="nav-item"><a class="nav-link" href="/perusahaan">Perusahaan</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Login</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/login">Admin</a></li>
-                            <li><a class="dropdown-item" href="/dashboard-alumni">Alumni</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -473,7 +466,7 @@
             <h1 data-aos="fade-zoom-in" data-aos-duration="1500">SMKN 2 BANGKALAN</h1>
 
             <div class="cover-button">
-                <a href="#" class="btn btn-primary" data-aos="fade-right"><i class="fa-solid fa-person"></i>
+                <a href="/login" class="btn btn-primary" data-aos="fade-right"><i class="fa-solid fa-person"></i>
                     ALUMNI</a>
                 <a href="/perusahaan" class="btn btn-warning" data-aos="fade-left"><i class="fa-regular fa-building"
                         style="color: #ffffff;"></i>

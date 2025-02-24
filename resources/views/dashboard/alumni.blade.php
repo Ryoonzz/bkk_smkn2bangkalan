@@ -164,7 +164,7 @@
                     <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/dashboard/lowongan">Lowongan</a></li>
                     <li><a href="/dashboard/perusahaan">Perusahaan</a></li>
-                    <li><a href="/dashboard/alumni">Alumni</a></li>
+                    <li><a href="#">Alumni</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>
@@ -185,110 +185,111 @@
                     <div class="col-md-12">
                         <div class="panel">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Tambah Data Perusahaan</h3>
+                                <h3 class="panel-title">Data Alumni</h3>
+                                <div class="right">
+                                    <a href="/dashboard/alumni/tambah" class="btn btn-primary"><i
+                                            class="fa fa-plus"></i> Tambah Data</a>
+                                </div>
                             </div>
                             <div class="panel-body">
-                                <form action="{{ route('perusahaan.store') }}" method="post"
-                                    enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="mb-3 {{ $errors->has('nama') ? 'has-error' : '' }}">
-                                        <label for="InputNama" class="form-label">Nama Perusahaan</label>
-                                        <input name="nama" type="text" class="form-control" id="InputNama"
-                                            placeholder="Contoh: PT ABCD" value="{{ old('nama') }}">
-                                        @if ($errors->has('nama'))
-                                            <span class="text-danger">{{ $errors->first('nama') }}</span>
-                                        @endif
-                                    </div> </br>
-
-                                    <div class="mb-3" {{ $errors->has('kode') ? 'has-error' : '' }}>
-                                        <label for="InputKode" class="form-label">Kode</label>
-                                        <input name="kode" type="text" class="form-control" id="InputKode"
-                                            placeholder="Contoh: P0001" value="{{ old('kode') }}">
-                                        @if ($errors->has('kode'))
-                                            <span class="text-danger">{{ $errors->first('kode') }}</span>
-                                        @endif
-                                    </div> </br>
-
-                                    <div class="form-group">
-                                        <label for="InputAlamat" class="form-label">Alamat</label>
-                                        <textarea name="alamat" class="form-control" placeholder="Alamat Lengkap Perusahaan" id="InputAlamat"
-                                            style="height: 100px">{{ old('alamat') }}</textarea>
+                                <form action="/dashboard/alumni" method="get">
+                                    <div class="input-group">
+                                        <input name="cari" class="form-control" type="text"
+                                            placeholder="Cari data alumni" value="{{ request('cari') }}">
+                                        <span class="input-group-btn"><button class="btn btn-primary"
+                                                type="submit">Cari</button></span>
                                     </div>
+                                </form> </br>
 
-                                    <div class="mb-3" {{ $errors->has('kota') ? 'has-error' : '' }}>
-                                        <label for="InputKota" class="form-label">Kota</label>
-                                        <input name="kota" type="text" class="form-control" id="InputKota"
-                                            placeholder="Contoh: Bangkalan/Surabaya/Jakarta"
-                                            value="{{ old('kota') }}">
-                                        @if ($errors->has('kota'))
-                                            <span class="text-danger">{{ $errors->first('kota') }}</span>
-                                        @endif
-                                    </div> </br>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>NISN</th>
+                                            <th>Tanggal Lahir</th>
+                                            <th>No HP</th>
+                                            <th>Alamat</th>
+                                            <th>Jurusan</th>
+                                            <th>Tahun Lulus</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($alumni as $al)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $al->nama }}</td>
+                                                <td>{{ $al->nisn }}</td>
+                                                <td>{{ $al->tanggal_lahir }}</td>
+                                                <td>{{ $al->no_hp }}</td>
+                                                <td>{{ $al->alamat }}</td>
+                                                <td>{{ $al->jurusan }}</td>
+                                                <td>{{ $al->tahun_lulus }}</td>
 
-                                    <div class="mb-3" {{ $errors->has('tahun_gabung') ? 'has-error' : '' }}>
-                                        <label for="InputTahunGabung" class="form-label">Tahun Gabung</label>
-                                        <input name="tahun_gabung" type="text" class="form-control"
-                                            id="InputTahunGabung" placeholder="Contoh: 2020"
-                                            value="{{ old('tahun_gabung') }}">
-                                        @if ($errors->has('tahun_gabung'))
-                                            <span class="text-danger">{{ $errors->first('tahun_gabung') }}</span>
-                                        @endif
-                                    </div> </br>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#modalLowongan{{ $al->id }}">
+                                                        <i class="fa fa-info-circle" title="Detail"></i>
+                                                    </button>
+                                                    <a href="/dashboard/alumni/edit/{{ $al->id }}"
+                                                        class="btn btn-warning"><i class="fa fa-pencil"
+                                                            title="Edit Data"></i></a>
+                                                    <form action="{{ route('alumni.destroy', $al->id) }}"
+                                                        method="POST" style="display:inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger"
+                                                            onclick="return confirm('Yakin ingin menghapus data?')"><i
+                                                                class="fa fa-trash" title="Hapus Data"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
 
-                                    <div class="mb-3" {{ $errors->has('standar') ? 'has-error' : '' }}>
-                                        <label for="InputStandar" class="form-label">Standar</label>
-                                        <input name="standar" type="text" class="form-control" id="InputStandar"
-                                            placeholder="Contoh: Kabupaten/Nasinal/Internasional"
-                                            value="{{ old('standar') }}">
-                                        @if ($errors->has('standar'))
-                                            <span class="text-danger">{{ $errors->first('standar') }}</span>
-                                        @endif
-                                    </div> </br>
+                                            <div id="modalLowongan{{ $al->id }}" class="modal fade"
+                                                role="dialog" aria-labelledby="modalLabel{{ $al->id }}">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title" id="modalLabel{{ $al->id }}">
+                                                                <strong>{{ $al->nama }}</strong>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h5><strong>NISN</strong></h5>
+                                                            <p>{{ $al->nisn }}</p>
 
-                                    <div class="mb-3 {{ $errors->has('mou') ? 'has-error' : '' }}">
-                                        <label for="InputMoU" class="form-label">MoU</label>
-                                        <select name="mou" class="form-control" id="InputMoU">
-                                            <option value="Ya" {{ old('mou') == 'Ya' ? 'selected' : '' }}>Ya
-                                            </option>
-                                            <option value="Tidak" {{ old('mou') == 'Tidak' ? 'selected' : '' }}>Tidak
-                                            </option>
-                                        </select>
-                                        @if ($errors->has('mou'))
-                                            <span class="text-danger">{{ $errors->first('mou') }}</span>
-                                        @endif
-                                    </div> </br>
+                                                            <h5><strong>Tanggal Lahir</strong></h5>
+                                                            <p>{{ $al->tanggal_lahir }}</p>
 
-                                    <div class="mb-3 {{ $errors->has('umkm') ? 'has-error' : '' }}">
-                                        <label for="InputUMKM" class="form-label">UMKM</label>
-                                        <select name="umkm" class="form-control" id="InputUMKM">
-                                            <option value="Ya" {{ old('umkm') == 'Ya' ? 'selected' : '' }}>Ya
-                                            </option>
-                                            <option value="Tidak" {{ old('umkm') == 'Tidak' ? 'selected' : '' }}>
-                                                Tidak</option>
-                                        </select>
-                                        @if ($errors->has('umkm'))
-                                            <span class="text-danger">{{ $errors->first('umkm') }}</span>
-                                        @endif
-                                    </div> </br>
+                                                            <h5><strong>No HP</strong></h5>
+                                                            <p>{{ $al->no_hp }}</p>
 
-                                    <div class="mb-3">
-                                        <label class="form-label">Jenis Kerjasama</label><br>
+                                                            <h5><strong>Alamat</strong></h5>
+                                                            <p>{{ $al->alamat }}</p>
 
-                                        <input type="checkbox" name="kerjasama[]" value="Guru tamu"
-                                            {{ is_array(old('kerjasama')) && in_array('Guru tamu', old('kerjasama')) ? 'checked' : '' }}>
-                                        Guru tamu <br>
+                                                            <h5><strong>Jurusan</strong></h5>
+                                                            <p>{{ $al->jurusan }}</p>
 
-                                        <input type="checkbox" name="kerjasama[]" value="Prakerin"
-                                            {{ is_array(old('kerjasama')) && in_array('Prakerin', old('kerjasama')) ? 'checked' : '' }}>
-                                        Prakerin <br>
-
-                                        <input type="checkbox" name="kerjasama[]" value="Sinkronisasi kurikulum"
-                                            {{ is_array(old('kerjasama')) && in_array('Sinkronisasi kurikulum', old('kerjasama')) ? 'checked' : '' }}>
-                                        Sinkronisasi kurikulum <br>
-                                    </div> </br>
-
-                                    <button type="submit" class="btn btn-primary">Tambah data</button>
-                                </form>
+                                                            <h5><strong>Tahun Lulus</strong></h5>
+                                                            <p>{{ $al->tahun_lulus }}</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">Tutup</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @empty
+                                            <div class="alert alert-danger">
+                                                Data Tidak Tersedia.
+                                            </div>
+                                        @endforelse
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

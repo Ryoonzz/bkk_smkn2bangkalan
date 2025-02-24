@@ -269,7 +269,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="/dashboard-alumni">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="/dashboard-alumni/lowongan">Lowongan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
                 </ul>
             </div>
         </div>
