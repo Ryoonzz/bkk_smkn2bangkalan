@@ -23,7 +23,7 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
+Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/dashboard/lowongan', [LowonganController::class, 'dashboard'])->name('lowongan.dashboard');
     Route::get('/dashboard/lowongan/tambah', [LowonganController::class, 'create'])->name('lowongan.tambah');
@@ -31,14 +31,14 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
     Route::get('/dashboard/lowongan/edit/{id}', [LowonganController::class, 'edit'])->name('lowongan.edit');
     Route::put('/dashboard/lowongan/update/{id}', [LowonganController::class, 'update'])->name('lowongan.update');
     Route::delete('/dashboard/lowongan/{id}', [LowonganController::class, 'destroy'])->name('lowongan.destroy');
-    
+
     Route::get('/dashboard/perusahaan', [PerusahaanController::class, 'dashboard'])->name('perusahaan.dashboard');
     Route::get('/dashboard/perusahaan/tambah', [PerusahaanController::class, 'create'])->name('perusahaan.tambah');
     Route::post('/dashboard/perusahaan/store', [PerusahaanController::class, 'store'])->name('perusahaan.store');
     Route::get('/dashboard/perusahaan/edit/{id}', [PerusahaanController::class, 'edit'])->name('perusahaan.edit');
     Route::put('/dashboard/perusahaan/update/{id}', [PerusahaanController::class, 'update'])->name('perusahaan.update');
     Route::delete('/dashboard/perusahaan/{id}', [PerusahaanController::class, 'destroy'])->name('perusahaan.destroy');
-    
+
     Route::get('/dashboard/alumni', [AlumniController::class, 'dashboard'])->name('alumni.dashboard');
     Route::get('/dashboard/alumni/tambah', [AlumniController::class, 'create'])->name('alumni.tambah');
     Route::post('/dashboard/alumni/store', [AlumniController::class, 'store'])->name('alumni.store');
@@ -47,9 +47,9 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
     Route::delete('/dashboard/alumni/{id}', [AlumniController::class, 'destroy'])->name('alumni.destroy');
 });
 
-Route::group(['middleware' => ['auth', 'checkRole:alumni']], function(){
-Route::get('/dashboard-alumni', [DashboardAlumniController::class, 'index'])->name('dashboardAlumni.index');
-Route::get('/dashboard-alumni/lowongan', [LowonganController::class, 'dashboardAlumni'])->name('dashboardAlumni.lowongan');
+Route::group(['middleware' => ['auth', 'checkRole:alumni']], function () {
+    Route::get('/dashboard-alumni', [DashboardAlumniController::class, 'index'])->name('dashboardAlumni.index');
+    Route::get('/dashboard-alumni/lowongan', [LowonganController::class, 'dashboardAlumni'])->name('dashboardAlumni.lowongan');
 });
 
 // Route::get('/dashboard', function () {

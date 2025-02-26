@@ -36,19 +36,19 @@
                             <form class="form-auth-small" action="{{ route('postlogin') }}" method="POST">
                                 {{ csrf_field() }}
 
-                                <div class="form-group" data-aos="zoom-in" data-aos-duration="1000">
+                                <div class="form-group">
                                     <label for="role" class="control-label sr-only">Login sebagai:</label>
                                     <select name="role" class="form-control">
                                         <option value="alumni">Alumni</option>
                                         <option value="admin">Admin</option>
                                     </select>
                                 </div>
-                                <div class="form-group" data-aos="zoom-in" data-aos-duration="1200">
+                                <div class="form-group">
                                     <label for="signin-username" class="control-label sr-only">Username</label>
                                     <input name="username" type="text" class="form-control" id="signin-username"
                                         placeholder="Username">
                                 </div>
-                                <div class="form-group" data-aos="zoom-in" data-aos-duration="1400">
+                                <div class="form-group">
                                     <label for="signin-password" class="control-label sr-only">Password</label>
                                     <input name="password" type="password" class="form-control" id="signin-password"
                                         placeholder="Password">
