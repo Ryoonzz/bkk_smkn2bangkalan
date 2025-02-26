@@ -288,21 +288,15 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Profil</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Visi & Misi BKK</a></li>
-                            <li><a class="dropdown-item" href="#">Program Kerja BKK</a></li>
+                            <li><a class="dropdown-item" href="/visi-misi">Visi & Misi BKK</a></li>
+                            <li><a class="dropdown-item" href="/motto">Motto BKK</a></li>
+                            <li><a class="dropdown-item" href="/struktur">Struktur BKK</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/lowongan">Lowongan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/perusahaan">Perusahaan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Login</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/login">Admin</a></li>
-                            <li><a class="dropdown-item" href="/login">Alumni</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Perusahaan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>
             </div>
         </div>

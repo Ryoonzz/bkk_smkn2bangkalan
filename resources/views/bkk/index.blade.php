@@ -432,7 +432,7 @@
 
     <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="/">
                 <img src="{{ asset('storage\logo-bkk-smkn2.jpg') }}" alt="Logo SMKN 2 Bangkalan" height="55"
                     class="me-2">
             </a>
@@ -446,13 +446,14 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Profil</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Visi & Misi BKK</a></li>
-                            <li><a class="dropdown-item" href="#">Program Kerja BKK</a></li>
+                            <li><a class="dropdown-item" href="/visi-misi">Visi & Misi BKK</a></li>
+                            <li><a class="dropdown-item" href="/motto">Motto BKK</a></li>
+                            <li><a class="dropdown-item" href="/struktur">Struktur BKK</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/lowongan">Lowongan</a></li>
                     <li class="nav-item"><a class="nav-link" href="/perusahaan">Perusahaan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>
             </div>
@@ -482,7 +483,7 @@
                 <div class="sambutan-img" data-aos="flip-right" data-aos-duration="1500">
                     <img src="storage/bu-hazizah.jpg" alt="Kepala BKK SMKN 2 Bangkalan">
                 </div>
-                <div class="sambutan-text" data-aos="fade-left" data-aos-duration="1000">
+                <div class="sambutan-text" data-aos="zoom-in" data-aos-duration="1000">
                     <p style="text-align: center;">Assalamu'alaikum Wr. Wb.</p>
                     <p>Selamat datang di laman <a href="#sambutan">bkk.smkn2bkl.sch.id</a>, laman ini disediakan sebagai
                         sumber

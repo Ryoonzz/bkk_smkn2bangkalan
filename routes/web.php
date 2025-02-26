@@ -15,6 +15,16 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', [BerandaController::class, 'index'])->name('beranda.index');
 
+Route::get('/visi-misi', function () {
+    return view('bkk.visimisi');
+});
+Route::get('/motto', function () {
+    return view('bkk.motto');
+});
+Route::get('/struktur', function () {
+    return view('bkk.struktur');
+});
+
 Route::get('/lowongan', [LowonganController::class, 'index'])->name('lowongan.index');
 
 Route::get('/perusahaan', [PerusahaanController::class, 'index'])->name('perusahaan.index');

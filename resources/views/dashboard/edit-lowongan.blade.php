@@ -200,7 +200,7 @@
                                         @if ($errors->has('judul'))
                                             <span class="text-danger">{{ $errors->first('judul') }}</span>
                                         @endif
-                                    </div>
+                                    </div> </br>
 
                                     <div class="mb-3 {{ $errors->has('tanggal') ? 'has-error' : '' }}">
                                         <label for="InputTanggal" class="form-label">Tanggal</label>
@@ -209,7 +209,7 @@
                                         @if ($errors->has('tanggal'))
                                             <span class="text-danger">{{ $errors->first('tanggal') }}</span>
                                         @endif
-                                    </div>
+                                    </div> </br>
 
                                     <div class="mb-3 {{ $errors->has('perusahaan') ? 'has-error' : '' }}">
                                         <label for="InputPerusahaan" class="form-label">Perusahaan</label>
@@ -219,7 +219,7 @@
                                         @if ($errors->has('perusahaan'))
                                             <span class="text-danger">{{ $errors->first('perusahaan') }}</span>
                                         @endif
-                                    </div>
+                                    </div> </br>
 
                                     <div class="form-group">
                                         <label for="InputDeskripsi" class="form-label">Deskripsi</label>
@@ -233,7 +233,7 @@
                                         @if ($errors->has('posisi'))
                                             <span class="text-danger">{{ $errors->first('posisi') }}</span>
                                         @endif
-                                    </div>
+                                    </div> </br>
 
                                     <div class="mb-3 {{ $errors->has('penempatan') ? 'has-error' : '' }}">
                                         <label for="InputPenempatan" class="form-label">Penempatan</label>
@@ -243,7 +243,7 @@
                                         @if ($errors->has('penempatan'))
                                             <span class="text-danger">{{ $errors->first('penempatan') }}</span>
                                         @endif
-                                    </div>
+                                    </div> </br>
 
                                     <div class="mb-3 {{ $errors->has('gaji') ? 'has-error' : '' }}">
                                         <label for="InputGaji" class="form-label">Gaji</label>
@@ -252,7 +252,7 @@
                                         @if ($errors->has('gaji'))
                                             <span class="text-danger">{{ $errors->first('gaji') }}</span>
                                         @endif
-                                    </div>
+                                    </div> </br>
 
                                     <button type="submit" class="btn btn-primary">Update Data</button>
                                 </form>

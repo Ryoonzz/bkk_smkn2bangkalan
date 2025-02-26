@@ -179,6 +179,27 @@
             text-decoration: none;
             color: var(--warna-5);
         }
+
+        #main {
+            margin: 80px 300px 80px 300px;
+            text-align: left;
+        }
+
+        #main h2 {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        #main h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        #main p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
     </style>
 </head>
 
@@ -200,21 +221,15 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Profil</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Visi & Misi BKK</a></li>
-                            <li><a class="dropdown-item" href="#">Program Kerja BKK</a></li>
+                            <li><a class="dropdown-item" href="/visi-misi">Visi & Misi BKK</a></li>
+                            <li><a class="dropdown-item" href="/motto">Motto BKK</a></li>
+                            <li><a class="dropdown-item" href="#">Struktur BKK</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/lowongan">Lowongan</a></li>
                     <li class="nav-item"><a class="nav-link" href="/perusahaan">Perusahaan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Login</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/login">Admin</a></li>
-                            <li><a class="dropdown-item" href="/login">Alumni</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -232,7 +247,9 @@
         </div>
     </section>
 
-    <!-- ini isiii struktur -->
+    <section id="main">
+        <h2>Struktur BKK</h2>
+    </section>
 
     <section id="about">
         <iframe
