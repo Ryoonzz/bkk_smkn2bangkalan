@@ -235,7 +235,7 @@
         .btn-danger {
             transition: 0.3s;
         }
-        
+
         .btn-danger:hover {
             transform: scale(1.05);
         }
@@ -324,8 +324,28 @@
                                 <td>{{ $job->penempatan }}</td>
                                 <td>Rp{{ number_format($job->gaji, 0, ',', '.') }}</td>
                                 <td class="text-center">
-                                    <button class="btn btn-success btn-sm" id="lamarBtn{{ $job->id }}"
-                                        onclick="handleLamar(this, {{ $job->id }})">Lamar</button>
+                                    @php
+                                        $sudahMelamar = \App\Models\Lamaran::where(
+                                            'alumni_id',
+                                            auth()->user()->alumni->id,
+                                        )
+                                            ->where('lowongan_id', $job->id)
+                                            ->exists();
+                                    @endphp
+
+                                    @if ($sudahMelamar)
+                                        <form action="{{ route('lamar.batal', $job->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm">Batal</button>
+                                        </form>
+                                    @else
+                                        <form action="{{ route('lamar.store', $job->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success btn-sm">Lamar</button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
 

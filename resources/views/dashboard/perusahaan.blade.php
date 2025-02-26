@@ -165,6 +165,7 @@
                     <li><a href="/dashboard/lowongan">Lowongan</a></li>
                     <li><a href="#">Perusahaan</a></li>
                     <li><a href="/dashboard/alumni">Alumni</a></li>
+                    <li><a href="/dashboard/lamaran">Lamaran</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>

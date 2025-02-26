@@ -17,4 +17,9 @@ class Lowongan extends Model
         'penempatan',
         'gaji',
     ];
+
+    public function pelamar()
+    {
+        return $this->hasMany(Lamaran::class, 'lowongan_id');
+    }
 }

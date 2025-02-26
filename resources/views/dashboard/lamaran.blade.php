@@ -161,11 +161,11 @@
         <div class="container-fluid">
             <div id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/dashboard/lowongan">Lowongan</a></li>
                     <li><a href="/dashboard/perusahaan">Perusahaan</a></li>
                     <li><a href="/dashboard/alumni">Alumni</a></li>
-                    <li><a href="/dashboard/lamaran">Lamaran</a></li>
+                    <li><a href="#">Lamaran</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>
@@ -182,100 +182,54 @@
     <div class="main">
         <div class="main-content">
             <div class="container-fluid">
-                <h1 class="halo">Halo {{ auth()->user()->name }}, Selamat Datang di Halaman Dashboard!</h1>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Data Lowongan</h3>
-                                <div class="right">
-                                    <a href="/dashboard/lowongan" class="btn btn-primary">Lebih Lengkap</a>
-                                </div>
+                                <h3 class="panel-title">Daftar Lamaran</h3>
                             </div>
                             <div class="panel-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Judul</th>
-                                            <th>Perusahaan</th>
-                                            <th>Tanggal</th>
-                                            <th>posisi</th>
-                                            <th>Penempatan</th>
-                                            <th>Gaji</th>
-                                            {{-- <th>Action</th> --}}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($lowongan->take(5) as $job)
-                                            <?php
-                                            $gaji = $job->gaji;
-                                            ?>
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $job->judul }}</td>
-                                                <td>{{ $job->perusahaan }}</td>
-                                                <td>{{ $job->tanggal }}</td>
-                                                <td>{{ $job->posisi }}</td>
-                                                <td>{{ $job->penempatan }}</td>
-                                                <td><?= 'Rp' . number_format($gaji, 0, ',', '.') ?></td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="panel">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Data Perusahaan</h3>
-                                <div class="right">
-                                    <a href="/dashboard/perusahaan" class="btn btn-primary">Lebih Lengkap</a>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Perusahaan</th>
-                                            <th>Kode Perusahaan</th>
-                                            <th>Alamat Perusahaan</th>
-                                            <th>Kota</th>
-                                            <th>Tahun Gabung</th>
-                                            <th>Standar</th>
-                                            <th>MoU</th>
-                                            <th>UMKM</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($perusahaan->take(5) as $comp)
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $comp->nama }}</td>
-                                                <td>{{ $comp->kode }}</td>
-                                                <td>{{ $comp->alamat }}</td>
-                                                <td>{{ $comp->kota }}</td>
-                                                <td>{{ $comp->tahun_gabung }}</td>
-                                                <td>{{ $comp->standar }}</td>
-                                                <td>{{ $comp->mou }}</td>
-                                                <td>{{ $comp->umkm }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="main">
-        <div class="main-content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
+                                <form action="/dashboard/lamaran" method="get">
+                                    <div class="input-group">
+                                        <input name="cari" class="form-control" type="text"
+                                            placeholder="Cari data lamaran" value="{{ request('cari') }}">
+                                        <span class="input-group-btn"><button class="btn btn-primary"
+                                                type="submit">Cari</button></span>
+                                    </div>
+                                </form> </br>
 
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Alumni</th>
+                                            <th>Lowongan</th>
+                                            <th>Perusahaan</th>
+                                            <th>Tanggal Melamar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($lamaran as $lamar)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $lamar->alumni->nama }}</td>
+                                                <td>{{ $lamar->lowongan->judul }}</td>
+                                                <td>{{ $lamar->lowongan->perusahaan }}</td>
+                                                <td>{{ $lamar->created_at->format('d M Y') }}</td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="5" class="text-center">
+                                                    <div class="alert alert-danger m-2">
+                                                        Tidak ada pelamar.
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -379,8 +333,8 @@
                     <path
                         d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" />
                 </svg></a>
-            <a href="https://www.instagram.com/smkn2_bangkalan/"><svg xmlns="http://www.w3.org/2000/svg"
-                    height="25px" viewBox="0 0 448 512">
+            <a href="https://www.instagram.com/smkn2_bangkalan/"><svg xmlns="http://www.w3.org/2000/svg" height="25px"
+                    viewBox="0 0 448 512">
                     <style>
                         svg {
                             fill: #ffffff

@@ -23,4 +23,9 @@ class Alumni extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function lamaran()
+    {
+        return $this->hasMany(Lamaran::class, 'alumni_id');
+    }
 }

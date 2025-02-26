@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DashboardAlumniController;
 use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\LamaranController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -55,11 +56,15 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/dashboard/alumni/edit/{id}', [AlumniController::class, 'edit'])->name('alumni.edit');
     Route::put('/dashboard/alumni/update/{id}', [AlumniController::class, 'update'])->name('alumni.update');
     Route::delete('/dashboard/alumni/{id}', [AlumniController::class, 'destroy'])->name('alumni.destroy');
+
+    Route::get('/dashboard/lamaran', [DashboardController::class, 'daftarPelamar'])->name('lamaran.dashboard');
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:alumni']], function () {
     Route::get('/dashboard-alumni', [DashboardAlumniController::class, 'index'])->name('dashboardAlumni.index');
     Route::get('/dashboard-alumni/lowongan', [LowonganController::class, 'dashboardAlumni'])->name('dashboardAlumni.lowongan');
+    Route::post('/lamar/{lowongan_id}', [LamaranController::class, 'store'])->name('lamar.store');
+    Route::post('/batal-lamar/{lowongan_id}', [LamaranController::class, 'batal'])->name('lamar.batal');
 });
 
 // Route::get('/dashboard', function () {
