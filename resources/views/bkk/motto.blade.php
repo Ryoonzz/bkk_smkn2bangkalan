@@ -249,6 +249,16 @@
 
     <section id="main">
         <h2>Motto BKK</h2>
+        <h3>Connect Opportunities, Nurtur Careers, Empower Renewal Now!</h3>
+        <ol>
+            <li><strong>Connect Opportunities:</strong> Menghubungkan pencari kerja dengan berbagai peluang.</li>
+            <li><strong>Opportunities:</strong> Menyediakan berbagai kesempatan kerja yang sesuai.</li>
+            <li><strong>Nurture Careers:</strong> Membantu dalam pengembangan karier.</li>
+            <li><strong>Create Value:</strong> Menciptakan nilai dalam setiap usaha yang dilakukan.</li>
+            <li><strong>Empower Renewal:</strong> Memberdayakan individu untuk selalu melakukan pembaruan diri.</li>
+            <li><strong>Resource Network:</strong> Menyediakan jaringan sumber daya yang luas untuk membantu pencari kerja.</li>
+            <li><strong>Now:</strong> Mengajak semua untuk bertindak segera dalam meraih kesempatan.</li>
+        </ol>
     </section>
 
     <section id="about">
