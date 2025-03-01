@@ -257,7 +257,7 @@
             <li><strong>Create Value:</strong> Menciptakan nilai dalam setiap usaha yang dilakukan.</li>
             <li><strong>Empower Renewal:</strong> Memberdayakan individu untuk selalu melakukan pembaruan diri.</li>
             <li><strong>Resource Network:</strong> Menyediakan jaringan sumber daya yang luas untuk membantu pencari kerja.</li>
-            <li><strong>Now:</strong> Mengajak semua untuk bertindak segera dalam meraih kesempatan.</li>
+            <li><strong>Now:</strong> Mengajak semua untuk bertindak segera dalam meraih kesempatan. </li>
         </ol>
     </section>
 
