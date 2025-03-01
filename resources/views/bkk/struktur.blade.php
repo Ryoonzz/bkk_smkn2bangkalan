@@ -182,23 +182,11 @@
 
         #main {
             margin: 80px 300px 80px 300px;
-            text-align: left;
         }
 
         #main h2 {
             font-size: 30px;
             font-weight: bold;
-        }
-
-        #main h3 {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        #main p {
-            font-size: 18px;
-            margin: 10px 0;
         }
     </style>
 </head>
@@ -237,11 +225,11 @@
 
     <section id="nama-halaman">
         <div class="halaman d-flex justify-content-between align-items-center">
-            <h2>Info Lowongan</h2>
+            <h2>Struktur BKK</h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Beranda</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Info Lowongan</li>
+                    <li class="breadcrumb-item active" aria-current="page">Struktur BKK</li>
                 </ol>
             </nav>
         </div>

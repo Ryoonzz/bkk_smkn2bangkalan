@@ -200,6 +200,11 @@
             font-size: 18px;
             margin: 10px 0;
         }
+
+        #main ol {
+            font-size: 18px;
+            padding-left: 20px;
+        }
     </style>
 </head>
 
@@ -237,11 +242,11 @@
 
     <section id="nama-halaman">
         <div class="halaman d-flex justify-content-between align-items-center">
-            <h2>Info Lowongan</h2>
+            <h2>Motto BKK</h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Beranda</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Info Lowongan</li>
+                    <li class="breadcrumb-item active" aria-current="page">Motto BKK</li>
                 </ol>
             </nav>
         </div>
