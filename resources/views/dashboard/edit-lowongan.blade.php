@@ -155,7 +155,7 @@
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-            <a href="#"><img src="{{ asset('storage\logo-dashboard-bkk-smkn2.jpg')}}" alt="SMKN 2 Logo"
+            <a href="#"><img src="{{ asset('storage\logo-dashboard-bkk-smkn2.jpg') }}" alt="SMKN 2 Logo"
                     class="img-responsive logo"></a>
         </div>
         <div class="container-fluid">
@@ -191,6 +191,19 @@
                             <div class="panel-body">
                                 <form action="{{ route('lowongan.update', $lowongan->id) }}" method="post"
                                     enctype="multipart/form-data">
+                                    @php
+                                        $jurusanList = [
+                                            'Desain Pemodelan dan Informasi Bangunan',
+                                            'Teknik Instalasi Tenaga Listrik',
+                                            'Teknik Pemesinan',
+                                            'Teknik Kendaraan Ringan Otomotif',
+                                            'Teknik Jaringan Komputer',
+                                            'Rekayasa Perangkat Lunak',
+                                            'Teknik Sepeda Motor',
+                                            'Teknik Kimia Industri',
+                                            'Teknik Elektronika Industri',
+                                        ];
+                                    @endphp
                                     @csrf
                                     @method('PUT')
 
@@ -203,12 +216,14 @@
                                         @endif
                                     </div> </br>
 
-                                    <div class="mb-3 {{ $errors->has('tanggal') ? 'has-error' : '' }}">
-                                        <label for="InputTanggal" class="form-label">Tanggal</label>
-                                        <input name="tanggal" type="text" class="form-control" id="InputTanggal"
-                                            value="{{ old('tanggal', $lowongan->tanggal) }}">
-                                        @if ($errors->has('tanggal'))
-                                            <span class="text-danger">{{ $errors->first('tanggal') }}</span>
+                                    <div class="mb-3 {{ $errors->has('tgl_akhir_daftar') ? 'has-error' : '' }}">
+                                        <label for="InputTanggalAkhirDaftar" class="form-label">Tanggal Akhir
+                                            Pendaftaran</label>
+                                        <input name="tgl_akhir_daftar" type="date" class="form-control"
+                                            id="InputTanggalAkhirDaftar"
+                                            value="{{ old('tgl_akhir_daftar', $lowongan->tgl_akhir_daftar) }}">
+                                        @if ($errors->has('tgl_akhir_daftar'))
+                                            <span class="text-danger">{{ $errors->first('tgl_akhir_daftar') }}</span>
                                         @endif
                                     </div> </br>
 
@@ -226,6 +241,21 @@
                                         <label for="InputDeskripsi" class="form-label">Deskripsi</label>
                                         <textarea name="deskripsi" class="form-control" id="InputDeskripsi" style="height: 100px">{{ old('deskripsi', $lowongan->deskripsi) }}</textarea>
                                     </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Jurusan</label><br>
+                                        <input type="hidden" name="jurusan" value="">
+                                        @php
+                                            $selectedJurusan = is_array($lowongan->jurusan)
+                                                ? $lowongan->jurusan
+                                                : explode(', ', $lowongan->jurusan);
+                                        @endphp
+                                        @foreach ($jurusanList as $jurusan)
+                                            <input type="checkbox" name="jurusan[]" value="{{ $jurusan }}"
+                                                {{ is_array(old('jurusan', $selectedJurusan)) && in_array($jurusan, old('jurusan', $selectedJurusan)) ? 'checked' : '' }}>
+                                            {{ $jurusan }} <br>
+                                        @endforeach
+                                    </div> </br>
 
                                     <div class="mb-3 {{ $errors->has('posisi') ? 'has-error' : '' }}">
                                         <label for="InputPosisi" class="form-label">Posisi</label>

@@ -240,6 +240,20 @@
             transform: scale(1.05);
         }
 
+        .jurusan-list {
+            margin-top: 10px;
+        }
+
+        .jurusan-badge {
+            background-color: #e3f2fd;
+            color: #0d6efd;
+            padding: 3px 8px;
+            border-radius: 14px;
+            font-size: 12px;
+            margin-right: 4px;
+            display: inline-block;
+        }
+
         /* Responsif */
         @media (max-width: 768px) {
             .table-responsive {
@@ -301,6 +315,7 @@
                             <th>NO</th>
                             <th>Judul</th>
                             <th>Perusahaan</th>
+                            <th>Akhir Pendaftaran</th>
                             <th>Deskripsi</th>
                             <th>Posisi</th>
                             <th>Penempatan</th>
@@ -319,6 +334,7 @@
                                         data-bs-target="#lowonganModal{{ $job->id }}">{{ $job->judul }}</a>
                                 </td>
                                 <td>{{ $job->perusahaan }}</td>
+                                <td>{{ $job->tgl_akhir_daftar }}</td>
                                 <td>{{ $job->deskripsi }}</td>
                                 <td>{{ $job->posisi }}</td>
                                 <td>{{ $job->penempatan }}</td>
@@ -368,10 +384,27 @@
                                             <p>{{ $job->perusahaan }}</p>
 
                                             <h6>Tanggal</h6>
-                                            <p>{{ $job->tanggal }}</p>
+                                            <p>{{ $job->tgl_akhir_daftar }}</p>
 
                                             <h6>Deskripsi</h6>
                                             <p>{{ $job->deskripsi }}</p>
+
+                                            <h6>Jurusan</h6>
+                                            <div>
+                                                @php
+                                                    $jurusan = is_array($job->jurusan)
+                                                        ? $job->jurusan
+                                                        : explode(', ', $job->jurusan);
+                                                @endphp
+
+                                                @if (!empty($jurusan) && $jurusan[0] !== '')
+                                                    @foreach ($jurusan as $item)
+                                                        <span class="jurusan-badge">{{ $item }}</span>
+                                                    @endforeach
+                                                @else
+                                                    <p>-</p>
+                                                @endif
+                                            </div>
 
                                             <h6>Posisi</h6>
                                             <p>{{ $job->posisi }}</p>

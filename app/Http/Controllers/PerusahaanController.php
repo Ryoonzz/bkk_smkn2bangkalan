@@ -60,7 +60,7 @@ class PerusahaanController extends Controller
             'standar' => 'required|string',
             'mou' => 'required|string',
             'umkm' => 'required|string',
-            'kerjasama' => 'required|array', //dikirim jadi array
+            'kerjasama' => 'nullable|array', //dikirim jadi array
         ]);
 
         Perusahaan::create([
@@ -72,7 +72,7 @@ class PerusahaanController extends Controller
             'standar' => $request->standar,
             'mou' => $request->mou,
             'umkm' => $request->umkm,
-            'kerjasama' => implode(', ', $request->kerjasama), //disimpan jadi string
+            'kerjasama' => $request->kerjasama ? implode(', ', $request->kerjasama) : '',
         ]);
 
         return redirect()->route('perusahaan.dashboard')->with('sukses', 'Data berhasil disimpan!');
@@ -96,7 +96,7 @@ class PerusahaanController extends Controller
             'standar' => 'required|string',
             'mou' => 'required|string',
             'umkm' => 'required|string',
-            'kerjasama' => 'required|array',
+            'kerjasama' => 'nullable|array',
         ]);
 
         $perusahaan = Perusahaan::findOrFail($id);
@@ -109,7 +109,7 @@ class PerusahaanController extends Controller
             'standar' => $request->standar,
             'mou' => $request->mou,
             'umkm' => $request->umkm,
-            'kerjasama' => implode(', ', $request->kerjasama),
+            'kerjasama' => $request->kerjasama ? implode(', ', $request->kerjasama) : '',
         ]);
 
         return redirect()->route('perusahaan.dashboard')->with('sukses', 'Data berhasil diperbarui!');

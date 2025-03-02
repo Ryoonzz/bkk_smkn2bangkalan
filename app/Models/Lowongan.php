@@ -10,9 +10,10 @@ class Lowongan extends Model
     use HasFactory;
     protected $fillable = [
         'judul',
-        'tanggal',
+        'tgl_akhir_daftar',
         'perusahaan',
         'deskripsi',
+        'jurusan',
         'posisi',
         'penempatan',
         'gaji',

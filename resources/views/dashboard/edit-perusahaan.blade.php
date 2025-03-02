@@ -191,6 +191,9 @@
                             <div class="panel-body">
                                 <form action="{{ route('perusahaan.update', $perusahaan->id) }}" method="post"
                                     enctype="multipart/form-data">
+                                    @php
+                                        $kerjasamaList = ['Guru tamu', 'Prakerin', 'Sinkronisasi kurikulum'];
+                                    @endphp
                                     @csrf
                                     @method('PUT')
 
@@ -274,22 +277,17 @@
 
                                     <div class="mb-3">
                                         <label class="form-label">Jenis Kerjasama</label><br>
-
+                                        <input type="hidden" name="kerjasama" value="">
                                         @php
-                                            $selectedKerjasama = is_array($perusahaan->kerjasama) ? $perusahaan->kerjasama : explode(', ', $perusahaan->kerjasama);
+                                            $selectedKerjasama = is_array($perusahaan->kerjasama)
+                                                ? $perusahaan->kerjasama
+                                                : explode(', ', $perusahaan->kerjasama);
                                         @endphp
-
-                                        <input type="checkbox" name="kerjasama[]" value="Guru tamu"
-                                            {{ in_array('Guru tamu', $selectedKerjasama) ? 'checked' : '' }}>
-                                        Guru tamu <br>
-
-                                        <input type="checkbox" name="kerjasama[]" value="Prakerin"
-                                            {{ in_array('Prakerin', $selectedKerjasama) ? 'checked' : '' }}>
-                                        Prakerin <br>
-
-                                        <input type="checkbox" name="kerjasama[]" value="Sinkronisasi kurikulum"
-                                            {{ in_array('Sinkronisasi kurikulum', $selectedKerjasama) ? 'checked' : '' }}>
-                                        Sinkronisasi kurikulum <br>
+                                        @foreach ($kerjasamaList as $kerjasama)
+                                            <input type="checkbox" name="kerjasama[]" value="{{ $kerjasama }}"
+                                                {{ is_array(old('kerjasama', $selectedKerjasama)) && in_array($kerjasama, old('kerjasama', $selectedKerjasama)) ? 'checked' : '' }}>
+                                            {{ $kerjasama }} <br>
+                                        @endforeach
                                     </div> </br>
 
                                     <button type="submit" class="btn btn-primary">Update Data</button>

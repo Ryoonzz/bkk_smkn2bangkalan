@@ -208,7 +208,7 @@
                                             <th>No</th>
                                             <th>Judul</th>
                                             <th>Perusahaan</th>
-                                            <th>Tanggal</th>
+                                            <th>Tanggal Akhir Daftar</th>
                                             <th>posisi</th>
                                             <th>Penempatan</th>
                                             <th>Gaji</th>
@@ -224,7 +224,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $job->judul }}</td>
                                                 <td>{{ $job->perusahaan }}</td>
-                                                <td>{{ $job->tanggal }}</td>
+                                                <td>{{ $job->tgl_akhir_daftar }}</td>
                                                 <td>{{ $job->posisi }}</td>
                                                 <td>{{ $job->penempatan }}</td>
                                                 <td><?= 'Rp' . number_format($gaji, 0, ',', '.') ?></td>
@@ -266,11 +266,29 @@
                                                             <h5><strong>Perusahaan</strong></h5>
                                                             <p>{{ $job->perusahaan }}</p>
 
-                                                            <h5><strong>Tanggal</strong></h5>
-                                                            <p>{{ $job->tanggal }}</p>
+                                                            <h5><strong>Tanggal Akhir Pendaftaran</strong></h5>
+                                                            <p>{{ $job->tgl_akhir_daftar }}</p>
 
                                                             <h5><strong>Deskripsi</strong></h5>
                                                             <p>{{ $job->deskripsi }}</p>
+
+                                                            <h5><strong>Jurusan</strong></h5>
+                                                            <div>
+                                                                @php
+                                                                    $jurusan = is_array($job->jurusan)
+                                                                        ? $job->jurusan
+                                                                        : explode(', ', $job->jurusan);
+                                                                @endphp
+
+                                                                @if (!empty($jurusan) && count(array_filter($jurusan)) > 0)
+                                                                    @foreach ($jurusan as $item)
+                                                                        <span
+                                                                            class="badge bg-success">{{ $item }}</span>
+                                                                    @endforeach
+                                                                @else
+                                                                    <span>-</span>
+                                                                @endif
+                                                            </div>
 
                                                             <h5><strong>Posisi</strong></h5>
                                                             <p>{{ $job->posisi }}</p>

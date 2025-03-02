@@ -191,6 +191,13 @@
                             <div class="panel-body">
                                 <form action="{{ route('perusahaan.store') }}" method="post"
                                     enctype="multipart/form-data">
+                                    @php
+                                        $kerjasamaList = [
+                                            'Guru tamu',
+                                            'Prakerin',
+                                            'Sinkronisasi kurikulum',
+                                        ];
+                                    @endphp
                                     @csrf
                                     <div class="mb-3 {{ $errors->has('nama') ? 'has-error' : '' }}">
                                         <label for="InputNama" class="form-label">Nama Perusahaan</label>
@@ -274,18 +281,12 @@
 
                                     <div class="mb-3">
                                         <label class="form-label">Jenis Kerjasama</label><br>
-
-                                        <input type="checkbox" name="kerjasama[]" value="Guru tamu"
-                                            {{ is_array(old('kerjasama')) && in_array('Guru tamu', old('kerjasama')) ? 'checked' : '' }}>
-                                        Guru tamu <br>
-
-                                        <input type="checkbox" name="kerjasama[]" value="Prakerin"
-                                            {{ is_array(old('kerjasama')) && in_array('Prakerin', old('kerjasama')) ? 'checked' : '' }}>
-                                        Prakerin <br>
-
-                                        <input type="checkbox" name="kerjasama[]" value="Sinkronisasi kurikulum"
-                                            {{ is_array(old('kerjasama')) && in_array('Sinkronisasi kurikulum', old('kerjasama')) ? 'checked' : '' }}>
-                                        Sinkronisasi kurikulum <br>
+                                        <input type="hidden" name="kerjasama" value="">
+                                        @foreach ($kerjasamaList as $kerjasama)
+                                            <input type="checkbox" name="kerjasama[]" value="{{ $kerjasama }}"
+                                                {{ is_array(old('kerjasama')) && in_array($kerjasama, old('kerjasama')) ? 'checked' : '' }}>
+                                            {{ $kerjasama }} <br>
+                                        @endforeach
                                     </div> </br>
 
                                     <button type="submit" class="btn btn-primary">Tambah data</button>

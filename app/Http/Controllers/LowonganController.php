@@ -67,9 +67,10 @@ class LowonganController extends Controller
     {
         $request->validate([
             'judul' => 'required|string|max:255',
-            'tanggal' => 'required|string',
+            'tgl_akhir_daftar' => 'required|string',
             'perusahaan' => 'required|string',
             'deskripsi' => 'required|string',
+            'jurusan' => 'nullable|array',
             'posisi' => 'required|string',
             'penempatan' => 'required|string',
             'gaji' => 'required|integer',
@@ -77,9 +78,10 @@ class LowonganController extends Controller
 
         Lowongan::create([
             'judul' => $request->judul,
-            'tanggal' => $request->tanggal,
+            'tgl_akhir_daftar' => $request->tgl_akhir_daftar,
             'perusahaan' => $request->perusahaan,
             'deskripsi' => $request->deskripsi,
+            'jurusan' => $request->jurusan ? implode(', ', $request->jurusan) : '', // Cegah error kalo kosong
             'posisi' => $request->posisi,
             'penempatan' => $request->penempatan,
             'gaji' => $request->gaji,
@@ -91,6 +93,7 @@ class LowonganController extends Controller
     public function edit($id): View
     {
         $lowongan = Lowongan::findOrFail($id);
+        $lowongan->jurusan = explode(', ', $lowongan->jurusan);
         return view('dashboard.edit-lowongan', compact('lowongan'));
     }
 
@@ -98,9 +101,10 @@ class LowonganController extends Controller
     {
         $request->validate([
             'judul' => 'required|string|max:255',
-            'tanggal' => 'required|string',
+            'tgl_akhir_daftar' => 'required|string',
             'perusahaan' => 'required|string',
             'deskripsi' => 'required|string',
+            'jurusan' => 'nullable|array',
             'posisi' => 'required|string',
             'penempatan' => 'required|string',
             'gaji' => 'required|integer',
@@ -109,9 +113,10 @@ class LowonganController extends Controller
         $lowongan = Lowongan::findOrFail($id);
         $lowongan->update([
             'judul' => $request->judul,
-            'tanggal' => $request->tanggal,
+            'tgl_akhir_daftar' => $request->tgl_akhir_daftar,
             'perusahaan' => $request->perusahaan,
             'deskripsi' => $request->deskripsi,
+            'jurusan' => $request->jurusan ? implode(', ', $request->jurusan) : '',
             'posisi' => $request->posisi,
             'penempatan' => $request->penempatan,
             'gaji' => $request->gaji,

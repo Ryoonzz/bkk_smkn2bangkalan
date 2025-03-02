@@ -301,9 +301,14 @@
                                                                         : explode(', ', $comp->kerjasama);
                                                                 @endphp
 
-                                                                @foreach ($kerjasama as $item)
-                                                                    <li>{{ $item }}</li>
-                                                                @endforeach
+
+                                                                @if (!empty($kerjasama) && count(array_filter($kerjasama)) > 0)
+                                                                    @foreach ($kerjasama as $item)
+                                                                        <li>{{ $item }}</li>
+                                                                    @endforeach
+                                                                @else
+                                                                    <span>-</span>
+                                                                @endif
                                                             </ol>
                                                         </div>
                                                         <div class="modal-footer">

@@ -189,15 +189,18 @@
             font-size: 30px;
             font-weight: bold;
         }
+
         #main h3 {
             font-size: 24px;
             font-weight: bold;
             margin-top: 20px;
         }
+
         #main p {
             font-size: 18px;
             margin: 10px 0;
         }
+
         #main ol {
             font-size: 18px;
             padding-left: 20px;
@@ -230,7 +233,6 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/lowongan">Lowongan</a></li>
                     <li class="nav-item"><a class="nav-link" href="/perusahaan">Perusahaan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>
             </div>
@@ -250,21 +252,21 @@
     </section>
 
     <section id="main">
-            <h2>Visi Misi BKK</h2>
-            <h3>
-                Visi BKK SMKN 2 Bangkalan
-            </h3>
-            <p>Menjadikan unit kerja yang dapat menyediakan dan menyalurkan informasi tenaga kerja yang cepat, tepat,
-                dan akurat serta peduli lingkugan</p>
-            <h3>
-                Misi BKK SMKN 2 Bangkalan
-            </h3>
-            <ol>
-                <li>Memberikan Layanan informasi</li>
-                <li>Merekrut dan Menyalurkan Alumni</li>
-                <li>Memberikan pelayanan pelatihan dan pemantapan</li>
-                <li>Mengadakan kerja sama</li>
-            </ol>
+        <h2>Visi Misi BKK</h2>
+        <h3>
+            Visi BKK SMKN 2 Bangkalan
+        </h3>
+        <p>Menjadikan unit kerja yang dapat menyediakan dan menyalurkan informasi tenaga kerja yang cepat, tepat,
+            dan akurat serta peduli lingkugan</p>
+        <h3>
+            Misi BKK SMKN 2 Bangkalan
+        </h3>
+        <ol>
+            <li>Memberikan Layanan informasi</li>
+            <li>Merekrut dan Menyalurkan Alumni</li>
+            <li>Memberikan pelayanan pelatihan dan pemantapan</li>
+            <li>Mengadakan kerja sama</li>
+        </ol>
     </section>
 
     <section id="about">

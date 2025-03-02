@@ -267,6 +267,20 @@
             margin-top: 30px;
             padding: 0 200px 0 200px;
         }
+
+        .jurusan-list {
+            margin-top: 10px;
+        }
+
+        .jurusan-badge {
+            background-color: #e3f2fd;
+            color: #0d6efd;
+            padding: 3px 8px;
+            border-radius: 14px;
+            font-size: 12px;
+            margin-right: 4px;
+            display: inline-block;
+        }
     </style>
 </head>
 
@@ -295,7 +309,6 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#">Lowongan</a></li>
                     <li class="nav-item"><a class="nav-link" href="/perusahaan">Perusahaan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>
             </div>
@@ -335,9 +348,25 @@
                         <h5>{{ $job->perusahaan }}</h5>
                         {{-- tanggal --}}
                         <span class="tanggal-info"><i class="fa-regular fa-clock" style="color: #555555;"></i>
-                            {{ $job->tanggal }}</span>
+                            Akhir Pendaftaran: {{ $job->tgl_akhir_daftar }}</span>
                         {{-- posisi --}}
                         <p>{{ $job->posisi }}</p>
+                        {{-- Jurusan yang Dibutuhkan --}}
+                        <div class="jurusan-list">
+                            @php
+                                $jurusan = is_array($job->jurusan) ? $job->jurusan : explode(', ', $job->jurusan);
+                            @endphp
+
+                            @if (!empty($jurusan) && count($jurusan) > 0)
+                                @foreach ($jurusan as $item)
+                                    <span class="jurusan-badge">
+                                        {{ $item }}
+                                    </span>
+                                @endforeach
+                            @else
+                                <span class="text-muted">Tidak ada jurusan spesifik</span>
+                            @endif
+                        </div>
                     </div>
                     <div class="action">
                         <button class="btn btn-detail" data-bs-toggle="modal"
@@ -345,7 +374,7 @@
                                 style="color: #ffffff;"></i>
                             Detail Lowongan
                         </button>
-                        <a href="#"><button class="btn btn-lamar"><i class="fa-solid fa-check"
+                        <a href="/dashboard-alumni/lowongan"><button class="btn btn-lamar"><i class="fa-solid fa-check"
                                     style="color: #ffffff;"></i> Lamar</button></a>
                     </div>
                 </div>
@@ -377,11 +406,26 @@
                         <h6>Perusahaan</h6>
                         <p>{{ $job->perusahaan }}</p>
 
-                        <h6>Tanggal</h6>
-                        <p>{{ $job->tanggal }}</p>
+                        <h6>Tanggal Akhir Pendaftaran</h6>
+                        <p>{{ $job->tgl_akhir_daftar }}</p>
 
                         <h6>Deskripsi</h6>
                         <p>{{ $job->deskripsi }}</p>
+
+                        <h6>Jurusan</h6>
+                        <div>
+                            @php
+                                $jurusan = is_array($job->jurusan) ? $job->jurusan : explode(', ', $job->jurusan);
+                            @endphp
+
+                            @if (!empty($jurusan) && $jurusan[0] !== '')
+                                @foreach ($jurusan as $item)
+                                    <span class="jurusan-badge">{{ $item }}</span>
+                                @endforeach
+                            @else
+                                <p>-</p>
+                            @endif
+                        </div>
 
                         <h6>Posisi</h6>
                         <p>{{ $job->posisi }}</p>
