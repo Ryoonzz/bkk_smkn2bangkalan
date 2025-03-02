@@ -236,7 +236,8 @@
     </section>
 
     <section id="main">
-        <h2>Struktur BKK</h2>
+        <h2>Struktur Organisasi BKK SMKN 2 Bangkalan</h2>
+        <img src="{{ asset('storage/struktur_organisasi.jpg') }}" alt="Gambar struktur organisasi BKK SMKN 2 Bangkalan" width="610px">
     </section>
 
     <section id="about">
