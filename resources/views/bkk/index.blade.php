@@ -7,12 +7,14 @@
     <title>BKK SMK Negeri 2 Bangkalan</title>
     <link rel="shortcut icon" href="storage/tab-logo_smkn2bkl.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
         /* font-family: 'Poppins', sans-serif; */
+        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
         :root {
             --warna-1: blue;
@@ -29,6 +31,8 @@
         * {
             box-sizing: border-box;
             scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
         }
 
         body {
@@ -41,6 +45,14 @@
         .navbar .dropdown:hover .dropdown-menu {
             display: block;
             margin-top: 0;
+        }
+
+        .navbar ul {
+            justify-content: center;
+        }
+
+        .navbar ul li {
+            margin: 10px;
         }
 
         .navbar ul a {
@@ -110,6 +122,7 @@
             justify-content: center;
             height: 100vh;
             text-align: center;
+            padding: 20px;
         }
 
         h1 {
@@ -178,35 +191,34 @@
             letter-spacing: 1px;
             font-weight: 700;
             padding: 8px 20px;
-            margin: 0;
+            margin-bottom: 30px;
             color: #007bff;
             display: inline-block;
             text-transform: uppercase;
             border-radius: 50px;
-            margin-bottom: 30px;
         }
 
         #rekapitulasi .rekapitulasi-field {
-            max-width: 80vw;
+            max-width: 90%;
             margin: 3vh auto;
             display: grid;
-        }
-
-        #rekapitulasi .baris-rekapitulasi {
-            display: flex;
-            margin-bottom: 20px
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px 20px;
+            justify-content: center;
+            text-align: center;
         }
 
         #rekapitulasi .rekapitulasi-card {
-            margin: 10px auto;
-            width: 18vw;
+            width: 100%;
+            max-width: 280px;
             box-sizing: border-box;
             position: relative;
-            padding: 30px 30px;
+            padding: 30px;
             border: 2px solid #f7f7f7;
             background-color: var(--warna-4);
             border-radius: 10px;
             transition: border-color 0.3s ease, color 0.3s ease;
+            text-align: center;
         }
 
         #rekapitulasi .rekapitulasi-card h3 {
@@ -232,14 +244,21 @@
         #about {
             display: flex;
             justify-content: center;
+            align-items: flex-start;
             background-color: #d1e3fb;
             color: black;
-            height: 350px;
-            padding: 50px 0px;
+            height: auto;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
+
+        #about>div {
+            margin: 10px;
         }
 
         #about iframe {
-            margin-right: 25px;
+            width: 100%;
+            max-width: 350px;
             border: 3px solid #007bff;
             border-radius: 10px;
         }
@@ -285,41 +304,68 @@
             color: black;
             opacity: 0.7;
             font-size: 14px;
-            text-align: left;
+            text-decoration: none;
             transition: 0.3s;
             display: inline-block;
             line-height: 2.5;
-            text-decoration: none;
         }
 
         #about ul li a:hover {
             color: var(--warna-1);
         }
 
-        #info-contact,
-        #link-terkait {
-            margin-right: 25px;
+        #info-contact {
+            max-width: 300px;
+        }
+
+        #link-terkait,
+        #layanan {
+            min-width: 200px;
         }
 
         footer {
             background-color: var(--warna-5);
             color: white;
             text-align: center;
-            height: 150px;
-            padding: 50px 0px;
+            padding: 30px 0px;
+        }
+
+        #sosmed {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
         }
 
         footer a {
-            margin-right: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        footer svg {
+            fill: white;
+            height: 25px;
+            width: 25px;
         }
 
         #lowongan {
-            margin-top: 30px;
-            margin-bottom: 50px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             justify-content: center;
+            max-width: 90vw;
+            margin: 20px auto;
             text-align: left;
         }
 
@@ -329,6 +375,7 @@
             font-weight: 700;
             padding: 8px 20px;
             margin: 0;
+            margin-top: 10px;
             color: #007bff;
             display: inline-block;
             text-transform: uppercase;
@@ -362,7 +409,6 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px 5px;
-            width: 450px;
             border-left: 5px solid #2b7cd9;
         }
 
@@ -409,12 +455,21 @@
             color: white;
         }
 
+        #testimoni .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        #testimoni .card:hover {
+            transform: scale(1.05);
+        }
+
         #testimoni h2 {
             font-size: 20px;
             letter-spacing: 1px;
             font-weight: 700;
-            padding: 10px 20px;
             margin: 0;
+            margin-top: 20px;
             color: #007bff;
             display: inline-block;
             text-transform: uppercase;
@@ -424,6 +479,165 @@
         #testimoni img {
             height: 250px;
             object-fit: cover;
+        }
+
+        .jurusan-list {
+            margin-top: 10px;
+        }
+
+        .jurusan-badge {
+            background-color: #e3f2fd;
+            color: #0d6efd;
+            padding: 3px 8px;
+            border-radius: 14px;
+            font-size: 12px;
+            margin-right: 4px;
+            display: inline-block;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            #sambutan .sambutan-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            #sambutan .sambutan-img img {
+                width: 300px;
+            }
+
+            #rekapitulasi .rekapitulasi-field {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            #lowongan {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            [data-aos] {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .cover-button {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .cover-button .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            #sambutan .sambutan-content {
+                gap: 20px;
+            }
+
+            #sambutan .sambutan-img img {
+                width: 250px;
+            }
+
+            #sambutan h2 {
+                font-size: 18px;
+            }
+
+            #sambutan .sambutan-text p {
+                font-size: 14px;
+            }
+
+            #rekapitulasi .rekapitulasi-field {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            #rekapitulasi .rekapitulasi-card {
+                max-width: 100%;
+                padding: 25px;
+            }
+
+            #rekapitulasi .rekapitulasi-card h3 {
+                font-size: 28px;
+            }
+
+            #rekapitulasi .rekapitulasi-card svg {
+                width: 45px;
+                height: 45px;
+                top: -22px;
+            }
+
+            #lowongan {
+                grid-template-columns: 1fr;
+            }
+
+            #about {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            #about iframe {
+                width: 90%;
+            }
+
+            #info-contact,
+            #link-terkait,
+            #layanan {
+                max-width: 90%;
+                text-align: center;
+            }
+
+            #info-contact h2,
+            #info-contact h3,
+            #info-contact p,
+            #link-terkait h3,
+            #layanan h3 {
+                text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .cover-button {
+                width: 80%;
+            }
+
+            #sambutan .sambutan-img img {
+                width: 200px;
+            }
+
+            #sambutan .sambutan-text p {
+                font-size: 13px;
+                text-align: justify;
+            }
+
+            #sosmed {
+                gap: 10px;
+            }
+
+            footer a {
+                width: 35px;
+                height: 35px;
+            }
+
+            footer svg {
+                height: 20px;
+                width: 20px;
+            }
+
+            footer {
+                padding: 30px 0;
+            }
         }
     </style>
 </head>
@@ -461,7 +675,7 @@
 
     <section class="bg-cover">
         <div class="bg-overlay"></div>
-        <div class="content">
+        <div class="content container">
             <h1 class="bkk-title" data-aos="fade-zoom-in" data-aos-duration="1500">BURSA KERJA KHUSUS (BKK)</h1>
             <h1 data-aos="fade-zoom-in" data-aos-duration="1500">SMKN 2 BANGKALAN</h1>
 
@@ -479,7 +693,7 @@
         <h2>Sambutan Kepala SMK Negeri 2 Bangkalan</h2>
         <div class="container">
             <div class="sambutan-content">
-                <div class="sambutan-img" data-aos="flip-right" data-aos-duration="1500">
+                <div class="sambutan-img" data-aos="flip-right" data-aos-duration="1100">
                     <img src="storage/bu-hazizah.jpg" alt="Kepala BKK SMKN 2 Bangkalan">
                 </div>
                 <div class="sambutan-text" data-aos="zoom-in" data-aos-duration="1000">
@@ -541,7 +755,7 @@
                         pendidikan dan komunikasi global dapat segera terwujud.
                     </p>
                     <p style="text-align: center;">Wassalamu'alaikum Wr. Wb.</p>
-                    <p>Kepala Sekolah</p> </br> </br>
+                    <p>Kepala Sekolah</p>
                     <p>Nur Hazizah, S.Pd, M.Pd</p>
 
                 </div>
@@ -555,74 +769,79 @@
             <p></p>
         </div>
 
-        <div class="rekapitulasi-field">
-            <div class="baris-rekapitulasi" data-aos="flip-up" data-aos-duration="1000">
-                <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                        <path
-                            d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 155 0 0 16c0 44.2-35.8 80-80 80z" />
-                    </svg>
-                    <h3>10</h3>
-                    <p>Kompetensi Keahlian </br> (Aktif) </p>
-                </div>
-                <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                        <path
-                            d="M192 96a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm-8 384l0-128 16 0 0 128c0 17.7 14.3 32 32 32s32-14.3 32-32l0-288 56 0 64 0 16 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-16 0 0-64 192 0 0 192-192 0 0-32-64 0 0 48c0 26.5 21.5 48 48 48l224 0c26.5 0 48-21.5 48-48l0-224c0-26.5-21.5-48-48-48L368 0c-26.5 0-48 21.5-48 48l0 80-76.9 0-65.9 0c-33.7 0-64.9 17.7-82.3 46.6l-58.3 97c-9.1 15.1-4.2 34.8 10.9 43.9s34.8 4.2 43.9-10.9L120 256.9 120 480c0 17.7 14.3 32 32 32s32-14.3 32-32z" />
-                    </svg>
-                    <h3>1,923</h3>
-                    <p>Peserta Didik </br> (Aktif) </p>
-                </div>
-                <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path
-                            d="M184 48l144 0c4.4 0 8 3.6 8 8l0 40L176 96l0-40c0-4.4 3.6-8 8-8zm-56 8l0 40L64 96C28.7 96 0 124.7 0 160l0 96 192 0 128 0 192 0 0-96c0-35.3-28.7-64-64-64l-64 0 0-40c0-30.9-25.1-56-56-56L184 0c-30.9 0-56 25.1-56 56zM512 288l-192 0 0 32c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32l0-32L0 288 0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-128z" />
-                    </svg>
-                    <h3>112</h3>
-                    <p>Lowongan </br> (Aktif) </p>
-                </div>
-                <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                        <path
-                            d="M48 0C21.5 0 0 21.5 0 48L0 464c0 26.5 21.5 48 48 48l96 0 0-80c0-26.5 21.5-48 48-48s48 21.5 48 48l0 80 96 0c26.5 0 48-21.5 48-48l0-416c0-26.5-21.5-48-48-48L48 0zM64 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm112-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM80 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM272 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z" />
-                    </svg>
-                    <h3>221</h3>
-                    <p>Perusahaan </br> (Terdaftar) </p>
-                </div>
+        <div class="rekapitulasi-field" data-aos="flip-up" data-aos-duration="1000">
+            <div class="rekapitulasi-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                    <path
+                        d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 155 0 0 16c0 44.2-35.8 80-80 80z" />
+                </svg>
+                <h3>10</h3>
+                <p>Kompetensi Keahlian </br> (Aktif) </p>
             </div>
-            <div class="baris-rekapitulasi" data-aos="flip-down" data-aos-duration="1000">
-                <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                        <path
-                            d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 155 0 0 16c0 44.2-35.8 80-80 80z" />
-                    </svg>
-                    <h3>129</h3>
-                    <p>Perusahaan </br> (MoU dengan Sekolah) </p>
-                </div>
-                <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                        <path
-                            d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 155 0 0 16c0 44.2-35.8 80-80 80z" />
-                    </svg>
-                    <h3>147</h3>
-                    <p>Perusahaan </br> (Skala Kota/Provinsi) </p>
-                </div>
-                <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                        <path
-                            d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 155 0 0 16c0 44.2-35.8 80-80 80z" />
-                    </svg>
-                    <h3>57</h3>
-                    <p>Perusahaan </br> (Skala Nas./Internasional) </p>
-                </div>
-                <div class="rekapitulasi-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                        <path
-                            d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 160 0 0 16c0 44.2-35.8 80-80 80z" />
-                    </svg>
-                    <h3>4,852</h3>
-                    <p>Total Alumni </br> (Terdaftar) </p>
-                </div>
+            <div class="rekapitulasi-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                    <path
+                        d="M192 96a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm-8 384l0-128 16 0 0 128c0 17.7 14.3 32 32 32s32-14.3 32-32l0-288 56 0 64 0 16 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-16 0 0-64 192 0 0 192-192 0 0-32-64 0 0 48c0 26.5 21.5 48 48 48l224 0c26.5 0 48-21.5 48-48l0-224c0-26.5-21.5-48-48-48L368 0c-26.5 0-48 21.5-48 48l0 80-76.9 0-65.9 0c-33.7 0-64.9 17.7-82.3 46.6l-58.3 97c-9.1 15.1-4.2 34.8 10.9 43.9s34.8 4.2 43.9-10.9L120 256.9 120 480c0 17.7 14.3 32 32 32s32-14.3 32-32z" />
+                </svg>
+                <h3>1,923</h3>
+                <p>Peserta Didik </br> (Aktif) </p>
+            </div>
+            <div class="rekapitulasi-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path
+                        d="M184 48l144 0c4.4 0 8 3.6 8 8l0 40L176 96l0-40c0-4.4 3.6-8 8-8zm-56 8l0 40L64 96C28.7 96 0 124.7 0 160l0 96 192 0 128 0 192 0 0-96c0-35.3-28.7-64-64-64l-64 0 0-40c0-30.9-25.1-56-56-56L184 0c-30.9 0-56 25.1-56 56zM512 288l-192 0 0 32c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32l0-32L0 288 0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-128z" />
+                </svg>
+                <h3>112</h3>
+                <p>Lowongan </br> (Aktif) </p>
+            </div>
+            <div class="rekapitulasi-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                    <path
+                        d="M48 0C21.5 0 0 21.5 0 48L0 464c0 26.5 21.5 48 48 48l96 0 0-80c0-26.5 21.5-48 48-48s48 21.5 48 48l0 80 96 0c26.5 0 48-21.5 48-48l0-416c0-26.5-21.5-48-48-48L48 0zM64 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm112-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM80 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM272 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z" />
+                </svg>
+                <h3>221</h3>
+                <p>Perusahaan </br> (Terdaftar) </p>
+            </div>
+            <div class="rekapitulasi-card">
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-building-check" viewBox="0 0 16 16">
+                    <path
+                        d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514" />
+                    <path
+                        d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6.5a.5.5 0 0 1-1 0V1H3v14h3v-2.5a.5.5 0 0 1 .5-.5H8v4H3a1 1 0 0 1-1-1z" />
+                    <path
+                        d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z" />
+                </svg>
+                <h3>129</h3>
+                <p>Perusahaan </br> (MoU dengan Sekolah) </p>
+            </div>
+            <div class="rekapitulasi-card">
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-buildings" viewBox="0 0 16 16">
+                    <path
+                        d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022M6 8.694 1 10.36V15h5zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5z" />
+                    <path
+                        d="M2 11h1v1H2zm2 0h1v1H4zm-2 2h1v1H2zm2 0h1v1H4zm4-4h1v1H8zm2 0h1v1h-1zm-2 2h1v1H8zm2 0h1v1h-1zm2-2h1v1h-1zm0 2h1v1h-1zM8 7h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zM8 5h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zm0-2h1v1h-1z" />
+                </svg>
+                <h3>147</h3>
+                <p>Perusahaan </br> (Skala Kota/Provinsi) </p>
+            </div>
+            <div class="rekapitulasi-card">
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-buildings-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M15 .5a.5.5 0 0 0-.724-.447l-8 4A.5.5 0 0 0 6 4.5v3.14L.342 9.526A.5.5 0 0 0 0 10v5.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V14h1v1.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zM2 11h1v1H2zm2 0h1v1H4zm-1 2v1H2v-1zm1 0h1v1H4zm9-10v1h-1V3zM8 5h1v1H8zm1 2v1H8V7zM8 9h1v1H8zm2 0h1v1h-1zm-1 2v1H8v-1zm1 0h1v1h-1zm3-2v1h-1V9zm-1 2h1v1h-1zm-2-4h1v1h-1zm3 0v1h-1V7zm-2-2v1h-1V5zm1 0h1v1h-1z" />
+                </svg>
+                <h3>57</h3>
+                <p>Perusahaan </br> (Skala Nas./Internasional) </p>
+            </div>
+            <div class="rekapitulasi-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-person-check" viewBox="0 0 16 16">
+                    <path
+                        d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                    <path
+                        d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+                </svg>
+                <h3>4,852</h3>
+                <p>Total Alumni </br> (Terdaftar) </p>
             </div>
 
         </div>
@@ -632,7 +851,7 @@
         <h2>Lowongan Terbaru</h2>
         <p></p>
     </div>
-    <section id="lowongan" data-aos="fade-up" data-aos-duration="1000">
+    <section id="lowongan" data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="top-bottom">
         @foreach ($lowongan as $job)
             <div class="lowongan-card" data-aos="zoom-in" data-aos-duration="1000">
                 {{-- judul --}}
@@ -642,9 +861,25 @@
                     <h5>{{ $job->perusahaan }}</h5>
                     {{-- tanggal --}}
                     <span class="tanggal-info"><i class="fa-regular fa-clock" style="color: #555555;"></i>
-                        {{ $job->tanggal }}</span>
+                        {{ $job->tgl_akhir_daftar }}</span>
                     {{-- posisi --}}
                     <p>{{ $job->posisi }}</p>
+                    {{-- Jurusan yang Dibutuhkan --}}
+                    <div class="jurusan-list">
+                        @php
+                            $jurusan = is_array($job->jurusan) ? $job->jurusan : explode(', ', $job->jurusan);
+                        @endphp
+
+                        @if (!empty($jurusan) && count($jurusan) > 0)
+                            @foreach ($jurusan as $item)
+                                <span class="jurusan-badge">
+                                    {{ $item }}
+                                </span>
+                            @endforeach
+                        @else
+                            <span class="text-muted">Tidak ada jurusan spesifik</span>
+                        @endif
+                    </div>
                 </div>
                 <div class="action">
                     <button class="btn btn-detail" data-bs-toggle="modal"
@@ -652,7 +887,7 @@
                             style="color: #ffffff;"></i>
                         Detail Lowongan
                     </button>
-                    <a href="#"><button class="btn btn-lamar"><i class="fa-solid fa-check"
+                    <a href="/dashboard-alumni/lowongan"><button class="btn btn-lamar"><i class="fa-solid fa-check"
                                 style="color: #ffffff;"></i> Lamar</button></a>
                 </div>
             </div>
@@ -678,10 +913,25 @@
                         <p>{{ $job->perusahaan }}</p>
 
                         <h6>Tanggal</h6>
-                        <p>{{ $job->tanggal }}</p>
+                        <p>{{ $job->tgl_akhir_daftar }}</p>
 
                         <h6>Deskripsi</h6>
                         <p>{{ $job->deskripsi }}</p>
+
+                        <h6>Jurusan</h6>
+                        <div>
+                            @php
+                                $jurusan = is_array($job->jurusan) ? $job->jurusan : explode(', ', $job->jurusan);
+                            @endphp
+
+                            @if (!empty($jurusan) && $jurusan[0] !== '')
+                                @foreach ($jurusan as $item)
+                                    <span class="jurusan-badge">{{ $item }}</span>
+                                @endforeach
+                            @else
+                                <p>-</p>
+                            @endif
+                        </div>
 
                         <h6>Posisi</h6>
                         <p>{{ $job->posisi }}</p>
@@ -708,7 +958,7 @@
         <div class="container my-5">
             <div class="row g-4">
                 <!-- Card 1 -->
-                <div class="col-md-4" data-aos="zoom-in-right" data-aos-duration="2000">
+                <div class="col-12 col-sm-6 col-md-4" data-aos="zoom-in-right" data-aos-duration="2000">
                     <div class="card">
                         <img src="{{ asset('storage\contoh-testimoni1.jpg') }}" class="card-img-top" alt="Alumni 1">
                         <div class="card-body text-center bg-light">
@@ -719,23 +969,23 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div class="col-md-4" data-aos="zoom-in-up" data-aos-duration="2000">
+                <div class="col-12 col-sm-6 col-md-4" data-aos="zoom-in-up" data-aos-duration="2000">
                     <div class="card">
                         <img src="{{ asset('storage\contoh-testimoni2.jpg') }}" class="card-img-top" alt="Alumni 2">
                         <div class="card-body text-center bg-light">
                             <h5 class="fw-bold">M Ibaneza Fendera A.</h5>
-                            <p>Bekerja di PT Mitra Pedagang Indonesia Tbk sebagai tim Marketing juga</p>
+                            <p>Bekerja di PT Mitra Pedagang Indonesia Tbk sebagai tim Marketing</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="col-md-4" data-aos="zoom-in-left" data-aos-duration="2000">
+                <div class="col-12 col-sm-6 col-md-4" data-aos="zoom-in-left" data-aos-duration="2000">
                     <div class="card">
                         <img src="{{ asset('storage\contoh-testimoni3.jpg') }}" class="card-img-top" alt="Alumni 3">
                         <div class="card-body text-center bg-light">
-                            <h5 class="fw-bold">M Ibaneza Fendera A.</h5>
-                            <p>Bekerja di PT Mitra Pedagang Indonesia Tbk sebagai tim Marketing juga ky Iben sama Dandy
+                            <h5 class="fw-bold">Muhammad Gaza Alfatih E.</h5>
+                            <p>Bekerja di PT Mitra Pedagang Indonesia Tbk sebagai tim Marketing
                             </p>
                         </div>
                     </div>
