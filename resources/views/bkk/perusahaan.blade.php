@@ -63,15 +63,22 @@
         #about {
             display: flex;
             justify-content: center;
-            background-color: var(--warna-6);
+            align-items: flex-start;
+            background-color: #d1e3fb;
             color: black;
-            height: 350px;
-            padding: 50px 0px;
+            height: auto;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
+
+        #about>div {
+            margin: 10px;
         }
 
         #about iframe {
-            margin-right: 25px;
-            border: 3px solid var(--warna-5);
+            width: 100%;
+            max-width: 350px;
+            border: 3px solid #007bff;
             border-radius: 10px;
         }
 
@@ -92,7 +99,6 @@
             opacity: 0.7;
             text-align: left;
         }
-
 
         #about span {
             color: var(--warna-1);
@@ -117,32 +123,59 @@
             color: black;
             opacity: 0.7;
             font-size: 14px;
-            text-align: left;
+            text-decoration: none;
             transition: 0.3s;
             display: inline-block;
             line-height: 2.5;
-            text-decoration: none;
         }
 
         #about ul li a:hover {
             color: var(--warna-1);
         }
 
-        #info-contact,
-        #link-terkait {
-            margin-right: 25px;
+        #info-contact {
+            max-width: 300px;
+        }
+
+        #link-terkait,
+        #layanan {
+            min-width: 200px;
         }
 
         footer {
             background-color: var(--warna-5);
             color: white;
             text-align: center;
-            height: 150px;
-            padding: 50px 0px;
+            padding: 30px 0px;
+        }
+
+        #sosmed {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
         }
 
         footer a {
-            margin-right: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        footer svg {
+            fill: white;
+            height: 25px;
+            width: 25px;
         }
 
         #nama-halaman {
@@ -153,13 +186,19 @@
         }
 
         #nama-halaman .halaman {
-            padding: 0 200px 0 200px;
+            padding: 0 200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         #nama-halaman h2 {
             font-size: 25px;
             font-weight: 350;
             margin: 0;
+            white-space: nowrap;
         }
 
         #nama-halaman ol {
@@ -181,12 +220,12 @@
         }
 
         #perusahaan {
-            margin-top: 30px;
-            margin-bottom: 50px;
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             justify-content: center;
+            max-width: 90vw;
+            margin: 20px auto;
             text-align: left;
         }
 
@@ -205,37 +244,36 @@
             font-size: 14px;
         }
 
-        .perusahaan-info {
+        #perusahaan .perusahaan-info {
             background: white;
             padding: 10px;
             border-radius: 5px;
         }
 
-        .perusahaan-card {
+        #perusahaan .perusahaan-card {
             background-color: #dce6f7;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px 5px;
-            width: 450px;
             border-left: 5px solid #2b7cd9;
         }
 
-        .nama-perusahaan {
+        #perusahaan .nama-perusahaan {
             font-weight: bold;
             font-size: 18px;
         }
 
-        .tanggal-info {
+        #perusahaan .tanggal-info {
             font-size: 12px;
             color: #555;
         }
 
-        .action {
+        #perusahaan .action {
             margin-top: 10px;
             text-align: center;
         }
 
-        .btn {
+        #perusahaan .btn {
             padding: 10px 15px;
             border: none;
             border-radius: 5px;
@@ -243,29 +281,177 @@
             margin-right: 5px;
         }
 
-        .btn-detail {
+        #perusahaan .btn-detail {
             background-color: var(--warna-5);
             color: white;
         }
 
-        .btn-detail:hover {
+        #perusahaan .btn-detail:hover {
             background-color: var(--warna-7);
             color: white;
         }
 
-        .btn-lamar {
+        #perusahaan .btn-lamar {
             background-color: var(--warna-8);
             color: white;
         }
 
-        .btn-lamar:hover {
+        #perusahaan .btn-lamar:hover {
             background-color: var(--warna-9);
             color: white;
         }
 
         #search {
             margin-top: 30px;
-            padding: 0 200px 0 200px;
+            padding: 0 200px;
+        }
+
+        #search .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            width: 100%;
+        }
+
+        #search .form-control {
+            flex-grow: 1;
+            /* Biarkan input mengambil sisa ruang */
+            min-width: 0;
+            /* Mencegah elemen terlalu lebar */
+            width: 90%;
+            /* Pastikan input memenuhi parent */
+        }
+
+        #search .btn {
+            white-space: nowrap;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            #lowongan {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            #nama-halaman .halaman {
+                padding: 0 50px;
+            }
+
+            #search {
+                padding: 0 50px;
+            }
+
+            #search .form-control {
+                width: 80%;
+                /* Pastikan input memenuhi parent */
+            }
+        }
+
+        @media (max-width: 768px) {
+            [data-aos] {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+
+            #nama-halaman .halaman {
+                flex-direction: column;
+                /* Supaya h2 dan breadcrumb turun ke bawah */
+                text-align: center;
+                padding: 0 30px;
+            }
+
+            #nama-halaman h2 {
+                font-size: 22px;
+            }
+
+            #nama-halaman ol {
+                font-size: 14px;
+            }
+
+            #search {
+                padding: 0 30px;
+            }
+
+            #search .input-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #search .form-control {
+                width: 100%;
+                /* Pastikan input memenuhi parent */
+            }
+
+            #search .btn {
+                width: 100%;
+                /* Tombol full width */
+            }
+
+            #perusahaan {
+                grid-template-columns: 1fr;
+            }
+
+            #about {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            #about iframe {
+                width: 90%;
+            }
+
+            #info-contact,
+            #link-terkait,
+            #layanan {
+                max-width: 90%;
+                text-align: center;
+            }
+
+            #info-contact h2,
+            #info-contact h3,
+            #info-contact p,
+            #link-terkait h3,
+            #layanan h3 {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #nama-halaman .halaman {
+                padding: 0 20px;
+                /* Lebih kecil lagi buat HP */
+            }
+
+            #nama-halaman h2 {
+                font-size: 20px;
+            }
+
+            #nama-halaman ol {
+                justify-content: center;
+                /* Breadcrumb ke tengah */
+            }
+
+            #search {
+                padding: 0 20px;
+                /* Lebih kecil lagi untuk HP */
+            }
+
+            footer a {
+                width: 35px;
+                height: 35px;
+            }
+
+            footer svg {
+                height: 20px;
+                width: 20px;
+            }
+
+            footer {
+                padding: 30px 0;
+            }
         }
     </style>
 </head>

@@ -7,12 +7,14 @@
     <title>BKK SMK Negeri 2 Bangkalan</title>
     <link rel="shortcut icon" href="storage/tab-logo_smkn2bkl.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
         /* font-family: 'Poppins', sans-serif; */
+        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
         :root {
             --warna-1: blue;
@@ -63,15 +65,22 @@
         #about {
             display: flex;
             justify-content: center;
-            background-color: var(--warna-6);
+            align-items: flex-start;
+            background-color: #d1e3fb;
             color: black;
-            height: 350px;
-            padding: 50px 0px;
+            height: auto;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
+
+        #about>div {
+            margin: 10px;
         }
 
         #about iframe {
-            margin-right: 25px;
-            border: 3px solid var(--warna-5);
+            width: 100%;
+            max-width: 350px;
+            border: 3px solid #007bff;
             border-radius: 10px;
         }
 
@@ -92,7 +101,6 @@
             opacity: 0.7;
             text-align: left;
         }
-
 
         #about span {
             color: var(--warna-1);
@@ -117,32 +125,59 @@
             color: black;
             opacity: 0.7;
             font-size: 14px;
-            text-align: left;
+            text-decoration: none;
             transition: 0.3s;
             display: inline-block;
             line-height: 2.5;
-            text-decoration: none;
         }
 
         #about ul li a:hover {
             color: var(--warna-1);
         }
 
-        #info-contact,
-        #link-terkait {
-            margin-right: 25px;
+        #info-contact {
+            max-width: 300px;
+        }
+
+        #link-terkait,
+        #layanan {
+            min-width: 200px;
         }
 
         footer {
             background-color: var(--warna-5);
             color: white;
             text-align: center;
-            height: 150px;
-            padding: 50px 0px;
+            padding: 30px 0px;
+        }
+
+        #sosmed {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
         }
 
         footer a {
-            margin-right: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        footer svg {
+            fill: white;
+            height: 25px;
+            width: 25px;
         }
 
         #nama-halaman {
@@ -153,13 +188,19 @@
         }
 
         #nama-halaman .halaman {
-            padding: 0 200px 0 200px;
+            padding: 0 200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         #nama-halaman h2 {
             font-size: 25px;
             font-weight: 350;
             margin: 0;
+            white-space: nowrap;
         }
 
         #nama-halaman ol {
@@ -181,13 +222,27 @@
         }
 
         #lowongan {
-            margin-top: 30px;
-            margin-bottom: 50px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             justify-content: center;
+            max-width: 90vw;
+            margin: 20px auto;
             text-align: left;
+        }
+
+        .lowongan-title h2 {
+            font-size: 20px;
+            letter-spacing: 1px;
+            font-weight: 700;
+            padding: 8px 20px;
+            margin: 0;
+            margin-top: 10px;
+            color: #007bff;
+            display: inline-block;
+            text-transform: uppercase;
+            border-radius: 50px;
+            margin-bottom: 20px;
         }
 
         #lowongan h3 {
@@ -205,37 +260,36 @@
             font-size: 14px;
         }
 
-        .lowongan-info {
+        #lowongan .lowongan-info {
             background: white;
             padding: 10px;
             border-radius: 5px;
         }
 
-        .lowongan-card {
+        #lowongan .lowongan-card {
             background-color: #dce6f7;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px 5px;
-            width: 450px;
             border-left: 5px solid #2b7cd9;
         }
 
-        .judul-lowongan {
+        #lowongan .judul-lowongan {
             font-weight: bold;
             font-size: 18px;
         }
 
-        .tanggal-info {
+        #lowongan .tanggal-info {
             font-size: 12px;
             color: #555;
         }
 
-        .action {
+        #lowongan .action {
             margin-top: 10px;
             text-align: center;
         }
 
-        .btn {
+        #lowongan .btn {
             padding: 10px 15px;
             border: none;
             border-radius: 5px;
@@ -243,29 +297,49 @@
             margin-right: 5px;
         }
 
-        .btn-detail {
+        #lowongan .btn-detail {
             background-color: var(--warna-5);
             color: white;
         }
 
-        .btn-detail:hover {
+        #lowongan .btn-detail:hover {
             background-color: var(--warna-7);
             color: white;
         }
 
-        .btn-lamar {
+        #lowongan .btn-lamar {
             background-color: var(--warna-8);
             color: white;
         }
 
-        .btn-lamar:hover {
+        #lowongan .btn-lamar:hover {
             background-color: var(--warna-9);
             color: white;
         }
 
         #search {
             margin-top: 30px;
-            padding: 0 200px 0 200px;
+            padding: 0 200px;
+        }
+
+        #search .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            width: 100%;
+        }
+
+        #search .form-control {
+            flex-grow: 1;
+            /* Biarkan input mengambil sisa ruang */
+            min-width: 0;
+            /* Mencegah elemen terlalu lebar */
+            width: 90%;
+            /* Pastikan input memenuhi parent */
+        }
+
+        #search .btn {
+            white-space: nowrap;
         }
 
         .jurusan-list {
@@ -280,6 +354,134 @@
             font-size: 12px;
             margin-right: 4px;
             display: inline-block;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            #lowongan {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            #nama-halaman .halaman {
+                padding: 0 50px;
+            }
+
+            #search {
+                padding: 0 50px;
+            }
+
+            #search .form-control {
+                width: 80%;
+                /* Pastikan input memenuhi parent */
+            }
+        }
+
+        @media (max-width: 768px) {
+            [data-aos] {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+
+            #nama-halaman .halaman {
+                flex-direction: column;
+                /* Supaya h2 dan breadcrumb turun ke bawah */
+                text-align: center;
+                padding: 0 30px;
+            }
+
+            #nama-halaman h2 {
+                font-size: 22px;
+            }
+
+            #nama-halaman ol {
+                font-size: 14px;
+            }
+
+            #search {
+                padding: 0 30px;
+            }
+
+            #search .input-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #search .form-control {
+                width: 100%;
+                /* Pastikan input memenuhi parent */
+            }
+
+            #search .btn {
+                width: 100%;
+                /* Tombol full width */
+            }
+
+            #lowongan {
+                grid-template-columns: 1fr;
+            }
+
+            #about {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            #about iframe {
+                width: 90%;
+            }
+
+            #info-contact,
+            #link-terkait,
+            #layanan {
+                max-width: 90%;
+                text-align: center;
+            }
+
+            #info-contact h2,
+            #info-contact h3,
+            #info-contact p,
+            #link-terkait h3,
+            #layanan h3 {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #nama-halaman .halaman {
+                padding: 0 20px;
+                /* Lebih kecil lagi buat HP */
+            }
+
+            #nama-halaman h2 {
+                font-size: 20px;
+            }
+
+            #nama-halaman ol {
+                justify-content: center;
+                /* Breadcrumb ke tengah */
+            }
+
+            #search {
+                padding: 0 20px;
+                /* Lebih kecil lagi untuk HP */
+            }
+
+            footer a {
+                width: 35px;
+                height: 35px;
+            }
+
+            footer svg {
+                height: 20px;
+                width: 20px;
+            }
+
+            footer {
+                padding: 30px 0;
+            }
         }
     </style>
 </head>
@@ -332,7 +534,8 @@
             <div class="input-group">
                 <input name="cari" class="form-control" type="text" placeholder="Cari data lowongan"
                     value="{{ request('cari') }}">
-                <span class="input-group-btn"><button class="btn btn-primary" type="submit">Cari</button></span>
+                <span class="input-group-btn"><button class="btn btn-primary" type="submit"><i
+                            class="bi bi-search"></i> Cari</button></span>
             </div>
         </form>
     </section>

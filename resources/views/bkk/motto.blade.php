@@ -63,15 +63,22 @@
         #about {
             display: flex;
             justify-content: center;
-            background-color: var(--warna-6);
+            align-items: flex-start;
+            background-color: #d1e3fb;
             color: black;
-            height: 350px;
-            padding: 50px 0px;
+            height: auto;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
+
+        #about>div {
+            margin: 10px;
         }
 
         #about iframe {
-            margin-right: 25px;
-            border: 3px solid var(--warna-5);
+            width: 100%;
+            max-width: 350px;
+            border: 3px solid #007bff;
             border-radius: 10px;
         }
 
@@ -92,7 +99,6 @@
             opacity: 0.7;
             text-align: left;
         }
-
 
         #about span {
             color: var(--warna-1);
@@ -117,32 +123,59 @@
             color: black;
             opacity: 0.7;
             font-size: 14px;
-            text-align: left;
+            text-decoration: none;
             transition: 0.3s;
             display: inline-block;
             line-height: 2.5;
-            text-decoration: none;
         }
 
         #about ul li a:hover {
             color: var(--warna-1);
         }
 
-        #info-contact,
-        #link-terkait {
-            margin-right: 25px;
+        #info-contact {
+            max-width: 300px;
+        }
+
+        #link-terkait,
+        #layanan {
+            min-width: 200px;
         }
 
         footer {
             background-color: var(--warna-5);
             color: white;
             text-align: center;
-            height: 150px;
-            padding: 50px 0px;
+            padding: 30px 0px;
+        }
+
+        #sosmed {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
         }
 
         footer a {
-            margin-right: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        footer svg {
+            fill: white;
+            height: 25px;
+            width: 25px;
         }
 
         #nama-halaman {
@@ -153,13 +186,19 @@
         }
 
         #nama-halaman .halaman {
-            padding: 0 200px 0 200px;
+            padding: 0 200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         #nama-halaman h2 {
             font-size: 25px;
             font-weight: 350;
             margin: 0;
+            white-space: nowrap;
         }
 
         #nama-halaman ol {
@@ -181,7 +220,9 @@
         }
 
         #main {
-            margin: 80px 300px 80px 300px;
+            margin: 80px auto;
+            max-width: 900px;
+            padding: 0 50px;
             text-align: left;
         }
 
@@ -204,6 +245,135 @@
         #main ol {
             font-size: 18px;
             padding-left: 20px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+            /* biar ada isinya */
+        }
+
+        @media (max-width: 992px) {
+            #nama-halaman .halaman {
+                padding: 0 50px;
+            }
+
+            #main {
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            [data-aos] {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+
+            #nama-halaman .halaman {
+                flex-direction: column;
+                /* Supaya h2 dan breadcrumb turun ke bawah */
+                text-align: center;
+                padding: 0 30px;
+            }
+
+            #nama-halaman h2 {
+                font-size: 22px;
+            }
+
+            #nama-halaman ol {
+                font-size: 14px;
+            }
+
+            #about {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            #about iframe {
+                width: 90%;
+            }
+
+            #info-contact,
+            #link-terkait,
+            #layanan {
+                max-width: 90%;
+                text-align: center;
+            }
+
+            #info-contact h2,
+            #info-contact h3,
+            #info-contact p,
+            #link-terkait h3,
+            #layanan h3 {
+                text-align: center;
+            }
+
+            #main {
+                padding: 0 20px;
+                text-align: justify;
+            }
+
+            #main h2 {
+                font-size: 28px;
+                text-align: center;
+            }
+
+            #main h3 {
+                font-size: 22px;
+                text-align: center;
+            }
+
+            #main p,
+            #main ol {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #nama-halaman .halaman {
+                padding: 0 20px;
+            }
+
+            #nama-halaman h2 {
+                font-size: 20px;
+            }
+
+            #nama-halaman ol {
+                justify-content: center;
+            }
+
+            footer a {
+                width: 35px;
+                height: 35px;
+            }
+
+            footer svg {
+                height: 20px;
+                width: 20px;
+            }
+
+            footer {
+                padding: 30px 0;
+            }
+
+            #main {
+                padding: 0 15px;
+            }
+
+            #main h2 {
+                font-size: 24px;
+            }
+
+            #main h3 {
+                font-size: 20px;
+            }
+
+            #main p,
+            #main ol {
+                font-size: 14px;
+                padding-left: 10px;
+            }
         }
     </style>
 </head>
@@ -260,7 +430,8 @@
             <li><strong>Nurture Careers:</strong> Membantu dalam pengembangan karier.</li>
             <li><strong>Create Value:</strong> Menciptakan nilai dalam setiap usaha yang dilakukan.</li>
             <li><strong>Empower Renewal:</strong> Memberdayakan individu untuk selalu melakukan pembaruan diri.</li>
-            <li><strong>Resource Network:</strong> Menyediakan jaringan sumber daya yang luas untuk membantu pencari kerja.</li>
+            <li><strong>Resource Network:</strong> Menyediakan jaringan sumber daya yang luas untuk membantu pencari
+                kerja.</li>
             <li><strong>Now:</strong> Mengajak semua untuk bertindak segera dalam meraih kesempatan. </li>
         </ol>
     </section>
