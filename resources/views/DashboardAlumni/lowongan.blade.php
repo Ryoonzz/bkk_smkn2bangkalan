@@ -63,15 +63,22 @@
         #about {
             display: flex;
             justify-content: center;
-            background-color: var(--warna-6);
+            align-items: flex-start;
+            background-color: #d1e3fb;
             color: black;
-            height: 350px;
-            padding: 50px 0px;
+            height: auto;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
+
+        #about>div {
+            margin: 10px;
         }
 
         #about iframe {
-            margin-right: 25px;
-            border: 3px solid var(--warna-5);
+            width: 100%;
+            max-width: 350px;
+            border: 3px solid #007bff;
             border-radius: 10px;
         }
 
@@ -92,7 +99,6 @@
             opacity: 0.7;
             text-align: left;
         }
-
 
         #about span {
             color: var(--warna-1);
@@ -117,32 +123,59 @@
             color: black;
             opacity: 0.7;
             font-size: 14px;
-            text-align: left;
+            text-decoration: none;
             transition: 0.3s;
             display: inline-block;
             line-height: 2.5;
-            text-decoration: none;
         }
 
         #about ul li a:hover {
             color: var(--warna-1);
         }
 
-        #info-contact,
-        #link-terkait {
-            margin-right: 25px;
+        #info-contact {
+            max-width: 300px;
+        }
+
+        #link-terkait,
+        #layanan {
+            min-width: 200px;
         }
 
         footer {
             background-color: var(--warna-5);
             color: white;
             text-align: center;
-            height: 150px;
-            padding: 50px 0px;
+            padding: 30px 0px;
+        }
+
+        #sosmed {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
         }
 
         footer a {
-            margin-right: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        footer svg {
+            fill: white;
+            height: 25px;
+            width: 25px;
         }
 
         #nama-halaman {
@@ -153,31 +186,19 @@
         }
 
         #nama-halaman .halaman {
-            padding: 0 200px 0 200px;
+            padding: 0 200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         #nama-halaman h2 {
             font-size: 25px;
             font-weight: 350;
             margin: 0;
-        }
-
-        #nama-halaman ul {
-            display: flex;
-            flex-wrap: wrap;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 15px;
-        }
-
-        #nama-halaman ul li {
-            margin-right: 5px;
-        }
-
-        #nama-halaman a {
-            text-decoration: none;
-            color: var(--warna-5);
+            white-space: nowrap;
         }
 
         .main {
@@ -185,7 +206,11 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 95%;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
         }
 
         .card {
@@ -209,7 +234,7 @@
 
         .table {
             width: 100%;
-            border-collapse: collapse;
+            min-width: 600px;
         }
 
         .table th,
@@ -255,7 +280,62 @@
         }
 
         /* Responsif */
+        @media (max-width: 992px) {
+            #nama-halaman .halaman {
+                padding: 0 50px;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+
+            #search {
+                padding: 0 50px;
+            }
+        }
+
         @media (max-width: 768px) {
+            #nama-halaman .halaman {
+                flex-direction: column;
+                /* Supaya h2 dan breadcrumb turun ke bawah */
+                text-align: center;
+                padding: 0 30px;
+            }
+
+            #nama-halaman h2 {
+                font-size: 22px;
+            }
+
+            #nama-halaman ol {
+                font-size: 14px;
+            }
+
+            #about {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            #about iframe {
+                width: 90%;
+            }
+
+            #info-contact,
+            #link-terkait,
+            #layanan {
+                max-width: 90%;
+                text-align: center;
+            }
+
+            #info-contact h2,
+            #info-contact h3,
+            #info-contact p,
+            #link-terkait h3,
+            #layanan h3 {
+                text-align: center;
+            }
+
             .table-responsive {
                 overflow-x: auto;
             }
@@ -263,6 +343,65 @@
             .btn-success {
                 font-size: 12px;
                 padding: 4px 10px;
+            }
+
+            #search {
+                padding: 0 20px;
+            }
+
+            .input-group {
+                flex-wrap: wrap;
+            }
+
+            .input-group input {
+                flex: 1 1 100%;
+                /* Input full width */
+                margin-bottom: 10px;
+            }
+
+            .input-group-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .table {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #nama-halaman .halaman {
+                padding: 0 20px;
+            }
+
+            #nama-halaman h2 {
+                font-size: 20px;
+            }
+
+            #nama-halaman ol {
+                justify-content: center;
+            }
+
+            footer a {
+                width: 35px;
+                height: 35px;
+            }
+
+            footer svg {
+                height: 20px;
+                width: 20px;
+            }
+
+            footer {
+                padding: 30px 0;
+            }
+
+            .modal-dialog {
+                max-width: 90%;
             }
         }
     </style>
@@ -436,7 +575,6 @@
             </div>
         </div>
     </div>
-
 
     <section id="about">
         <iframe
