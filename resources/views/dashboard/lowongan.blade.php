@@ -478,19 +478,11 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                <div class="d-flex mt-4">
+                                    {{ $lowongan->links('vendor.pagination.bootstrap-5') }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="main">
-        <div class="main-content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-
                     </div>
                 </div>
             </div>

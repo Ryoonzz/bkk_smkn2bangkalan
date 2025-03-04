@@ -16,6 +16,7 @@ class PerusahaanController extends Controller
                 ->orWhere('alamat', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('kota', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('standar', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('kerjasama', 'LIKE', '%' . $request->cari . '%')
                 ->orderBy('created_at', 'desc')
                 ->paginate(9);
         } else {
@@ -38,10 +39,11 @@ class PerusahaanController extends Controller
                 ->orWhere('alamat', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('kota', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('standar', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('kerjasama', 'LIKE', '%' . $request->cari . '%')
                 ->orderBy('created_at', 'desc')
-                ->get();
+                ->paginate(10);
         } else {
-            $perusahaan = Perusahaan::orderBy('created_at', 'desc')->get();
+            $perusahaan = Perusahaan::orderBy('created_at', 'desc')->paginate(10);
         }
         return view('dashboard.perusahaan', compact('perusahaan'));
     }

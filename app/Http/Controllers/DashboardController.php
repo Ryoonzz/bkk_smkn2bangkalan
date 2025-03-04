@@ -27,9 +27,9 @@ class DashboardController extends Controller
                         ->orWhere('perusahaan', 'LIKE', '%' . $request->cari . '%');
                 })
                 ->orderBy('created_at', 'desc')
-                ->get();
+                ->paginate(10);
         } else {
-            $lamaran = Lamaran::orderBy('created_at', 'desc')->get();
+            $lamaran = Lamaran::orderBy('created_at', 'desc')->paginate(10);
         }
         return view('dashboard.lamaran', compact('lamaran'));
     }

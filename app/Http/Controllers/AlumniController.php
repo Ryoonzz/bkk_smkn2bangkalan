@@ -18,9 +18,9 @@ class AlumniController extends Controller
                 ->orWhere('jurusan', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('tahun_lulus', 'LIKE', '%' . $request->cari . '%')
                 ->orderBy('created_at', 'desc')
-                ->get();
+                ->paginate(10);
         } else {
-            $alumni = Alumni::orderBy('created_at', 'desc')->get();
+            $alumni = Alumni::orderBy('created_at', 'desc')->paginate(10);
         }
         return view('dashboard.alumni', compact('alumni'));
     }

@@ -456,6 +456,9 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                <div class="d-flex mt-4">
+                                    {{ $alumni->links('vendor.pagination.bootstrap-5') }}
+                                </div>
                             </div>
                         </div>
                     </div>

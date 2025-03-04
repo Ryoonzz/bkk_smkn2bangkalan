@@ -17,6 +17,7 @@ class LowonganController extends Controller
                 ->orWhere('perusahaan', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('posisi', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('penempatan', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('jurusan', 'LIKE', '%' . $request->cari . '%')
                 ->orderBy('created_at', 'desc')
                 ->paginate(9);
         } else {
@@ -38,10 +39,11 @@ class LowonganController extends Controller
                 ->orWhere('perusahaan', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('posisi', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('penempatan', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('jurusan', 'LIKE', '%' . $request->cari . '%')
                 ->orderBy('created_at', 'desc')
-                ->get();
+                ->paginate(10);
         } else {
-            $lowongan = Lowongan::orderBy('created_at', 'desc')->get();
+            $lowongan = Lowongan::orderBy('created_at', 'desc')->paginate(10);
         }
         return view('dashboard.lowongan', compact('lowongan'));
     }
@@ -53,10 +55,11 @@ class LowonganController extends Controller
                 ->orWhere('perusahaan', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('posisi', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('penempatan', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('jurusan', 'LIKE', '%' . $request->cari . '%')
                 ->orderBy('created_at', 'desc')
-                ->get();
+                ->paginate(10);
         } else {
-            $lowongan = Lowongan::orderBy('created_at', 'desc')->get();
+            $lowongan = Lowongan::orderBy('created_at', 'desc')->paginate(10);
         }
         return view('dashboardAlumni.lowongan', compact('lowongan'));
     }

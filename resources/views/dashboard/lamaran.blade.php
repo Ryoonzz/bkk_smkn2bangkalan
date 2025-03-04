@@ -371,6 +371,9 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                <div class="d-flex mt-4">
+                                    {{ $lamaran->links('vendor.pagination.bootstrap-5') }}
+                                </div>
                             </div>
                         </div>
                     </div>
