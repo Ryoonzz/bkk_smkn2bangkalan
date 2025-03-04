@@ -17,9 +17,10 @@ class AlumniController extends Controller
             $alumni = Alumni::where('nama', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('jurusan', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('tahun_lulus', 'LIKE', '%' . $request->cari . '%')
+                ->orderBy('created_at', 'desc')
                 ->get();
         } else {
-            $alumni = Alumni::all();
+            $alumni = Alumni::orderBy('created_at', 'desc')->get();
         }
         return view('dashboard.alumni', compact('alumni'));
     }

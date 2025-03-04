@@ -11,8 +11,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $lowongan = Lowongan::all();
-        $perusahaan = Perusahaan::all();
+        $lowongan = Lowongan::orderBy('created_at', 'desc')->get();
+        $perusahaan = Perusahaan::orderBy('created_at', 'desc')->get();
         return view('dashboard.index', compact('lowongan', 'perusahaan'));
     }
 
@@ -26,9 +26,10 @@ class DashboardController extends Controller
                     $query->where('judul', 'LIKE', '%' . $request->cari . '%')
                         ->orWhere('perusahaan', 'LIKE', '%' . $request->cari . '%');
                 })
+                ->orderBy('created_at', 'desc')
                 ->get();
         } else {
-            $lamaran = Lamaran::all();
+            $lamaran = Lamaran::orderBy('created_at', 'desc')->get();
         }
         return view('dashboard.lamaran', compact('lamaran'));
     }

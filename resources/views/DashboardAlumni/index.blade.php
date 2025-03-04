@@ -273,6 +273,10 @@
                 padding: 0 30px;
             }
 
+            h1 {
+                font-size: 1.3rem
+            }
+
             #nama-halaman h2 {
                 font-size: 22px;
             }

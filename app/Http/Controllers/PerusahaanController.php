@@ -16,9 +16,10 @@ class PerusahaanController extends Controller
                 ->orWhere('alamat', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('kota', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('standar', 'LIKE', '%' . $request->cari . '%')
+                ->orderBy('created_at', 'desc')
                 ->paginate(9);
         } else {
-            $perusahaan = Perusahaan::paginate(9);
+            $perusahaan = Perusahaan::orderBy('created_at', 'desc')->paginate(9);
         }
         return view('bkk.perusahaan', compact('perusahaan'));
     }
@@ -37,9 +38,10 @@ class PerusahaanController extends Controller
                 ->orWhere('alamat', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('kota', 'LIKE', '%' . $request->cari . '%')
                 ->orWhere('standar', 'LIKE', '%' . $request->cari . '%')
+                ->orderBy('created_at', 'desc')
                 ->get();
         } else {
-            $perusahaan = Perusahaan::all();
+            $perusahaan = Perusahaan::orderBy('created_at', 'desc')->get();
         }
         return view('dashboard.perusahaan', compact('perusahaan'));
     }

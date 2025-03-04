@@ -35,26 +35,47 @@
         }
 
         body {
-            background-color: #f5f5fa
+            background-color: #f5f5fa;
+            padding-top: 75px;
+        }
+
+        .navbar-toggle {
+            margin-right: 15px;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+        }
+
+        .navbar-nav>li>a {
+            font-size: 18px;
         }
 
         .halo {
             font-weight: bold;
             padding-bottom: 10px;
+            font-size: 24px;
         }
 
         #about {
             display: flex;
             justify-content: center;
-            background-color: var(--warna-6);
+            align-items: flex-start;
+            background-color: #d1e3fb;
             color: black;
-            height: 350px;
-            padding: 50px 0px;
+            height: auto;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
+
+        #about>div {
+            margin: 10px;
         }
 
         #about iframe {
-            margin-right: 25px;
-            border: 3px solid var(--warna-5);
+            width: 100%;
+            max-width: 350px;
+            border: 3px solid #007bff;
             border-radius: 10px;
         }
 
@@ -75,7 +96,6 @@
             opacity: 0.7;
             text-align: left;
         }
-
 
         #about span {
             color: var(--warna-1);
@@ -100,66 +120,207 @@
             color: black;
             opacity: 0.7;
             font-size: 14px;
-            text-align: left;
+            text-decoration: none;
             transition: 0.3s;
             display: inline-block;
             line-height: 2.5;
-            text-decoration: none;
         }
 
         #about ul li a:hover {
             color: var(--warna-1);
         }
 
-        #info-contact,
-        #link-terkait {
-            margin-right: 25px;
+        #info-contact {
+            max-width: 300px;
+        }
+
+        #link-terkait,
+        #layanan {
+            min-width: 200px;
         }
 
         #footer {
             background-color: var(--warna-5);
             color: white;
             text-align: center;
-            height: 150px;
-            padding: 50px 0px;
+            padding: 30px 0px;
+        }
+
+        #sosmed {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
         }
 
         #footer a {
-            margin-right: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        #footer a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        #footer svg {
+            fill: white;
+            height: 25px;
+            width: 25px;
         }
 
         #nama-halaman {
-            padding: 40px 0 20px 0;
+            padding: 20px 0;
             background-color: var(--warna-6);
             min-height: 40px;
-            margin-top: 80px;
         }
 
         #nama-halaman .halaman {
-            padding: 0 120px;
+            padding: 0 200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         #nama-halaman h2 {
             font-size: 25px;
             font-weight: 350;
             margin: 0;
+            white-space: nowrap;
         }
 
-        nav ul li a {
-            font-size: 18px;
+        @media (max-width: 992px) {
+            #nama-halaman .halaman {
+                padding: 0 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 65px;
+            }
+
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .navbar-nav>li {
+                float: none;
+                display: block;
+            }
+
+            .navbar-nav>li>a {
+                font-size: 15px;
+            }
+
+            #nama-halaman .halaman {
+                flex-direction: column;
+                text-align: center;
+                padding: 0 30px;
+            }
+
+            #nama-halaman h2 {
+                font-size: 22px;
+            }
+
+            #about {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            #about iframe {
+                width: 90%;
+            }
+
+            #info-contact,
+            #link-terkait,
+            #layanan {
+                max-width: 90%;
+                text-align: center;
+            }
+
+            #info-contact h2,
+            #info-contact h3,
+            #info-contact p,
+            #link-terkait h3,
+            #layanan h3 {
+                text-align: center;
+            }
+
+            .halo {
+                font-size: 18px;
+                text-align: center;
+            }
+
+            .panel-title {
+                font-size: 16px;
+            }
+
+            .right {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .btn-action {
+                width: 30%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #nama-halaman .halaman {
+                padding: 0 20px;
+            }
+
+            #nama-halaman h2 {
+                font-size: 20px;
+            }
+
+            #footer a {
+                width: 35px;
+                height: 35px;
+            }
+
+            #footer svg {
+                height: 20px;
+                width: 20px;
+            }
+
+            #footer {
+                padding: 30px 0;
+            }
         }
     </style>
 </head>
 
 <body>
-
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="brand">
-            <a href="#"><img src="{{ asset('storage\logo-dashboard-bkk-smkn2.jpg') }}" alt="SMKN 2 Logo"
-                    class="img-responsive logo"></a>
-        </div>
         <div class="container-fluid">
-            <div id="navbar-menu">
+            <!-- Brand -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="{{ asset('storage/logo-dashboard-bkk-smkn2.jpg') }}" alt="BKK SMKN 2 Logo"
+                        class="img-responsive logo">
+                </a>
+            </div>
+
+            <!-- Navbar Menu -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="#">Lowongan</a></li>
@@ -202,117 +363,121 @@
                                     </div>
                                 </form> </br>
 
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Judul</th>
-                                            <th>Perusahaan</th>
-                                            <th>Tanggal Akhir Daftar</th>
-                                            <th>posisi</th>
-                                            <th>Penempatan</th>
-                                            <th>Gaji</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($lowongan as $job)
-                                            <?php
-                                            $gaji = $job->gaji;
-                                            ?>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $job->judul }}</td>
-                                                <td>{{ $job->perusahaan }}</td>
-                                                <td>{{ $job->tgl_akhir_daftar }}</td>
-                                                <td>{{ $job->posisi }}</td>
-                                                <td>{{ $job->penempatan }}</td>
-                                                <td><?= 'Rp' . number_format($gaji, 0, ',', '.') ?></td>
-
-                                                <td>
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                        data-target="#modalLowongan{{ $job->id }}">
-                                                        <i class="fa fa-info-circle" title="Detail"></i>
-                                                    </button>
-                                                    <a href="/dashboard/lowongan/edit/{{ $job->id }}"
-                                                        class="btn btn-warning"><i class="fa fa-pencil"
-                                                            title="Edit Data"></i></a>
-                                                    <form action="{{ route('lowongan.destroy', $job->id) }}"
-                                                        method="POST" style="display:inline;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger"
-                                                            onclick="return confirm('Yakin ingin menghapus data?')"><i
-                                                                class="fa fa-trash" title="Hapus Data"></i></button>
-                                                    </form>
-                                                </td>
+                                                <th>No</th>
+                                                <th>Judul</th>
+                                                <th>Perusahaan</th>
+                                                <th>Tanggal Akhir Daftar</th>
+                                                <th>posisi</th>
+                                                <th>Penempatan</th>
+                                                <th>Gaji</th>
+                                                <th>Action</th>
                                             </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($lowongan as $job)
+                                                <?php
+                                                $gaji = $job->gaji;
+                                                ?>
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $job->judul }}</td>
+                                                    <td>{{ $job->perusahaan }}</td>
+                                                    <td>{{ $job->tgl_akhir_daftar }}</td>
+                                                    <td>{{ $job->posisi }}</td>
+                                                    <td>{{ $job->penempatan }}</td>
+                                                    <td><?= 'Rp' . number_format($gaji, 0, ',', '.') ?></td>
 
-                                            <div id="modalLowongan{{ $job->id }}" class="modal fade"
-                                                role="dialog" aria-labelledby="modalLabel{{ $job->id }}">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close"
-                                                                data-dismiss="modal">&times;</button>
-                                                            <h4 class="modal-title" id="modalLabel{{ $job->id }}">
-                                                                <strong>{{ $job->judul }}</strong>
-                                                            </h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <h5><strong>Judul</strong></h5>
-                                                            <p>{{ $job->judul }}</p>
+                                                    <td>
+                                                        <button type="button" class="btn btn-action btn-primary"
+                                                            data-toggle="modal"
+                                                            data-target="#modalLowongan{{ $job->id }}">
+                                                            <i class="fa fa-info-circle" title="Detail"></i>
+                                                        </button>
+                                                        <a href="/dashboard/lowongan/edit/{{ $job->id }}"
+                                                            class="btn btn-action btn-warning"><i class="fa fa-pencil"
+                                                                title="Edit Data"></i></a>
+                                                        <form action="{{ route('lowongan.destroy', $job->id) }}"
+                                                            method="POST" style="display:inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-action btn-danger"
+                                                                onclick="return confirm('Yakin ingin menghapus data?')"><i
+                                                                    class="fa fa-trash" title="Hapus Data"></i></button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
 
-                                                            <h5><strong>Perusahaan</strong></h5>
-                                                            <p>{{ $job->perusahaan }}</p>
-
-                                                            <h5><strong>Tanggal Akhir Pendaftaran</strong></h5>
-                                                            <p>{{ $job->tgl_akhir_daftar }}</p>
-
-                                                            <h5><strong>Deskripsi</strong></h5>
-                                                            <p>{{ $job->deskripsi }}</p>
-
-                                                            <h5><strong>Jurusan</strong></h5>
-                                                            <div>
-                                                                @php
-                                                                    $jurusan = is_array($job->jurusan)
-                                                                        ? $job->jurusan
-                                                                        : explode(', ', $job->jurusan);
-                                                                @endphp
-
-                                                                @if (!empty($jurusan) && count(array_filter($jurusan)) > 0)
-                                                                    @foreach ($jurusan as $item)
-                                                                        <span
-                                                                            class="badge bg-success">{{ $item }}</span>
-                                                                    @endforeach
-                                                                @else
-                                                                    <span>-</span>
-                                                                @endif
+                                                <div id="modalLowongan{{ $job->id }}" class="modal fade"
+                                                    role="dialog" aria-labelledby="modalLabel{{ $job->id }}">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title"
+                                                                    id="modalLabel{{ $job->id }}">
+                                                                    <strong>{{ $job->judul }}</strong>
+                                                                </h4>
                                                             </div>
+                                                            <div class="modal-body">
+                                                                <h5><strong>Judul</strong></h5>
+                                                                <p>{{ $job->judul }}</p>
 
-                                                            <h5><strong>Posisi</strong></h5>
-                                                            <p>{{ $job->posisi }}</p>
+                                                                <h5><strong>Perusahaan</strong></h5>
+                                                                <p>{{ $job->perusahaan }}</p>
 
-                                                            <h5><strong>Penempatan</strong></h5>
-                                                            <p>{{ $job->penempatan }}</p>
+                                                                <h5><strong>Tanggal Akhir Pendaftaran</strong></h5>
+                                                                <p>{{ $job->tgl_akhir_daftar }}</p>
 
-                                                            <h5><strong>Gaji</strong></h5>
-                                                            <p>Rp{{ number_format($job->gaji, 0, ',', '.') }}</p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">Tutup</button>
+                                                                <h5><strong>Deskripsi</strong></h5>
+                                                                <p>{{ $job->deskripsi }}</p>
+
+                                                                <h5><strong>Jurusan</strong></h5>
+                                                                <div>
+                                                                    @php
+                                                                        $jurusan = is_array($job->jurusan)
+                                                                            ? $job->jurusan
+                                                                            : explode(', ', $job->jurusan);
+                                                                    @endphp
+
+                                                                    @if (!empty($jurusan) && count(array_filter($jurusan)) > 0)
+                                                                        @foreach ($jurusan as $item)
+                                                                            <span
+                                                                                class="badge bg-success">{{ $item }}</span>
+                                                                        @endforeach
+                                                                    @else
+                                                                        <span>-</span>
+                                                                    @endif
+                                                                </div>
+
+                                                                <h5><strong>Posisi</strong></h5>
+                                                                <p>{{ $job->posisi }}</p>
+
+                                                                <h5><strong>Penempatan</strong></h5>
+                                                                <p>{{ $job->penempatan }}</p>
+
+                                                                <h5><strong>Gaji</strong></h5>
+                                                                <p>Rp{{ number_format($job->gaji, 0, ',', '.') }}</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default"
+                                                                    data-dismiss="modal">Tutup</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @empty
-                                            <div class="alert alert-danger">
-                                                Data Tidak Tersedia.
-                                            </div>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+                                            @empty
+                                                <div class="alert alert-danger">
+                                                    Data Tidak Tersedia.
+                                                </div>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

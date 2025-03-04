@@ -35,26 +35,47 @@
         }
 
         body {
-            background-color: #f5f5fa
+            background-color: #f5f5fa;
+            padding-top: 75px;
+        }
+
+        .navbar-toggle {
+            margin-right: 15px;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+        }
+
+        .navbar-nav>li>a {
+            font-size: 18px;
         }
 
         .halo {
             font-weight: bold;
             padding-bottom: 10px;
+            font-size: 24px;
         }
 
         #about {
             display: flex;
             justify-content: center;
-            background-color: var(--warna-6);
+            align-items: flex-start;
+            background-color: #d1e3fb;
             color: black;
-            height: 350px;
-            padding: 50px 0px;
+            height: auto;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
+
+        #about>div {
+            margin: 10px;
         }
 
         #about iframe {
-            margin-right: 25px;
-            border: 3px solid var(--warna-5);
+            width: 100%;
+            max-width: 350px;
+            border: 3px solid #007bff;
             border-radius: 10px;
         }
 
@@ -75,7 +96,6 @@
             opacity: 0.7;
             text-align: left;
         }
-
 
         #about span {
             color: var(--warna-1);
@@ -100,66 +120,207 @@
             color: black;
             opacity: 0.7;
             font-size: 14px;
-            text-align: left;
+            text-decoration: none;
             transition: 0.3s;
             display: inline-block;
             line-height: 2.5;
-            text-decoration: none;
         }
 
         #about ul li a:hover {
             color: var(--warna-1);
         }
 
-        #info-contact,
-        #link-terkait {
-            margin-right: 25px;
+        #info-contact {
+            max-width: 300px;
+        }
+
+        #link-terkait,
+        #layanan {
+            min-width: 200px;
         }
 
         #footer {
             background-color: var(--warna-5);
             color: white;
             text-align: center;
-            height: 150px;
-            padding: 50px 0px;
+            padding: 30px 0px;
+        }
+
+        #sosmed {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
         }
 
         #footer a {
-            margin-right: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        #footer a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        #footer svg {
+            fill: white;
+            height: 25px;
+            width: 25px;
         }
 
         #nama-halaman {
-            padding: 40px 0 20px 0;
+            padding: 20px 0;
             background-color: var(--warna-6);
             min-height: 40px;
-            margin-top: 80px;
         }
 
         #nama-halaman .halaman {
-            padding: 0 120px;
+            padding: 0 200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         #nama-halaman h2 {
             font-size: 25px;
             font-weight: 350;
             margin: 0;
+            white-space: nowrap;
         }
 
-        nav ul li a {
-            font-size: 18px;
+        @media (max-width: 992px) {
+            #nama-halaman .halaman {
+                padding: 0 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 65px;
+            }
+
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .navbar-nav>li {
+                float: none;
+                display: block;
+            }
+
+            .navbar-nav>li>a {
+                font-size: 15px;
+            }
+
+            #nama-halaman .halaman {
+                flex-direction: column;
+                text-align: center;
+                padding: 0 30px;
+            }
+
+            #nama-halaman h2 {
+                font-size: 22px;
+            }
+
+            #about {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            #about iframe {
+                width: 90%;
+            }
+
+            #info-contact,
+            #link-terkait,
+            #layanan {
+                max-width: 90%;
+                text-align: center;
+            }
+
+            #info-contact h2,
+            #info-contact h3,
+            #info-contact p,
+            #link-terkait h3,
+            #layanan h3 {
+                text-align: center;
+            }
+
+            .halo {
+                font-size: 18px;
+                text-align: center;
+            }
+
+            .panel-title {
+                font-size: 16px;
+            }
+
+            .right {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #nama-halaman .halaman {
+                padding: 0 20px;
+            }
+
+            #nama-halaman h2 {
+                font-size: 20px;
+            }
+
+            #footer a {
+                width: 35px;
+                height: 35px;
+            }
+
+            #footer svg {
+                height: 20px;
+                width: 20px;
+            }
+
+            #footer {
+                padding: 30px 0;
+            }
         }
     </style>
 </head>
 
 <body>
-
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="brand">
-            <a href="#"><img src="{{ asset('storage\logo-dashboard-bkk-smkn2.jpg') }}" alt="SMKN 2 Logo"
-                    class="img-responsive logo"></a>
-        </div>
         <div class="container-fluid">
-            <div id="navbar-menu">
+            <!-- Brand -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="{{ asset('storage/logo-dashboard-bkk-smkn2.jpg') }}" alt="BKK SMKN 2 Logo"
+                        class="img-responsive logo">
+                </a>
+            </div>
+
+            <!-- Navbar Menu -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Dashboard</a></li>
                     <li><a href="/dashboard/lowongan">Lowongan</a></li>
@@ -172,6 +333,7 @@
         </div>
     </nav>
 
+
     <section id="nama-halaman">
         <div class="halaman d-flex justify-content-between align-items-center">
             <h2>Dashboard Admin</h2>
@@ -179,12 +341,12 @@
     </section>
 
 
-    <div class="main">
+    <section class="main">
         <div class="main-content">
             <div class="container-fluid">
                 <h1 class="halo">Halo {{ auth()->user()->name }}, Selamat Datang di Halaman Dashboard!</h1>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 col-sm-12">
                         <div class="panel">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Data Lowongan</h3>
@@ -193,36 +355,38 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Judul</th>
-                                            <th>Perusahaan</th>
-                                            <th>Tanggal</th>
-                                            <th>posisi</th>
-                                            <th>Penempatan</th>
-                                            <th>Gaji</th>
-                                            {{-- <th>Action</th> --}}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($lowongan->take(5) as $job)
-                                            <?php
-                                            $gaji = $job->gaji;
-                                            ?>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $job->judul }}</td>
-                                                <td>{{ $job->perusahaan }}</td>
-                                                <td>{{ $job->tanggal }}</td>
-                                                <td>{{ $job->posisi }}</td>
-                                                <td>{{ $job->penempatan }}</td>
-                                                <td><?= 'Rp' . number_format($gaji, 0, ',', '.') ?></td>
+                                                <th>No</th>
+                                                <th>Judul</th>
+                                                <th>Perusahaan</th>
+                                                <th>Tanggal</th>
+                                                <th>posisi</th>
+                                                <th>Penempatan</th>
+                                                <th>Gaji</th>
+                                                {{-- <th>Action</th> --}}
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($lowongan->take(5) as $job)
+                                                <?php
+                                                $gaji = $job->gaji;
+                                                ?>
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $job->judul }}</td>
+                                                    <td>{{ $job->perusahaan }}</td>
+                                                    <td>{{ $job->tanggal }}</td>
+                                                    <td>{{ $job->posisi }}</td>
+                                                    <td>{{ $job->penempatan }}</td>
+                                                    <td><?= 'Rp' . number_format($gaji, 0, ',', '.') ?></td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <div class="panel">
@@ -233,54 +397,45 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Perusahaan</th>
-                                            <th>Kode Perusahaan</th>
-                                            <th>Alamat Perusahaan</th>
-                                            <th>Kota</th>
-                                            <th>Tahun Gabung</th>
-                                            <th>Standar</th>
-                                            <th>MoU</th>
-                                            <th>UMKM</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($perusahaan->take(5) as $comp)
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $comp->nama }}</td>
-                                                <td>{{ $comp->kode }}</td>
-                                                <td>{{ $comp->alamat }}</td>
-                                                <td>{{ $comp->kota }}</td>
-                                                <td>{{ $comp->tahun_gabung }}</td>
-                                                <td>{{ $comp->standar }}</td>
-                                                <td>{{ $comp->mou }}</td>
-                                                <td>{{ $comp->umkm }}</td>
+                                                <th>No</th>
+                                                <th>Nama Perusahaan</th>
+                                                <th>Kode Perusahaan</th>
+                                                <th>Alamat Perusahaan</th>
+                                                <th>Kota</th>
+                                                <th>Tahun Gabung</th>
+                                                <th>Standar</th>
+                                                <th>MoU</th>
+                                                <th>UMKM</th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($perusahaan->take(5) as $comp)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $comp->nama }}</td>
+                                                    <td>{{ $comp->kode }}</td>
+                                                    <td>{{ $comp->alamat }}</td>
+                                                    <td>{{ $comp->kota }}</td>
+                                                    <td>{{ $comp->tahun_gabung }}</td>
+                                                    <td>{{ $comp->standar }}</td>
+                                                    <td>{{ $comp->mou }}</td>
+                                                    <td>{{ $comp->umkm }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="main">
-        <div class="main-content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 
     <section id="about">
         <iframe
