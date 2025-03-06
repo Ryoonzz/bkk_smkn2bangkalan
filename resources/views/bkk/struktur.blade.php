@@ -372,6 +372,18 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/lowongan">Lowongan</a></li>
                     <li class="nav-item"><a class="nav-link" href="/perusahaan">Perusahaan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://bit.ly/SurveySMKN2bkl2024" target="_blank">Survey Kepuasan</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">Informasi</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Berita Terbaru</a></li>
+                            <li><a class="dropdown-item" href="#">Pengumuman</a></li>
+                            <li><a class="dropdown-item" href="#">Galeri Kegiatan</a></li>
+                            <li><a class="dropdown-item" href="https://bit.ly/tracerstudysmkn2bangkalan" target="_blank">Tracer Study</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>
             </div>
