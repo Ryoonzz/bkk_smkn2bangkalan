@@ -8,6 +8,7 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DashboardAlumniController;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\LamaranController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,9 @@ Route::get('/struktur', function () {
 Route::get('/pengumuman', function () {
     return view('bkk.pengumuman');
 });
+
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+Route::get('/dashboard/berita/detail-berita{id}', [BeritaController::class, 'show'])->name('berita.show');
 
 Route::get('/lowongan', [LowonganController::class, 'index'])->name('lowongan.index');
 
@@ -60,6 +64,13 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/dashboard/alumni/edit/{id}', [AlumniController::class, 'edit'])->name('alumni.edit');
     Route::put('/dashboard/alumni/update/{id}', [AlumniController::class, 'update'])->name('alumni.update');
     Route::delete('/dashboard/alumni/{id}', [AlumniController::class, 'destroy'])->name('alumni.destroy');
+    
+    Route::get('/dashboard/berita', [BeritaController::class, 'dashboard'])->name('berita.dashboard');
+    Route::get('/dashboard/berita/tambah', [BeritaController::class, 'create'])->name('berita.tambah');
+    Route::post('/dashboard/berita/store', [BeritaController::class, 'store'])->name('berita.store');
+    Route::get('/dashboard/berita/edit/{id}', [BeritaController::class, 'edit'])->name('berita.edit');
+    Route::put('/dashboard/berita/update/{id}', [BeritaController::class, 'update'])->name('berita.update');
+    Route::delete('/dashboard/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 
     Route::get('/dashboard/lamaran', [DashboardController::class, 'daftarPelamar'])->name('lamaran.dashboard');
 });

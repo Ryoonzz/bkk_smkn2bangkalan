@@ -324,10 +324,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/dashboard/lowongan">Lowongan</a></li>
-                    <li><a href="/dashboard/perusahaan">Perusahaan</a></li>
-                    <li><a href="#">Alumni</a></li>
+                    <li><a href="#">Perusahaan</a></li>
+                    <li><a href="/dashboard/alumni">Alumni</a></li>
                     <li><a href="/dashboard/lamaran">Lamaran</a></li>
-                    <li><a href="/dashboard/berita">Berita</a></li>
+                    <li><a href="#">Berita</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>
@@ -348,17 +348,17 @@
                     <div class="col-md-12">
                         <div class="panel">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Data Alumni</h3>
+                                <h3 class="panel-title">Data Berita</h3>
                                 <div class="right">
-                                    <a href="/dashboard/alumni/tambah" class="btn btn-primary"><i
+                                    <a href="/dashboard/berita/tambah" class="btn btn-primary"><i
                                             class="fa fa-plus"></i> Tambah Data</a>
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <form action="/dashboard/alumni" method="get">
+                                <form action="/dashboard/berita" method="get">
                                     <div class="input-group">
                                         <input name="cari" class="form-control" type="text"
-                                            placeholder="Cari data alumni" value="{{ request('cari') }}">
+                                            placeholder="Cari data berita" value="{{ request('cari') }}">
                                         <span class="input-group-btn"><button class="btn btn-primary"
                                                 type="submit">Cari</button></span>
                                     </div>
@@ -369,78 +369,62 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama</th>
-                                                <th>NISN</th>
-                                                <th>Tanggal Lahir</th>
-                                                <th>No HP</th>
-                                                <th>Alamat</th>
-                                                <th>Jurusan</th>
-                                                <th>Tahun Lulus</th>
+                                                <th>Judul</th>
+                                                <th>Gambar</th>
+                                                <th>Tanggal</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse ($alumni as $al)
+                                            @forelse ($berita as $news)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $al->nama }}</td>
-                                                    <td>{{ $al->nisn }}</td>
-                                                    <td>{{ $al->tanggal_lahir }}</td>
-                                                    <td>{{ $al->no_hp }}</td>
-                                                    <td>{{ $al->alamat }}</td>
-                                                    <td>{{ $al->jurusan }}</td>
-                                                    <td>{{ $al->tahun_lulus }}</td>
-
+                                                    <td>{{ $news->judul }}</td>
+                                                    <td><img src="{{ asset($news->gambar) }}" width="80px"></td>
+                                                    <td>{{ $news->tanggal }}</td>
                                                     <td>
                                                         <button type="button" class="btn btn-primary"
                                                             data-toggle="modal"
-                                                            data-target="#modalLowongan{{ $al->id }}">
+                                                            data-target="#modalBerita{{ $news->id }}">
                                                             <i class="fa fa-info-circle" title="Detail"></i>
                                                         </button>
-                                                        <a href="/dashboard/alumni/edit/{{ $al->id }}"
-                                                            class="btn btn-warning"><i class="fa fa-pencil"
-                                                                title="Edit Data"></i></a>
-                                                        <form action="{{ route('alumni.destroy', $al->id) }}"
+                                                        <a href="/dashboard/berita/edit/{{ $news->id }}"
+                                                            class="btn btn-warning">
+                                                            <i class="fa fa-pencil" title="Edit Data"></i>
+                                                        </a>
+                                                        <form action="{{ route('berita.destroy', $news->id) }}"
                                                             method="POST" style="display:inline;">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger"
-                                                                onclick="return confirm('Yakin ingin menghapus data?')"><i
-                                                                    class="fa fa-trash" title="Hapus Data"></i></button>
+                                                                onclick="return confirm('Yakin ingin menghapus berita ini?')">
+                                                                <i class="fa fa-trash" title="Hapus Data"></i>
+                                                            </button>
                                                         </form>
                                                     </td>
                                                 </tr>
 
-                                                <div id="modalLowongan{{ $al->id }}" class="modal fade"
-                                                    role="dialog" aria-labelledby="modalLabel{{ $al->id }}">
+                                                <div id="modalBerita{{ $news->id }}" class="modal fade"
+                                                    role="dialog" aria-labelledby="modalLabel{{ $news->id }}">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <button type="button" class="close"
                                                                     data-dismiss="modal">&times;</button>
                                                                 <h4 class="modal-title"
-                                                                    id="modalLabel{{ $al->id }}">
-                                                                    <strong>{{ $al->nama }}</strong>
+                                                                    id="modalLabel{{ $news->id }}">
+                                                                    <strong>{{ $news->judul }}</strong>
                                                                 </h4>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <h5><strong>NISN</strong></h5>
-                                                                <p>{{ $al->nisn }}</p>
-
-                                                                <h5><strong>Tanggal Lahir</strong></h5>
-                                                                <p>{{ $al->tanggal_lahir }}</p>
-
-                                                                <h5><strong>No HP</strong></h5>
-                                                                <p>{{ $al->no_hp }}</p>
-
-                                                                <h5><strong>Alamat</strong></h5>
-                                                                <p>{{ $al->alamat }}</p>
-
-                                                                <h5><strong>Jurusan</strong></h5>
-                                                                <p>{{ $al->jurusan }}</p>
-
-                                                                <h5><strong>Tahun Lulus</strong></h5>
-                                                                <p>{{ $al->tahun_lulus }}</p>
+                                                                <img src="{{ asset($news->gambar) }}"
+                                                                    class="img-responsive">
+                                                                <h5><strong>Judul</strong></h5>
+                                                                <p>{{ $news->judul }}</p>
+                                                                <h5><strong>Tanggal</strong></h5>
+                                                                <p>{{ $news->tanggal }}</p>
+                                                                <h5><strong>Deskripsi</strong></h5>
+                                                                <p>{!! nl2br(e($news->deskripsi)) !!}</p>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default"
@@ -458,7 +442,7 @@
                                     </table>
                                 </div>
                                 <div class="d-flex mt-4">
-                                    {{ $alumni->links('vendor.pagination.bootstrap-5') }}
+                                    {{ $berita->links('vendor.pagination.bootstrap-5') }}
                                 </div>
                             </div>
                         </div>

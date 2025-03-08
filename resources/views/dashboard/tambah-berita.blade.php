@@ -51,12 +51,6 @@
             font-size: 18px;
         }
 
-        .halo {
-            font-weight: bold;
-            padding-bottom: 10px;
-            font-size: 24px;
-        }
-
         #about {
             display: flex;
             justify-content: center;
@@ -256,22 +250,8 @@
                 text-align: center;
             }
 
-            .halo {
-                font-size: 18px;
-                text-align: center;
-            }
-
             .panel-title {
                 font-size: 16px;
-            }
-
-            .right {
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            .btn-action {
-                width: 30%;
             }
         }
 
@@ -325,7 +305,7 @@
                     <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/dashboard/lowongan">Lowongan</a></li>
                     <li><a href="/dashboard/perusahaan">Perusahaan</a></li>
-                    <li><a href="#">Alumni</a></li>
+                    <li><a href="/dashboard/alumni">Alumni</a></li>
                     <li><a href="/dashboard/lamaran">Lamaran</a></li>
                     <li><a href="/dashboard/berita">Berita</a></li>
                     <li><a href="/logout">Logout</a></li>
@@ -348,118 +328,47 @@
                     <div class="col-md-12">
                         <div class="panel">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Data Alumni</h3>
-                                <div class="right">
-                                    <a href="/dashboard/alumni/tambah" class="btn btn-primary"><i
-                                            class="fa fa-plus"></i> Tambah Data</a>
-                                </div>
+                                <h3 class="panel-title">Tambah Berita</h3>
                             </div>
                             <div class="panel-body">
-                                <form action="/dashboard/alumni" method="get">
-                                    <div class="input-group">
-                                        <input name="cari" class="form-control" type="text"
-                                            placeholder="Cari data alumni" value="{{ request('cari') }}">
-                                        <span class="input-group-btn"><button class="btn btn-primary"
-                                                type="submit">Cari</button></span>
-                                    </div>
-                                </form> </br>
+                                <form action="{{ route('berita.store') }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group {{ $errors->has('judul') ? 'has-error' : '' }}">
+                                        <label for="judul">Judul Berita</label>
+                                        <input type="text" name="judul" class="form-control" id="judul"
+                                            placeholder="Masukkan judul berita" value="{{ old('judul') }}">
+                                        @if ($errors->has('judul'))
+                                            <span class="text-danger">{{ $errors->first('judul') }}</span>
+                                        @endif
+                                    </div> </br>
 
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama</th>
-                                                <th>NISN</th>
-                                                <th>Tanggal Lahir</th>
-                                                <th>No HP</th>
-                                                <th>Alamat</th>
-                                                <th>Jurusan</th>
-                                                <th>Tahun Lulus</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse ($alumni as $al)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $al->nama }}</td>
-                                                    <td>{{ $al->nisn }}</td>
-                                                    <td>{{ $al->tanggal_lahir }}</td>
-                                                    <td>{{ $al->no_hp }}</td>
-                                                    <td>{{ $al->alamat }}</td>
-                                                    <td>{{ $al->jurusan }}</td>
-                                                    <td>{{ $al->tahun_lulus }}</td>
+                                    <div class="form-group {{ $errors->has('gambar') ? 'has-error' : '' }}">
+                                        <label for="gambar">Gambar Berita</label>
+                                        <input type="file" name="gambar" class="form-control" id="gambar">
+                                        @if ($errors->has('gambar'))
+                                            <span class="text-danger">{{ $errors->first('gambar') }}</span>
+                                        @endif
+                                    </div> </br>
 
-                                                    <td>
-                                                        <button type="button" class="btn btn-primary"
-                                                            data-toggle="modal"
-                                                            data-target="#modalLowongan{{ $al->id }}">
-                                                            <i class="fa fa-info-circle" title="Detail"></i>
-                                                        </button>
-                                                        <a href="/dashboard/alumni/edit/{{ $al->id }}"
-                                                            class="btn btn-warning"><i class="fa fa-pencil"
-                                                                title="Edit Data"></i></a>
-                                                        <form action="{{ route('alumni.destroy', $al->id) }}"
-                                                            method="POST" style="display:inline;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger"
-                                                                onclick="return confirm('Yakin ingin menghapus data?')"><i
-                                                                    class="fa fa-trash" title="Hapus Data"></i></button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
+                                    <div class="form-group {{ $errors->has('tanggal') ? 'has-error' : '' }}">
+                                        <label for="tanggal">Tanggal</label>
+                                        <input type="date" name="tanggal" class="form-control" id="tanggal"
+                                            value="{{ old('tanggal') }}">
+                                        @if ($errors->has('tanggal'))
+                                            <span class="text-danger">{{ $errors->first('tanggal') }}</span>
+                                        @endif
+                                    </div> </br>
 
-                                                <div id="modalLowongan{{ $al->id }}" class="modal fade"
-                                                    role="dialog" aria-labelledby="modalLabel{{ $al->id }}">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close"
-                                                                    data-dismiss="modal">&times;</button>
-                                                                <h4 class="modal-title"
-                                                                    id="modalLabel{{ $al->id }}">
-                                                                    <strong>{{ $al->nama }}</strong>
-                                                                </h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <h5><strong>NISN</strong></h5>
-                                                                <p>{{ $al->nisn }}</p>
+                                    <div class="form-group {{ $errors->has('deskripsi') ? 'has-error' : '' }}">
+                                        <label for="deskripsi">Deskripsi Berita</label>
+                                        <textarea name="deskripsi" class="form-control" id="deskripsi" rows="5" placeholder="Masukkan deskripsi berita">{{ old('deskripsi') }}</textarea>
+                                        @if ($errors->has('deskripsi'))
+                                            <span class="text-danger">{{ $errors->first('deskripsi') }}</span>
+                                        @endif
+                                    </div> </br>
 
-                                                                <h5><strong>Tanggal Lahir</strong></h5>
-                                                                <p>{{ $al->tanggal_lahir }}</p>
-
-                                                                <h5><strong>No HP</strong></h5>
-                                                                <p>{{ $al->no_hp }}</p>
-
-                                                                <h5><strong>Alamat</strong></h5>
-                                                                <p>{{ $al->alamat }}</p>
-
-                                                                <h5><strong>Jurusan</strong></h5>
-                                                                <p>{{ $al->jurusan }}</p>
-
-                                                                <h5><strong>Tahun Lulus</strong></h5>
-                                                                <p>{{ $al->tahun_lulus }}</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default"
-                                                                    data-dismiss="modal">Tutup</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @empty
-                                                <div class="alert alert-danger">
-                                                    Data Tidak Tersedia.
-                                                </div>
-                                            @endforelse
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="d-flex mt-4">
-                                    {{ $alumni->links('vendor.pagination.bootstrap-5') }}
-                                </div>
+                                    <button type="submit" class="btn btn-primary">Tambah berita</button>
+                                </form>
                             </div>
                         </div>
                     </div>

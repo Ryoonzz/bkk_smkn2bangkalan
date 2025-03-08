@@ -6,13 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BKK SMK Negeri 2 Bangkalan</title>
     <link rel="shortcut icon" href="storage/tab-logo_smkn2bkl.png">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/linearicons/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
         /* font-family: 'Poppins', sans-serif; */
@@ -35,26 +32,32 @@
         }
 
         body {
-            background-color: #f5f5fa;
-            padding-top: 75px;
+            text-align: center;
         }
 
-        .navbar-toggle {
-            margin-right: 15px;
+        /* dropdown onhover */
+        .navbar .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0;
         }
 
-        .navbar-brand img {
-            height: 40px;
+        .navbar ul a {
+            display: inline-block;
+            transition: transform 0.3s ease-in-out;
+
         }
 
-        .navbar-nav>li>a {
-            font-size: 18px;
+        .navbar ul a:hover {
+            color: var(--warna-1);
+            transform: translateY(-3px);
         }
 
-        .halo {
-            font-weight: bold;
-            padding-bottom: 10px;
-            font-size: 24px;
+        .navbar ul li {
+            margin-right: 20px;
+        }
+
+        .dropdown-menu {
+            display: none;
         }
 
         #about {
@@ -139,7 +142,7 @@
             min-width: 200px;
         }
 
-        #footer {
+        footer {
             background-color: var(--warna-5);
             color: white;
             text-align: center;
@@ -154,7 +157,7 @@
             margin-bottom: 10px;
         }
 
-        #footer a {
+        footer a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -165,11 +168,11 @@
             transition: 0.3s;
         }
 
-        #footer a:hover {
+        footer a:hover {
             background: rgba(255, 255, 255, 0.4);
         }
 
-        #footer svg {
+        footer svg {
             fill: white;
             height: 25px;
             width: 25px;
@@ -179,6 +182,7 @@
             padding: 20px 0;
             background-color: var(--warna-6);
             min-height: 40px;
+            margin-top: 80px;
         }
 
         #nama-halaman .halaman {
@@ -197,38 +201,84 @@
             white-space: nowrap;
         }
 
+        #nama-halaman ol {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 15px;
+        }
+
+        #nama-halaman ol li {
+            margin-right: 5px;
+        }
+
+        #nama-halaman a {
+            text-decoration: none;
+            color: var(--warna-5);
+        }
+
+        #main {
+            margin: 80px auto;
+            max-width: 900px;
+            padding: 0 50px;
+            text-align: center;
+        }
+
+        #main h2 {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        #main img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        #main p {
+            font-size: 18px;
+            margin: 10px 0;
+            text-align: justify;
+        }
+
+        @media (max-width: 1024px) {
+            /* biar ada isinya */
+        }
+
         @media (max-width: 992px) {
             #nama-halaman .halaman {
                 padding: 0 50px;
             }
+
+            #main {
+                padding: 0 30px;
+            }
         }
 
         @media (max-width: 768px) {
-            body {
-                padding-top: 65px;
-            }
-
-            .navbar-nav {
-                text-align: center;
-            }
-
-            .navbar-nav>li {
-                float: none;
-                display: block;
-            }
-
-            .navbar-nav>li>a {
-                font-size: 15px;
+            [data-aos] {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
             }
 
             #nama-halaman .halaman {
                 flex-direction: column;
+                /* Supaya h2 dan breadcrumb turun ke bawah */
                 text-align: center;
                 padding: 0 30px;
             }
 
             #nama-halaman h2 {
                 font-size: 22px;
+            }
+
+            #nama-halaman ol {
+                font-size: 14px;
             }
 
             #about {
@@ -256,22 +306,16 @@
                 text-align: center;
             }
 
-            .halo {
-                font-size: 18px;
-                text-align: center;
+            #main {
+                padding: 0 20px;
             }
 
-            .panel-title {
+            #main h2 {
+                font-size: 28px;
+            }
+
+            #main p {
                 font-size: 16px;
-            }
-
-            .right {
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            .btn-action {
-                width: 30%;
             }
         }
 
@@ -284,17 +328,33 @@
                 font-size: 20px;
             }
 
-            #footer a {
+            #nama-halaman ol {
+                justify-content: center;
+            }
+
+            #main {
+                padding: 0 15px;
+            }
+
+            #main h2 {
+                font-size: 24px;
+            }
+
+            #main p {
+                font-size: 14px;
+            }
+
+            footer a {
                 width: 35px;
                 height: 35px;
             }
 
-            #footer svg {
+            footer svg {
                 height: 20px;
                 width: 20px;
             }
 
-            #footer {
+            footer {
                 padding: 30px 0;
             }
         }
@@ -302,33 +362,45 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu"
-                    aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <img src="{{ asset('storage/logo-dashboard-bkk-smkn2.jpg') }}" alt="BKK SMKN 2 Logo"
-                        class="img-responsive logo">
-                </a>
-            </div>
 
-            <!-- Navbar Menu -->
-            <div class="collapse navbar-collapse" id="navbar-menu">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="/dashboard/lowongan">Lowongan</a></li>
-                    <li><a href="/dashboard/perusahaan">Perusahaan</a></li>
-                    <li><a href="#">Alumni</a></li>
-                    <li><a href="/dashboard/lamaran">Lamaran</a></li>
-                    <li><a href="/dashboard/berita">Berita</a></li>
-                    <li><a href="/logout">Logout</a></li>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="{{ asset('storage\logo-bkk-smkn2.jpg') }}" alt="Logo SMKN 2 Bangkalan" height="55"
+                    class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/">Beranda</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">Profil</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/visi-misi">Visi & Misi BKK</a></li>
+                            <li><a class="dropdown-item" href="/motto">Motto BKK</a></li>
+                            <li><a class="dropdown-item" href="#">Struktur BKK</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/lowongan">Lowongan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/perusahaan">Perusahaan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://bit.ly/SurveySMKN2bkl2024"
+                            target="_blank">Survey Kepuasan</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">Informasi</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/berita">Berita Terbaru</a></li>
+                            <li><a class="dropdown-item" href="/pengumuman">Pengumuman</a></li>
+                            <li><a class="dropdown-item" href="/galeri">Galeri Kegiatan</a></li>
+                            <li><a class="dropdown-item" href="https://bit.ly/tracerstudysmkn2bangkalan"
+                                    target="_blank">Tracer Study</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -336,137 +408,23 @@
 
     <section id="nama-halaman">
         <div class="halaman d-flex justify-content-between align-items-center">
-            <h2>Dashboard Admin</h2>
+            <h2>Detail Berita</h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Beranda</a></li>
+                    <li class="breadcrumb-item"><a href="/berita">Berita Terbaru</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Detail Berita</li>
+                </ol>
+            </nav>
         </div>
     </section>
 
-
-    <div class="main">
-        <div class="main-content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Data Alumni</h3>
-                                <div class="right">
-                                    <a href="/dashboard/alumni/tambah" class="btn btn-primary"><i
-                                            class="fa fa-plus"></i> Tambah Data</a>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <form action="/dashboard/alumni" method="get">
-                                    <div class="input-group">
-                                        <input name="cari" class="form-control" type="text"
-                                            placeholder="Cari data alumni" value="{{ request('cari') }}">
-                                        <span class="input-group-btn"><button class="btn btn-primary"
-                                                type="submit">Cari</button></span>
-                                    </div>
-                                </form> </br>
-
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama</th>
-                                                <th>NISN</th>
-                                                <th>Tanggal Lahir</th>
-                                                <th>No HP</th>
-                                                <th>Alamat</th>
-                                                <th>Jurusan</th>
-                                                <th>Tahun Lulus</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse ($alumni as $al)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $al->nama }}</td>
-                                                    <td>{{ $al->nisn }}</td>
-                                                    <td>{{ $al->tanggal_lahir }}</td>
-                                                    <td>{{ $al->no_hp }}</td>
-                                                    <td>{{ $al->alamat }}</td>
-                                                    <td>{{ $al->jurusan }}</td>
-                                                    <td>{{ $al->tahun_lulus }}</td>
-
-                                                    <td>
-                                                        <button type="button" class="btn btn-primary"
-                                                            data-toggle="modal"
-                                                            data-target="#modalLowongan{{ $al->id }}">
-                                                            <i class="fa fa-info-circle" title="Detail"></i>
-                                                        </button>
-                                                        <a href="/dashboard/alumni/edit/{{ $al->id }}"
-                                                            class="btn btn-warning"><i class="fa fa-pencil"
-                                                                title="Edit Data"></i></a>
-                                                        <form action="{{ route('alumni.destroy', $al->id) }}"
-                                                            method="POST" style="display:inline;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger"
-                                                                onclick="return confirm('Yakin ingin menghapus data?')"><i
-                                                                    class="fa fa-trash" title="Hapus Data"></i></button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-
-                                                <div id="modalLowongan{{ $al->id }}" class="modal fade"
-                                                    role="dialog" aria-labelledby="modalLabel{{ $al->id }}">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close"
-                                                                    data-dismiss="modal">&times;</button>
-                                                                <h4 class="modal-title"
-                                                                    id="modalLabel{{ $al->id }}">
-                                                                    <strong>{{ $al->nama }}</strong>
-                                                                </h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <h5><strong>NISN</strong></h5>
-                                                                <p>{{ $al->nisn }}</p>
-
-                                                                <h5><strong>Tanggal Lahir</strong></h5>
-                                                                <p>{{ $al->tanggal_lahir }}</p>
-
-                                                                <h5><strong>No HP</strong></h5>
-                                                                <p>{{ $al->no_hp }}</p>
-
-                                                                <h5><strong>Alamat</strong></h5>
-                                                                <p>{{ $al->alamat }}</p>
-
-                                                                <h5><strong>Jurusan</strong></h5>
-                                                                <p>{{ $al->jurusan }}</p>
-
-                                                                <h5><strong>Tahun Lulus</strong></h5>
-                                                                <p>{{ $al->tahun_lulus }}</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default"
-                                                                    data-dismiss="modal">Tutup</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @empty
-                                                <div class="alert alert-danger">
-                                                    Data Tidak Tersedia.
-                                                </div>
-                                            @endforelse
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="d-flex mt-4">
-                                    {{ $alumni->links('vendor.pagination.bootstrap-5') }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <section id="main">
+        <img src="{{ asset($berita->gambar) }}" class="img-fluid rounded mb-4" alt="{{ $berita->judul }}">
+        <h2>{{ $berita->judul }}</h2>
+        <p class="text-muted">{{ date('d F Y', strtotime($berita->tanggal)) }}</p>
+        <p>{!! nl2br(e($berita->deskripsi)) !!}</p>
+    </section>
 
     <section id="about">
         <iframe
@@ -553,7 +511,7 @@
         </div>
     </section>
 
-    <section id="footer">
+    <footer>
         <div id="sosmed">
             <a href="https://web.facebook.com/smkn2bkln/"><svg xmlns="http://www.w3.org/2000/svg" height="25px"
                     viewBox="0 0 512 512">
@@ -597,17 +555,11 @@
                 </svg></a>
         </div>
         &copy; Copyright 2025 | SMKN 2 Bangkalan All Rights Reserved.
-    </section>
-    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-    <script src="{{ asset('assets/scripts/klorofil-common.js') }}"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        @if (Session::has('sukses'))
-            toastr.success('{{ Session::get('sukses') }}', 'Sukses');
-        @endif
+        AOS.init();
     </script>
 </body>
 
