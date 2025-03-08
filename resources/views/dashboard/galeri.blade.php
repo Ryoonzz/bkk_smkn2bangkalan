@@ -51,6 +51,12 @@
             font-size: 18px;
         }
 
+        .halo {
+            font-weight: bold;
+            padding-bottom: 10px;
+            font-size: 24px;
+        }
+
         #about {
             display: flex;
             justify-content: center;
@@ -250,8 +256,22 @@
                 text-align: center;
             }
 
+            .halo {
+                font-size: 18px;
+                text-align: center;
+            }
+
             .panel-title {
                 font-size: 16px;
+            }
+
+            .right {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .btn-action {
+                width: 30%;
             }
         }
 
@@ -304,11 +324,11 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/dashboard/lowongan">Lowongan</a></li>
-                    <li><a href="/dashboard/perusahaan">Perusahaan</a></li>
+                    <li><a href="#">Perusahaan</a></li>
                     <li><a href="/dashboard/alumni">Alumni</a></li>
-                    <li><a href="#">Lamaran</a></li>
+                    <li><a href="/dashboard/lamaran">Lamaran</a></li>
                     <li><a href="/dashboard/berita">Berita</a></li>
-                    <li><a href="/dashboard/galeri">Galeri</a></li>
+                    <li><a href="#">Galeri</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>
@@ -329,13 +349,17 @@
                     <div class="col-md-12">
                         <div class="panel">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Daftar Lamaran</h3>
+                                <h3 class="panel-title">Data Galeri</h3>
+                                <div class="right">
+                                    <a href="/dashboard/galeri/tambah" class="btn btn-primary"><i
+                                            class="fa fa-plus"></i> Tambah Gambar</a>
+                                </div>
                             </div>
                             <div class="panel-body">
-                                <form action="/dashboard/lamaran" method="get">
+                                <form action="/dashboard/galeri" method="get">
                                     <div class="input-group">
                                         <input name="cari" class="form-control" type="text"
-                                            placeholder="Cari data lamaran" value="{{ request('cari') }}">
+                                            placeholder="Cari data galeri" value="{{ request('cari') }}">
                                         <span class="input-group-btn"><button class="btn btn-primary"
                                                 type="submit">Cari</button></span>
                                     </div>
@@ -346,55 +370,54 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama Alumni</th>
-                                                <th>Lowongan</th>
-                                                <th>Perusahaan</th>
-                                                <th>Tanggal Melamar</th>
+                                                <th>Judul</th>
+                                                <th>Gambar</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse ($lamaran as $lamar)
+                                            @forelse ($galeri as $gal)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td><a href="" data-toggle="modal"
-                                                            data-target="#modalLowongan{{ $lamar->alumni->id }}">{{ $lamar->alumni->nama }}</a>
+                                                    <td>{{ $gal->judul }}</td>
+                                                    <td><img src="{{ asset($gal->gambar) }}" width="80px"></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-toggle="modal"
+                                                            data-target="#modalGaleri{{ $gal->id }}">
+                                                            <i class="fa fa-eye" title="Lihat Gambar"></i>
+                                                        </button>
+                                                        <a href="{{ route('galeri.edit', $gal->id) }}"
+                                                            class="btn btn-warning">
+                                                            <i class="fa fa-pencil" title="Edit Gambar"></i>
+                                                        </a>
+                                                        <form action="{{ route('galeri.destroy', $gal->id) }}"
+                                                            method="POST" style="display:inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger"
+                                                                onclick="return confirm('Yakin ingin menghapus gambar ini?')">
+                                                                <i class="fa fa-trash" title="Hapus Gambar"></i>
+                                                            </button>
+                                                        </form>
                                                     </td>
-                                                    <td>{{ $lamar->lowongan->judul }}</td>
-                                                    <td>{{ $lamar->lowongan->perusahaan }}</td>
-                                                    <td>{{ $lamar->created_at->format('d M Y') }}</td>
                                                 </tr>
 
-                                                <div id="modalLowongan{{ $lamar->alumni->id }}" class="modal fade"
-                                                    role="dialog"
-                                                    aria-labelledby="modalLabel{{ $lamar->alumni->id }}">
+                                                <div id="modalGaleri{{ $gal->id }}" class="modal fade"
+                                                    role="dialog" aria-labelledby="modalLabel{{ $gal->id }}">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <button type="button" class="close"
                                                                     data-dismiss="modal">&times;</button>
                                                                 <h4 class="modal-title"
-                                                                    id="modalLabel{{ $lamar->alumni->id }}">
-                                                                    <strong>{{ $lamar->alumni->nama }}</strong>
+                                                                    id="modalLabel{{ $gal->id }}">
+                                                                    <strong>{{ $gal->judul }}</strong>
                                                                 </h4>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                <h5><strong>NISN</strong></h5>
-                                                                <p>{{ $lamar->alumni->nisn }}</p>
-
-                                                                <h5><strong>Tanggal Lahir</strong></h5>
-                                                                <p>{{ $lamar->alumni->tanggal_lahir }}</p>
-
-                                                                <h5><strong>No HP</strong></h5>
-                                                                <p>{{ $lamar->alumni->no_hp }}</p>
-
-                                                                <h5><strong>Alamat</strong></h5>
-                                                                <p>{{ $lamar->alumni->alamat }}</p>
-
-                                                                <h5><strong>Jurusan</strong></h5>
-                                                                <p>{{ $lamar->alumni->jurusan }}</p>
-
-                                                                <h5><strong>Tahun Lulus</strong></h5>
-                                                                <p>{{ $lamar->alumni->tahun_lulus }}</p>
+                                                            <div class="modal-body text-center">
+                                                                <img src="{{ asset(path: $gal->gambar) }}"
+                                                                    class="img-responsive">
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default"
@@ -404,19 +427,15 @@
                                                     </div>
                                                 </div>
                                             @empty
-                                                <tr>
-                                                    <td colspan="5" class="text-center">
-                                                        <div class="alert alert-danger m-2">
-                                                            Tidak ada pelamar.
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <div class="alert alert-danger">
+                                                    Data Tidak Tersedia.
+                                                </div>
                                             @endforelse
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="d-flex mt-4">
-                                    {{ $lamaran->links('vendor.pagination.bootstrap-5') }}
+                                    {{ $galeri->links('vendor.pagination.bootstrap-5') }}
                                 </div>
                             </div>
                         </div>

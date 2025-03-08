@@ -308,6 +308,7 @@
                     <li><a href="/dashboard/alumni">Alumni</a></li>
                     <li><a href="/dashboard/lamaran">Lamaran</a></li>
                     <li><a href="/dashboard/berita">Berita</a></li>
+                    <li><a href="/dashboard/galeri">Galeri</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>

@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardAlumniController;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\LamaranController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,8 @@ Route::get('/struktur', function () {
 Route::get('/pengumuman', function () {
     return view('bkk.pengumuman');
 });
+
+Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
 
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
 Route::get('/dashboard/berita/detail-berita{id}', [BeritaController::class, 'show'])->name('berita.show');
@@ -71,6 +74,13 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/dashboard/berita/edit/{id}', [BeritaController::class, 'edit'])->name('berita.edit');
     Route::put('/dashboard/berita/update/{id}', [BeritaController::class, 'update'])->name('berita.update');
     Route::delete('/dashboard/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+    
+    Route::get('/dashboard/galeri', [GaleriController::class, 'dashboard'])->name('galeri.dashboard');
+    Route::get('/dashboard/galeri/tambah', [GaleriController::class, 'create'])->name('galeri.tambah');
+    Route::post('/dashboard/galeri/store', [GaleriController::class, 'store'])->name('galeri.store');
+    Route::get('/dashboard/galeri/edit/{id}', [GaleriController::class, 'edit'])->name('galeri.edit');
+    Route::put('/dashboard/galeri/update/{id}', [GaleriController::class, 'update'])->name('galeri.update');
+    Route::delete('/dashboard/galeri/{id}', [GaleriController::class, 'destroy'])->name('galeri.destroy');
 
     Route::get('/dashboard/lamaran', [DashboardController::class, 'daftarPelamar'])->name('lamaran.dashboard');
 });
