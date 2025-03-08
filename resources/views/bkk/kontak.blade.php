@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BKK SMK Negeri 2 Bangkalan</title>
     <link rel="shortcut icon" href="storage/tab-logo_smkn2bkl.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -221,31 +222,22 @@
 
         #main {
             margin: 80px auto;
-            max-width: 900px;
+            max-width: 1200px;
             padding: 0 50px;
-            text-align: left;
+            text-align: center;
         }
 
-        #main h2 {
-            font-size: 30px;
-            font-weight: bold;
+        .contact-info {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: #fff;
         }
 
-        #main h3 {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        #main p {
-            font-size: 18px;
-            margin: 10px 0;
-        }
-
-        #main ol {
-            font-size: 18px;
-            padding-left: 20px;
-            line-height: 1.6;
+        .contact-info i {
+            font-size: 2rem;
+            color: #007bff;
         }
 
         @media (max-width: 1024px) {
@@ -255,10 +247,6 @@
         @media (max-width: 992px) {
             #nama-halaman .halaman {
                 padding: 0 50px;
-            }
-
-            #main {
-                padding: 0 30px;
             }
         }
 
@@ -311,22 +299,6 @@
 
             #main {
                 padding: 0 20px;
-                text-align: justify;
-            }
-
-            #main h2 {
-                font-size: 28px;
-                text-align: center;
-            }
-
-            #main h3 {
-                font-size: 22px;
-                text-align: center;
-            }
-
-            #main p,
-            #main ol {
-                font-size: 16px;
             }
         }
 
@@ -343,6 +315,10 @@
                 justify-content: center;
             }
 
+            #main {
+                padding: 0 15px;
+            }
+
             footer a {
                 width: 35px;
                 height: 35px;
@@ -356,30 +332,11 @@
             footer {
                 padding: 30px 0;
             }
-
-            #main {
-                padding: 0 15px;
-            }
-
-            #main h2 {
-                font-size: 24px;
-            }
-
-            #main h3 {
-                font-size: 20px;
-            }
-
-            #main p,
-            #main ol {
-                font-size: 14px;
-                padding-left: 10px;
-            }
         }
     </style>
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
@@ -397,13 +354,14 @@
                             data-bs-toggle="dropdown">Profil</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/visi-misi">Visi & Misi BKK</a></li>
-                            <li><a class="dropdown-item" href="#">Motto BKK</a></li>
-                            <li><a class="dropdown-item" href="/struktur">Struktur BKK</a></li>
+                            <li><a class="dropdown-item" href="/motto">Motto BKK</a></li>
+                            <li><a class="dropdown-item" href="#">Struktur BKK</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/lowongan">Lowongan</a></li>
                     <li class="nav-item"><a class="nav-link" href="/perusahaan">Perusahaan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://bit.ly/SurveySMKN2bkl2024" target="_blank">Survey Kepuasan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://bit.ly/SurveySMKN2bkl2024"
+                            target="_blank">Survey Kepuasan</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Informasi</a>
@@ -411,10 +369,11 @@
                             <li><a class="dropdown-item" href="/berita">Berita Terbaru</a></li>
                             <li><a class="dropdown-item" href="/pengumuman">Pengumuman</a></li>
                             <li><a class="dropdown-item" href="/galeri">Galeri Kegiatan</a></li>
-                            <li><a class="dropdown-item" href="https://bit.ly/tracerstudysmkn2bangkalan" target="_blank">Tracer Study</a></li>
+                            <li><a class="dropdown-item" href="https://bit.ly/tracerstudysmkn2bangkalan"
+                                    target="_blank">Tracer Study</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>
             </div>
@@ -423,29 +382,75 @@
 
     <section id="nama-halaman">
         <div class="halaman d-flex justify-content-between align-items-center">
-            <h2>Motto BKK</h2>
+            <h2>Kontak</h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Beranda</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Motto BKK</li>
+                    <li class="breadcrumb-item active" aria-current="page">Kontak</li>
                 </ol>
             </nav>
         </div>
     </section>
 
     <section id="main">
-        <h2>Motto BKK</h2>
-        <h3>Connect Opportunities, Nurtur Careers, Empower Renewal Now!</h3>
-        <ol>
-            <li><strong>Connect Opportunities:</strong> Menghubungkan pencari kerja dengan berbagai peluang.</li>
-            <li><strong>Opportunities:</strong> Menyediakan berbagai kesempatan kerja yang sesuai.</li>
-            <li><strong>Nurture Careers:</strong> Membantu dalam pengembangan karier.</li>
-            <li><strong>Create Value:</strong> Menciptakan nilai dalam setiap usaha yang dilakukan.</li>
-            <li><strong>Empower Renewal:</strong> Memberdayakan individu untuk selalu melakukan pembaruan diri.</li>
-            <li><strong>Resource Network:</strong> Menyediakan jaringan sumber daya yang luas untuk membantu pencari
-                kerja.</li>
-            <li><strong>Now:</strong> Mengajak semua untuk bertindak segera dalam meraih kesempatan. </li>
-        </ol>
+        <div class="container mt-5">
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <i class="bi bi-geo-alt fs-1 text-primary"></i>
+                        <h5 class="mt-2">Alamat</h5>
+                        <p>Jl. Halim Perdana Kusuma, Bangkalan, Jawa Timur</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <i class="bi bi-globe fs-1 text-primary"></i>
+                        <h5 class="mt-2">Website</h5>
+                        <p><a href="https://smkn2-bangkalan.sch.id/" target="_blank"
+                                style="text-decoration: none;">smkn2-bangkalan.sch.id</a></p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <i class="bi bi-envelope fs-1 text-primary"></i>
+                        <h5 class="mt-2">Email</h5>
+                        <p>smkn2_bkl@yahoo.com</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <i class="bi bi-telephone fs-1 text-primary"></i>
+                        <h5 class="mt-2">Telp.</h5>
+                        <p>(031) 3092223</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.6743782644635!2d112.75168237504501!3d-7.047497092954708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd805921a687535%3A0xe56ef0cbff25e78!2sSMK%20Negeri%202%20Bangkalan%20(SMK%20Pusat%20Keunggulan)!5e0!3m2!1sid!2sid!4v1741436389170!5m2!1sid!2sid"
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <form action="mailto:smkn2_bkl@yahoo.com" method="post" enctype="text/plain">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" placeholder="Nama...">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="email" class="form-control" placeholder="Email...">
+                            </div>
+                        </div>
+                        <input type="text" class="form-control mb-3" placeholder="Subject...">
+                        <textarea class="form-control mb-3" rows="5" placeholder="Tuliskan pesan / masukan..."></textarea>
+                        <button class="btn btn-primary w-100">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <section id="about">

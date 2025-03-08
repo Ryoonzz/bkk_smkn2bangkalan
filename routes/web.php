@@ -32,6 +32,10 @@ Route::get('/pengumuman', function () {
     return view('bkk.pengumuman');
 });
 
+Route::get('/kontak', function () {
+    return view('bkk.kontak');
+});
+
 Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
 
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');

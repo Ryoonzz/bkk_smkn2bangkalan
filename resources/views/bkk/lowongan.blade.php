@@ -523,7 +523,7 @@
                             <li><a class="dropdown-item" href="https://bit.ly/tracerstudysmkn2bangkalan" target="_blank">Tracer Study</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>
             </div>
