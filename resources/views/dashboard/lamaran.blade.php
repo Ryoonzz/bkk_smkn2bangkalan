@@ -354,11 +354,53 @@
                                             @forelse ($lamaran as $lamar)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $lamar->alumni->nama }}</td>
+                                                    <td><a href="" data-toggle="modal"
+                                                            data-target="#modalLowongan{{ $lamar->alumni->id }}">{{ $lamar->alumni->nama }}</a>
+                                                    </td>
                                                     <td>{{ $lamar->lowongan->judul }}</td>
                                                     <td>{{ $lamar->lowongan->perusahaan }}</td>
                                                     <td>{{ $lamar->created_at->format('d M Y') }}</td>
                                                 </tr>
+
+                                                <div id="modalLowongan{{ $lamar->alumni->id }}" class="modal fade"
+                                                    role="dialog"
+                                                    aria-labelledby="modalLabel{{ $lamar->alumni->id }}">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title"
+                                                                    id="modalLabel{{ $lamar->alumni->id }}">
+                                                                    <strong>{{ $lamar->alumni->nama }}</strong>
+                                                                </h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <h5><strong>NISN</strong></h5>
+                                                                <p>{{ $lamar->alumni->nisn }}</p>
+
+                                                                <h5><strong>Tanggal Lahir</strong></h5>
+                                                                <p>{{ $lamar->alumni->tanggal_lahir }}</p>
+
+                                                                <h5><strong>No HP</strong></h5>
+                                                                <p>{{ $lamar->alumni->no_hp }}</p>
+
+                                                                <h5><strong>Alamat</strong></h5>
+                                                                <p>{{ $lamar->alumni->alamat }}</p>
+
+                                                                <h5><strong>Jurusan</strong></h5>
+                                                                <p>{{ $lamar->alumni->jurusan }}</p>
+
+                                                                <h5><strong>Tahun Lulus</strong></h5>
+                                                                <p>{{ $lamar->alumni->tahun_lulus }}</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default"
+                                                                    data-dismiss="modal">Tutup</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             @empty
                                                 <tr>
                                                     <td colspan="5" class="text-center">
