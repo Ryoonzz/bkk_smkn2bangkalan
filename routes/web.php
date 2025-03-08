@@ -26,6 +26,10 @@ Route::get('/struktur', function () {
     return view('bkk.struktur');
 });
 
+Route::get('/pengumuman', function () {
+    return view('bkk.pengumuman');
+});
+
 Route::get('/lowongan', [LowonganController::class, 'index'])->name('lowongan.index');
 
 Route::get('/perusahaan', [PerusahaanController::class, 'index'])->name('perusahaan.index');

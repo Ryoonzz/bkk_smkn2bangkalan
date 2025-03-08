@@ -664,9 +664,9 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Informasi</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Berita Terbaru</a></li>
-                            <li><a class="dropdown-item" href="#">Pengumuman</a></li>
-                            <li><a class="dropdown-item" href="#">Galeri Kegiatan</a></li>
+                            <li><a class="dropdown-item" href="/berita">Berita Terbaru</a></li>
+                            <li><a class="dropdown-item" href="/pengumuman">Pengumuman</a></li>
+                            <li><a class="dropdown-item" href="/galeri">Galeri Kegiatan</a></li>
                             <li><a class="dropdown-item" href="https://bit.ly/tracerstudysmkn2bangkalan" target="_blank">Tracer Study</a></li>
                         </ul>
                     </li>
