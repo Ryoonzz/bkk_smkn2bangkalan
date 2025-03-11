@@ -380,7 +380,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $job->judul }}</td>
                                                     <td>{{ $job->perusahaan }}</td>
-                                                    <td>{{ $job->tanggal }}</td>
+                                                    <td>{{ $job->tgl_akhir_daftar }}</td>
                                                     <td>{{ $job->posisi }}</td>
                                                     <td>{{ $job->penempatan }}</td>
                                                     <td><?= 'Rp' . number_format($gaji, 0, ',', '.') ?></td>
