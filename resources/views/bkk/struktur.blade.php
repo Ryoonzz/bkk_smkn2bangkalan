@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BKK SMK Negeri 2 Bangkalan</title>
-    <link rel="shortcut icon" href="storage/tab-logo_smkn2bkl.png">
+    <link rel="shortcut icon" href="storage/tab-logo_bkk_smkn2bkl.jpg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
@@ -372,7 +372,8 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/lowongan">Lowongan</a></li>
                     <li class="nav-item"><a class="nav-link" href="/perusahaan">Perusahaan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://bit.ly/SurveySMKN2bkl2024" target="_blank">Survey Kepuasan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://bit.ly/SurveySMKN2bkl2024"
+                            target="_blank">Survey Kepuasan</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Informasi</a>
@@ -380,7 +381,8 @@
                             <li><a class="dropdown-item" href="/berita">Berita Terbaru</a></li>
                             <li><a class="dropdown-item" href="/pengumuman">Pengumuman</a></li>
                             <li><a class="dropdown-item" href="/galeri">Galeri Kegiatan</a></li>
-                            <li><a class="dropdown-item" href="https://bit.ly/tracerstudysmkn2bangkalan" target="_blank">Tracer Study</a></li>
+                            <li><a class="dropdown-item" href="https://bit.ly/tracerstudysmkn2bangkalan"
+                                    target="_blank">Tracer Study</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>

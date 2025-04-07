@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BKK SMK Negeri 2 Bangkalan</title>
-    <link rel="shortcut icon" href="storage/tab-logo_smkn2bkl.png">
+    <link rel="icon" type="image/jpg" sizes="96x96" href="{{ asset('storage/tab-logo_bkk_smkn2bkl.jpg') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/linearicons/style.css') }}">

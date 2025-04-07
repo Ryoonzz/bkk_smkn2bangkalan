@@ -15,7 +15,7 @@
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
-    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('storage/tab-logo_smkn2bkl.png') }}">
+    <link rel="icon" type="image/jpg" sizes="96x96" href="{{ asset('storage/tab-logo_bkk_smkn2bkl.jpg') }}">
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
@@ -46,12 +46,12 @@
                                 <div class="form-group">
                                     <label for="signin-username" class="control-label sr-only">Username</label>
                                     <input name="username" type="text" class="form-control" id="signin-username"
-                                        placeholder="Username">
+                                        placeholder="Username (NISN)">
                                 </div>
                                 <div class="form-group">
                                     <label for="signin-password" class="control-label sr-only">Password</label>
                                     <input name="password" type="password" class="form-control" id="signin-password"
-                                        placeholder="Password">
+                                        placeholder="Password (Tanggal Lahir Alumni)">
                                 </div>
                                 <div class="form-group clearfix">
 
