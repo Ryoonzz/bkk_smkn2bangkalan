@@ -439,11 +439,38 @@
             <h4>Data Lowongan</h4>
             <div class="mb-3" id="search">
                 <form action="/dashboard-alumni/lowongan" method="get">
-                    <div class="input-group">
+                    <div class="input-group mb-3">
                         <input name="cari" class="form-control" type="text" placeholder="Cari data lowongan"
                             value="{{ request('cari') }}">
                         <span class="input-group-btn"><button class="btn btn-primary"
                                 type="submit">Cari</button></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="penempatan" class="form-label">Filter Penempatan</label>
+                            <select name="penempatan" id="penempatan" class="form-select">
+                                <option value="">Semua Penempatan</option>
+                                @foreach ($penempatanList as $penempatan)
+                                    <option value="{{ $penempatan }}"
+                                        {{ request('penempatan') == $penempatan ? 'selected' : '' }}>
+                                        {{ $penempatan }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="jurusan" class="form-label">Filter Jurusan</label>
+                            <select name="jurusan" id="jurusan" class="form-select">
+                                <option value="">Semua</option>
+                                @foreach ($jurusanList as $jurusan)
+                                    <option value="{{ $jurusan }}"
+                                        {{ request('jurusan') == $jurusan ? 'selected' : '' }}>
+                                        {{ $jurusan }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -490,15 +517,17 @@
 
                                     @if ($sudahMelamar)
                                         <form action="{{ route('lamar.batal', $job->id) }}" method="POST"
-                                            class="d-inline">
+                                            class="d-inline" id="formBatal{{ $job->id }}">
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm">Batal</button>
+                                            <button type="button" class="btn btn-danger btn-sm btn-batal"
+                                                data-id="{{ $job->id }}">Batal</button>
                                         </form>
                                     @else
                                         <form action="{{ route('lamar.store', $job->id) }}" method="POST"
-                                            class="d-inline">
+                                            class="d-inline" id="formLamar{{ $job->id }}">
                                             @csrf
-                                            <button type="submit" class="btn btn-success btn-sm">Lamar</button>
+                                            <button type="button" class="btn btn-success btn-sm btn-lamar"
+                                                data-id="{{ $job->id }}">Lamar</button>
                                         </form>
                                     @endif
                                 </td>
@@ -563,7 +592,7 @@
                             </div>
                         @empty
                             <tr>
-                                <td colspan="8" class="text-center">
+                                <td colspan="9" class="text-center">
                                     <div class="alert alert-danger m-2">
                                         Data Tidak Tersedia.
                                     </div>
@@ -710,28 +739,97 @@
         &copy; Copyright 2025 | SMKN 2 Bangkalan All Rights Reserved.
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: 'Berhasil!',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                title: 'Gagal!',
+                text: '{{ session('error') }}',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
+
     <script>
-        function handleLamar(button, jobId) {
-            let konfirmasi = confirm("Apakah Anda yakin ingin melamar pekerjaan ini?");
+        @if (session('success'))
+            Swal.fire({
+                title: 'Berhasil!',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        @endif
 
-            if (konfirmasi) {
-                button.classList.remove('btn-success');
-                button.classList.add('btn-danger');
-                button.innerText = "Batal";
-                button.setAttribute("onclick", `handleBatal(this, ${jobId})`);
-            }
-        }
+        @if (session('error'))
+            Swal.fire({
+                title: 'Gagal!',
+                text: '{{ session('error') }}',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        @endif
 
-        function handleBatal(button, jobId) {
-            let konfirmasi = confirm("Apakah Anda yakin ingin membatalkan lamaran?");
+        // Konfirmasi untuk tombol Lamar
+        document.querySelectorAll('.btn-lamar').forEach(button => {
+            button.addEventListener('click', function() {
+                const jobId = this.getAttribute('data-id');
+                Swal.fire({
+                    title: 'Konfirmasi',
+                    text: 'Apakah Anda yakin ingin melamar pekerjaan ini?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya, Lamar',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('formLamar' + jobId).submit();
+                    }
+                });
+            });
+        });
 
-            if (konfirmasi) {
-                button.classList.remove('btn-danger');
-                button.classList.add('btn-success');
-                button.innerText = "Lamar";
-                button.setAttribute("onclick", `handleLamar(this, ${jobId})`);
-            }
-        }
+        // Konfirmasi untuk tombol Batal
+        document.querySelectorAll('.btn-batal').forEach(button => {
+            button.addEventListener('click', function() {
+                const jobId = this.getAttribute('data-id');
+                Swal.fire({
+                    title: 'Konfirmasi',
+                    text: 'Apakah Anda yakin ingin membatalkan lamaran ini?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya, Batal',
+                    cancelButtonText: 'Tidak'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('formBatal' + jobId).submit();
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto submit form saat filter dipilih
+            document.getElementById('penempatan').addEventListener('change', function() {
+                this.form.submit();
+            });
+
+            document.getElementById('jurusan').addEventListener('change', function() {
+                this.form.submit();
+            });
+        });
     </script>
 
 </body>

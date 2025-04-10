@@ -357,14 +357,17 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td><a href="" data-toggle="modal"
-                                                            data-target="#modalLowongan{{ $lamar->alumni->id }}">{{ $lamar->alumni->nama }}</a>
+                                                            data-target="#modalAlumni{{ $lamar->alumni->id }}">{{ $lamar->alumni->nama }}</a>
                                                     </td>
-                                                    <td>{{ $lamar->lowongan->judul }}</td>
+                                                    <td><a href="" data-toggle="modal"
+                                                            data-target="#modalLowongan{{ $lamar->lowongan->id }}">{{ $lamar->lowongan->judul }}
+                                                    </td>
+                                                    {{-- <td>{{ $lamar->lowongan->judul }}</td> --}}
                                                     <td>{{ $lamar->lowongan->perusahaan }}</td>
                                                     <td>{{ $lamar->created_at->format('d M Y') }}</td>
                                                 </tr>
 
-                                                <div id="modalLowongan{{ $lamar->alumni->id }}" class="modal fade"
+                                                <div id="modalAlumni{{ $lamar->alumni->id }}" class="modal fade"
                                                     role="dialog"
                                                     aria-labelledby="modalLabel{{ $lamar->alumni->id }}">
                                                     <div class="modal-dialog">
@@ -395,6 +398,68 @@
 
                                                                 <h5><strong>Tahun Lulus</strong></h5>
                                                                 <p>{{ $lamar->alumni->tahun_lulus }}</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default"
+                                                                    data-dismiss="modal">Tutup</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="modalLowongan{{ $lamar->lowongan->id }}" class="modal fade"
+                                                    role="dialog"
+                                                    aria-labelledby="modalLabel{{ $lamar->lowongan->id }}">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title"
+                                                                    id="modalLabel{{ $lamar->lowongan->id }}">
+                                                                    <strong>{{ $lamar->lowongan->judul }}</strong>
+                                                                </h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <h5><strong>Judul</strong></h5>
+                                                                <p>{{ $lamar->lowongan->judul }}</p>
+
+                                                                <h5><strong>Perusahaan</strong></h5>
+                                                                <p>{{ $lamar->lowongan->perusahaan }}</p>
+
+                                                                <h5><strong>Tanggal Akhir Pendaftaran</strong></h5>
+                                                                <p>{{ $lamar->lowongan->tgl_akhir_daftar }}</p>
+
+                                                                <h5><strong>Deskripsi</strong></h5>
+                                                                <p>{{ $lamar->lowongan->deskripsi }}</p>
+
+                                                                <h5><strong>Jurusan</strong></h5>
+                                                                <div>
+                                                                    @php
+                                                                        $jurusan = is_array($lamar->lowongan->jurusan)
+                                                                            ? $lamar->lowongan->jurusan
+                                                                            : explode(', ', $lamar->lowongan->jurusan);
+                                                                    @endphp
+
+                                                                    @if (!empty($jurusan) && count(array_filter($jurusan)) > 0)
+                                                                        @foreach ($jurusan as $item)
+                                                                            <span
+                                                                                class="badge bg-success">{{ $item }}</span>
+                                                                        @endforeach
+                                                                    @else
+                                                                        <span>-</span>
+                                                                    @endif
+                                                                </div>
+
+                                                                <h5><strong>Posisi</strong></h5>
+                                                                <p>{{ $lamar->lowongan->posisi }}</p>
+
+                                                                <h5><strong>Penempatan</strong></h5>
+                                                                <p>{{ $lamar->lowongan->penempatan }}</p>
+
+                                                                <h5><strong>Gaji</strong></h5>
+                                                                <p>Rp{{ number_format($lamar->lowongan->gaji, 0, ',', '.') }}
+                                                                </p>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default"

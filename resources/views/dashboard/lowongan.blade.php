@@ -357,13 +357,53 @@
                             </div>
                             <div class="panel-body">
                                 <form action="/dashboard/lowongan" method="get">
-                                    <div class="input-group">
-                                        <input name="cari" class="form-control" type="text"
-                                            placeholder="Cari data lowongan" value="{{ request('cari') }}">
-                                        <span class="input-group-btn"><button class="btn btn-primary"
-                                                type="submit">Cari</button></span>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="penempatan">Filter Penempatan</label>
+                                                <select name="penempatan" id="penempatan" class="form-control">
+                                                    <option value="">Semua</option>
+                                                    @foreach ($penempatanList as $penempatan)
+                                                        <option value="{{ $penempatan }}"
+                                                            {{ request('penempatan') == $penempatan ? 'selected' : '' }}>
+                                                            {{ $penempatan }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="jurusan">Filter Jurusan</label>
+                                                <select name="jurusan" id="jurusan" class="form-control">
+                                                    <option value="">Semua</option>
+                                                    @foreach ($jurusanList as $jurusan)
+                                                        <option value="{{ $jurusan }}"
+                                                            {{ request('jurusan') == $jurusan ? 'selected' : '' }}>
+                                                            {{ $jurusan }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="cari">Cari</label>
+                                                <div class="input-group">
+                                                    <input type="text" name="cari" id="cari"
+                                                        class="form-control" placeholder="Cari lowongan..."
+                                                        value="{{ request('cari') }}">
+                                                    <span class="input-group-btn">
+                                                        <button type="submit" class="btn btn-primary">
+                                                            <i class="fa fa-search"></i>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </form> </br>
+                                </form>
+                                <br>
 
                                 <div class="table-responsive">
                                     <table class="table table-striped">
@@ -408,7 +448,8 @@
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-action btn-danger"
                                                                 onclick="return confirm('Yakin ingin menghapus data?')"><i
-                                                                    class="fa fa-trash" title="Hapus Data"></i></button>
+                                                                    class="fa fa-trash"
+                                                                    title="Hapus Data"></i></button>
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -631,6 +672,18 @@
         @if (Session::has('sukses'))
             toastr.success('{{ Session::get('sukses') }}', 'Sukses');
         @endif
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto submit form saat filter dipilih
+            document.getElementById('penempatan').addEventListener('change', function() {
+                this.form.submit();
+            });
+
+            document.getElementById('jurusan').addEventListener('change', function() {
+                this.form.submit();
+            });
+        });
     </script>
 </body>
 

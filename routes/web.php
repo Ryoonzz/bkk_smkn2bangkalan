@@ -71,14 +71,14 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/dashboard/alumni/edit/{id}', [AlumniController::class, 'edit'])->name('alumni.edit');
     Route::put('/dashboard/alumni/update/{id}', [AlumniController::class, 'update'])->name('alumni.update');
     Route::delete('/dashboard/alumni/{id}', [AlumniController::class, 'destroy'])->name('alumni.destroy');
-    
+
     Route::get('/dashboard/berita', [BeritaController::class, 'dashboard'])->name('berita.dashboard');
     Route::get('/dashboard/berita/tambah', [BeritaController::class, 'create'])->name('berita.tambah');
     Route::post('/dashboard/berita/store', [BeritaController::class, 'store'])->name('berita.store');
     Route::get('/dashboard/berita/edit/{id}', [BeritaController::class, 'edit'])->name('berita.edit');
     Route::put('/dashboard/berita/update/{id}', [BeritaController::class, 'update'])->name('berita.update');
     Route::delete('/dashboard/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
-    
+
     Route::get('/dashboard/galeri', [GaleriController::class, 'dashboard'])->name('galeri.dashboard');
     Route::get('/dashboard/galeri/tambah', [GaleriController::class, 'create'])->name('galeri.tambah');
     Route::post('/dashboard/galeri/store', [GaleriController::class, 'store'])->name('galeri.store');

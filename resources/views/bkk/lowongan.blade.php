@@ -545,11 +545,37 @@
 
     <section id="search" data-aos="flip-up" data-aos-duration="1000">
         <form action="/lowongan" method="get">
-            <div class="input-group">
+            <div class="input-group mb-3">
                 <input name="cari" class="form-control" type="text" placeholder="Cari data lowongan"
                     value="{{ request('cari') }}">
                 <span class="input-group-btn"><button class="btn btn-primary" type="submit"><i
                             class="bi bi-search"></i> Cari</button></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="penempatan" class="form-label">Filter Penempatan</label>
+                    <select name="penempatan" id="penempatan" class="form-select">
+                        <option value="">Semua Penempatan</option>
+                        @foreach ($penempatanList as $penempatan)
+                            <option value="{{ $penempatan }}"
+                                {{ request('penempatan') == $penempatan ? 'selected' : '' }}>
+                                {{ $penempatan }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="jurusan" class="form-label">Filter Jurusan</label>
+                    <select name="jurusan" id="jurusan" class="form-select">
+                        <option value="">Semua</option>
+                        @foreach ($jurusanList as $jurusan)
+                            <option value="{{ $jurusan }}" {{ request('jurusan') == $jurusan ? 'selected' : '' }}>
+                                {{ $jurusan }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
         </form>
     </section>
@@ -803,6 +829,15 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
+
+        // Auto submit form saat filter berubah
+        document.getElementById('penempatan').addEventListener('change', function() {
+            this.form.submit();
+        });
+
+        document.getElementById('jurusan').addEventListener('change', function() {
+            this.form.submit();
+        });
     </script>
 </body>
 

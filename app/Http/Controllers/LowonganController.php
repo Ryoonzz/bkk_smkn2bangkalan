@@ -12,18 +12,49 @@ class LowonganController extends Controller
 
     public function index(Request $request): View
     {
-        if ($request->has('cari')) {
-            $lowongan = Lowongan::where('judul', 'LIKE', '%' . $request->cari . '%')
-                ->orWhere('perusahaan', 'LIKE', '%' . $request->cari . '%')
-                ->orWhere('posisi', 'LIKE', '%' . $request->cari . '%')
-                ->orWhere('penempatan', 'LIKE', '%' . $request->cari . '%')
-                ->orWhere('jurusan', 'LIKE', '%' . $request->cari . '%')
-                ->orderBy('created_at', 'desc')
-                ->paginate(9);
-        } else {
-            $lowongan = Lowongan::orderBy('created_at', 'desc')->paginate(9);
+        $query = Lowongan::query();
+
+        // Filter berdasarkan pencarian manual
+        if ($request->has('cari') && !empty($request->cari)) {
+            $query->where(function ($q) use ($request) {
+                $q->where('judul', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('perusahaan', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('posisi', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('penempatan', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('jurusan', 'LIKE', '%' . $request->cari . '%');
+            });
         }
-        return view('bkk.lowongan', compact('lowongan'));
+
+        // Filter berdasarkan penempatan
+        if ($request->has('penempatan') && !empty($request->penempatan)) {
+            $query->where('penempatan', $request->penempatan);
+        }
+
+        // Filter berdasarkan jurusan
+        if ($request->has('jurusan') && !empty($request->jurusan)) {
+            $query->where('jurusan', 'LIKE', '%' . $request->jurusan . '%');
+        }
+
+        $lowongan = $query->orderBy('created_at', 'desc')->paginate(9);
+
+        // Ambil daftar penempatan unik untuk filter
+        $penempatanList = Lowongan::select('penempatan')->distinct()->pluck('penempatan');
+
+        // Ambil daftar jurusan unik untuk filter
+        $jurusanList = [
+            'Semua Jurusan',
+            'Desain Pemodelan dan Informasi Bangunan',
+            'Teknik Instalasi Tenaga Listrik',
+            'Teknik Pemesinan',
+            'Teknik Kendaraan Ringan Otomotif',
+            'Teknik Jaringan Komputer',
+            'Rekayasa Perangkat Lunak',
+            'Teknik Sepeda Motor',
+            'Teknik Kimia Industri',
+            'Teknik Elektronika Industri',
+        ];
+
+        return view('bkk.lowongan', compact('lowongan', 'penempatanList', 'jurusanList'));
     }
 
     public function show($id): View
@@ -34,34 +65,96 @@ class LowonganController extends Controller
 
     public function dashboard(Request $request): View
     {
-        if ($request->has('cari')) {
-            $lowongan = Lowongan::where('judul', 'LIKE', '%' . $request->cari . '%')
-                ->orWhere('perusahaan', 'LIKE', '%' . $request->cari . '%')
-                ->orWhere('posisi', 'LIKE', '%' . $request->cari . '%')
-                ->orWhere('penempatan', 'LIKE', '%' . $request->cari . '%')
-                ->orWhere('jurusan', 'LIKE', '%' . $request->cari . '%')
-                ->orderBy('created_at', 'desc')
-                ->paginate(10);
-        } else {
-            $lowongan = Lowongan::orderBy('created_at', 'desc')->paginate(10);
+        $query = Lowongan::query();
+
+        // Filter berdasarkan pencarian manual
+        if ($request->has('cari') && !empty($request->cari)) {
+            $query->where(function ($q) use ($request) {
+                $q->where('judul', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('perusahaan', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('posisi', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('penempatan', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('jurusan', 'LIKE', '%' . $request->cari . '%');
+            });
         }
-        return view('dashboard.lowongan', compact('lowongan'));
+
+        // Filter berdasarkan penempatan
+        if ($request->has('penempatan') && !empty($request->penempatan)) {
+            $query->where('penempatan', $request->penempatan);
+        }
+
+        // Filter berdasarkan jurusan
+        if ($request->has('jurusan') && !empty($request->jurusan)) {
+            $query->where('jurusan', 'LIKE', '%' . $request->jurusan . '%');
+        }
+
+        $lowongan = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        // Ambil daftar penempatan unik untuk filter
+        $penempatanList = Lowongan::select('penempatan')->distinct()->pluck('penempatan');
+
+        // Ambil daftar jurusan unik untuk filter
+        $jurusanList = [
+            'Semua Jurusan',
+            'Desain Pemodelan dan Informasi Bangunan',
+            'Teknik Instalasi Tenaga Listrik',
+            'Teknik Pemesinan',
+            'Teknik Kendaraan Ringan Otomotif',
+            'Teknik Jaringan Komputer',
+            'Rekayasa Perangkat Lunak',
+            'Teknik Sepeda Motor',
+            'Teknik Kimia Industri',
+            'Teknik Elektronika Industri',
+        ];
+
+        return view('dashboard.lowongan', compact('lowongan', 'penempatanList', 'jurusanList'));
     }
 
     public function dashboardAlumni(Request $request): View
     {
-        if ($request->has('cari')) {
-            $lowongan = Lowongan::where('judul', 'LIKE', '%' . $request->cari . '%')
-                ->orWhere('perusahaan', 'LIKE', '%' . $request->cari . '%')
-                ->orWhere('posisi', 'LIKE', '%' . $request->cari . '%')
-                ->orWhere('penempatan', 'LIKE', '%' . $request->cari . '%')
-                ->orWhere('jurusan', 'LIKE', '%' . $request->cari . '%')
-                ->orderBy('created_at', 'desc')
-                ->paginate(10);
-        } else {
-            $lowongan = Lowongan::orderBy('created_at', 'desc')->paginate(10);
+        $query = Lowongan::query();
+
+        // Filter berdasarkan pencarian manual
+        if ($request->has('cari') && !empty($request->cari)) {
+            $query->where(function ($q) use ($request) {
+                $q->where('judul', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('perusahaan', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('posisi', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('penempatan', 'LIKE', '%' . $request->cari . '%')
+                    ->orWhere('jurusan', 'LIKE', '%' . $request->cari . '%');
+            });
         }
-        return view('dashboardAlumni.lowongan', compact('lowongan'));
+
+        // Filter berdasarkan penempatan
+        if ($request->has('penempatan') && !empty($request->penempatan)) {
+            $query->where('penempatan', $request->penempatan);
+        }
+
+        // Filter berdasarkan jurusan
+        if ($request->has('jurusan') && !empty($request->jurusan)) {
+            $query->where('jurusan', 'LIKE', '%' . $request->jurusan . '%');
+        }
+
+        $lowongan = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        // Ambil daftar penempatan unik untuk filter
+        $penempatanList = Lowongan::select('penempatan')->distinct()->pluck('penempatan');
+
+        // Ambil daftar jurusan unik untuk filter
+        $jurusanList = [
+            'Semua Jurusan',
+            'Desain Pemodelan dan Informasi Bangunan',
+            'Teknik Instalasi Tenaga Listrik',
+            'Teknik Pemesinan',
+            'Teknik Kendaraan Ringan Otomotif',
+            'Teknik Jaringan Komputer',
+            'Rekayasa Perangkat Lunak',
+            'Teknik Sepeda Motor',
+            'Teknik Kimia Industri',
+            'Teknik Elektronika Industri',
+        ];
+
+        return view('dashboardAlumni.lowongan', compact('lowongan', 'penempatanList', 'jurusanList'));
     }
 
     public function create(): View

@@ -336,6 +336,7 @@
                                     enctype="multipart/form-data">
                                     @php
                                         $jurusanList = [
+                                            'Semua Jurusan',
                                             'Desain Pemodelan dan Informasi Bangunan',
                                             'Teknik Instalasi Tenaga Listrik',
                                             'Teknik Pemesinan',

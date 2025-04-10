@@ -16,6 +16,15 @@ return new class extends Migration {
             $table->foreignId('lowongan_id')->constrained('lowongans')->onDelete('cascade');
             $table->timestamps();
         });
+
+        Schema::create('riwayat_lamaran', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('alumni_id')->constrained('alumnis')->onDelete('cascade');
+            $table->foreignId('lowongan_id')->constrained('lowongans')->onDelete('cascade');
+            $table->integer('jumlah_aksi')->default(0);
+            $table->timestamp('terakhir_aksi')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +32,7 @@ return new class extends Migration {
      */
     public function down(): void
     {
+        Schema::dropIfExists('riwayat_lamaran');
         Schema::dropIfExists('lamaran');
     }
 };
