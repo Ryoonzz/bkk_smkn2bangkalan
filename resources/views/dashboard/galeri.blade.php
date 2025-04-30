@@ -324,7 +324,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/dashboard/lowongan">Lowongan</a></li>
-                    <li><a href="#">Perusahaan</a></li>
+                    <li><a href="/dashboard/perusahaan">Perusahaan</a></li>
                     <li><a href="/dashboard/alumni">Alumni</a></li>
                     <li><a href="/dashboard/lamaran">Lamaran</a></li>
                     <li><a href="/dashboard/berita">Berita</a></li>
